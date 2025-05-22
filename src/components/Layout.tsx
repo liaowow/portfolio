@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col font-sans">
       <nav className="bg-white shadow-md">
         <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link to="/" className="text-2xl font-bold text-blue-600">
