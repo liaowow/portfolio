@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { FaGithub, FaLinkedin, FaBehance } from "react-icons/fa";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
@@ -12,11 +13,55 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col font-sans">
-      <nav className="bg-white shadow-md">
-        <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link to="/" className="text-2xl font-bold text-blue-600">
-            Annie Liao
-          </Link>
+      <nav className="bg-[#6D00F6] shadow-md p-8">
+        <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center text-[#FFF]">
+          <div className="flex items-left gap-4 text-sm">
+            <Link
+              to="/about"
+              className="hover:underline focus:underline"
+            >
+              About
+            </Link>
+            <Link
+              to="/projects"
+              className="hover:underline focus:underline"
+            >
+              Projects
+            </Link>
+          </div>
+          <div className="flex items-center gap-4">
+            <Link
+              to="/"
+              className="text-gray-800 font-thin text-lg hover:text-blue-600"
+            >
+              Annie Liao
+            </Link>
+          </div>
+
+          {/* Right: Social icons */}
+          <div className="flex items-center gap-3 text-lg">
+            <a
+              href="https://www.behance.net/annieliao"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaBehance />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/liaoannie/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin />
+            </a>
+            <a
+              href="https://github.com/liaowow"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaGithub />
+            </a>
+          </div>
 
           <div className="space-x-8 hidden md:flex">
             {navLinks.map(({ name, path }) => (
