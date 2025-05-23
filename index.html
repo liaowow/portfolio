@@ -3,36 +3,73 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <meta
-      name="keywords"
-      content="software engineer,data visualization,creative,producer,visual,yahoo,global,product,product manager,javascript,developer,frontend,ux,ui,ux engineer,ui engineer,ui developer"
+    <title>Annie Liao</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;700&display=swap"
+      rel="stylesheet"
     />
-    <meta
-      name="description"
-      content="Annie Liao is a software engineer with over 10 years of experience in visual design and media product ownership."
-    />
-    <meta
-      property="og:title"
-      content="Annie Liao Visual Land"
-    />
-    <meta
-      property="og:description"
-      content="Annie Liao is a software engineer with over 10 years of experience in visual design and media product ownership."
-    />
-    <meta property="og:image" content="/og-image.png" />
-
-    <link rel="icon" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-    <link rel="stylesheet" href="/dist/css/main.css" type="text/css" />
-
-    <link rel="canonical" href="https://annieliao.com" />
-
-    <title>Annie Liao Visual Land</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="icons/favicon.png" type="image/png" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <section class="home" id="home">
+      <div class="overlay">
+        <div class="masthead">
+          <h1 class="name">ANNIE LIAO</h1>
+          <p class="tagline">coder. designer. experimenter.</p>
+          <button class="about-btn" onclick="scrollToAbout()">About</button>
+          <div class="social-icons">
+            <a href="https://www.linkedin.com/in/liaoannie" target="_blank"
+              ><img src="icons/linkedin.svg" alt="LinkedIn"
+            /></a>
+            <a href="https://github.com/liaowow" target="_blank"
+              ><img src="icons/github.svg" alt="GitHub"
+            /></a>
+            <a href="https://www.behance.net/annieliao" target="_blank"
+              ><img src="icons/behance.svg" alt="Behance"
+            /></a>
+            <a href="https://dev.to/liaowow" target="_blank"
+              ><img src="icons/dev.png" alt="DEV"
+            /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="content">
+        <p>
+          Hey there! I'm Annie, and welcome to my little corner of the internet.
+        </p>
+        <p>
+          I'm a software engineer with an eye for visual design and a track
+          record of leading product initiatives from start to launch. Like any
+          good story, mine has a few plot twists.
+        </p>
+        <p>
+          Originally from Taiwan, I moved to New York City in 2017 for an
+          opportunity to lead digital media products. During that time, I
+          dabbled in coding, which sparked my interest in the field.
+        </p>
+        <p>
+          The turbulent year of 2020 became a turning point for me, as I made
+          the leap into software engineering. Now, I get to blend my product
+          mindset with hands-on coding — the best of both worlds!
+        </p>
+        <p>
+          Beyond tech, I've always had a heart for adventure. In 2016, I set off
+          on a trip to Europe with someone I barely knew, and (un)surprisingly,
+          we fell in love. This twist led us to embark on an unforgettable
+          43-day road trip across the Southern USA in early 2017.
+        </p>
+        <img src="images/roadtrip2017.jpg" alt="Road trip photo" />
+        <p>
+          These days, you can find me exploring NYC's food scene with that same
+          travel buddy. From spontaneous adventures to discovering hidden gems
+          in the city, I'm savoring every step of this incredible journey.
+        </p>
+      </div>
+    </section>
+    <script src="script.js"></script>
   </body>
 </html>
