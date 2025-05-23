@@ -4,16 +4,16 @@
   box-sizing: border-box;
 }
 body {
-  font-family: 'Montserrat', sans-serif;
-  color: #333;
-  background-color: #f5f5f5;
+  font-family: "Montserrat", sans-serif;
+  color: #2e3a59;
+  background-color: #fffafa;
 }
 
 .home {
   height: 100vh;
   background: linear-gradient(-45deg, #f5e6e8, #e3f0ff, #e9f5db, #fce1d2);
   background-size: 600% 600%;
-  animation: gradientFlow 5s ease-in-out infinite;
+  animation: gradientFlow 4s ease-in-out infinite;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,11 +21,21 @@ body {
 }
 
 @keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  25% { background-position: 50% 100%; }
-  50% { background-position: 100% 50%; }
-  75% { background-position: 50% 0%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 100%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 0%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .overlay {
@@ -34,19 +44,20 @@ body {
 }
 
 .masthead .name {
+  font-family: 'Raleway', sans-serif;
   font-weight: 700;
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
+  font-size: 4rem;
+  color: #2e3a59;
 }
 
 .masthead .tagline {
-  font-weight: 300;
-  font-size: 1.2rem;
+  font-weight: 100;
+  font-size: 1.6rem;
   margin-bottom: 2rem;
 }
 
 .about-btn {
-  background: #333;
+  background: #2e3a59;
   color: #fff;
   padding: 0.6rem 1.5rem;
   border-radius: 999px;
@@ -56,27 +67,43 @@ body {
   transition: background 0.3s ease;
 }
 .about-btn:hover {
-  background: #555;
+  background: #385470;
 }
 
 .social-icons {
   margin-top: 2rem;
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
+.social-icons a {
+  background-color: #fff;
+  opacity: 0.7; 
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
 .social-icons img {
   width: 24px;
   height: 24px;
   transition: transform 0.3s ease;
 }
-.social-icons img:hover {
+
+.social-icons a:hover {
+  transform: scale(1.1);
+}
+
+.social-icons a:hover img {
   transform: scale(1.1);
 }
 
 .about {
   padding: 4rem 2rem;
-  background-color: #fff;
 }
 .about .content {
   max-width: 700px;
