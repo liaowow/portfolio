@@ -51,7 +51,7 @@ body {
 }
 
 .masthead .tagline {
-  font-weight: 100;
+  font-weight: 200;
   font-size: 1.6rem;
   margin-bottom: 2rem;
 }
@@ -62,7 +62,7 @@ body {
   padding: 0.6rem 1.5rem;
   border-radius: 999px;
   border: none;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -108,7 +108,7 @@ body {
 .about .content {
   max-width: 700px;
   margin: 0 auto;
-  font-weight: 400;
+  font-weight: 500;
 }
 .about p {
   margin-bottom: 1.5rem;
