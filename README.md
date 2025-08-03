@@ -148,4 +148,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-Built with ❤️ by Annie Liao
+Built with 🤖 by Annie Liao + Claude Code
