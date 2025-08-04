@@ -17,104 +17,496 @@ export const prerender = true;
     <!-- Main Content -->
     <main class="pt-20">
       <!-- Hero Section -->
-      <section class="py-16 px-6 bg-gradient-to-br from-blue-50 to-indigo-100">
+      <section class="py-16 px-6 bg-gradient-to-br from-gray-700 to-gray-900">
         <div class="max-w-4xl mx-auto">
-          <h1 class="text-4xl md:text-5xl font-light text-gray-900 mb-6">
+          <h1 class="text-4xl md:text-5xl font-light text-white mb-6">
             Coupon Swap Scheduler Tool
           </h1>
-          <p class="text-xl text-gray-700 leading-relaxed mb-8">
-            Empowered the marketing team with self-service scheduling, reduced engineering intervention, and improved campaign flexibility.
+          <p class="text-xl text-white leading-relaxed mb-8">
+            Empowered the marketing team with self-service scheduling, reduced
+            engineering intervention, and improved campaign flexibility.
           </p>
-          
+
           <!-- Visual Tags -->
           <div class="flex flex-wrap gap-3">
-            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full">React</span>
-            <span class="bg-orange-100 text-orange-800 text-sm font-medium px-3 py-1.5 rounded-full">AWS Lambda</span>
-            <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1.5 rounded-full">EventBridge</span>
-            <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1.5 rounded-full">Node.js</span>
-            <span class="bg-gray-100 text-gray-800 text-sm font-medium px-3 py-1.5 rounded-full">Internal Tool</span>
+            <span
+              class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full"
+              >React</span
+            >
+            <span
+              class="bg-orange-100 text-orange-800 text-sm font-medium px-3 py-1.5 rounded-full"
+              >AWS Lambda</span
+            >
+            <span
+              class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1.5 rounded-full"
+              >EventBridge</span
+            >
+            <span
+              class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1.5 rounded-full"
+              >Node.js</span
+            >
+            <span
+              class="bg-gray-100 text-gray-800 text-sm font-medium px-3 py-1.5 rounded-full"
+              >Internal Tool</span
+            >
           </div>
         </div>
       </section>
 
       <!-- Project Details -->
       <section class="py-16 px-6">
-        <div class="max-w-4xl mx-auto">
-          <!-- Problem -->
-          <div class="mb-12">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Problem</h2>
-            <p class="text-gray-700 leading-relaxed">
-              The marketing and revenue teams relied on developers to manually
-              update coupon configurations and promotional content, which is
-              typically <strong>2 hours</strong> of manual work each week.
-              This process was time-sensitive, error-prone, and created
-              bottlenecks for campaigns requiring fast turnaround or scheduling
-              ahead of time.
+        <div class="max-w-6xl mx-auto">
+          <!-- Story Introduction -->
+          <div class="text-center mb-12">
+            <div
+              class="inline-flex items-center bg-red-50 text-red-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
+            >
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              The Challenge
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              When Manual Processes Break
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+              Every week, marketing campaigns were stalled at the starting
+              line: unable to kick off until a developer manually updated the
+              coupon configurations.
             </p>
           </div>
 
-          <!-- Solution -->
-          <div class="mb-12">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Solution</h2>
-            <p class="text-gray-700 leading-relaxed">
-              I designed and built an internal coupon scheduler tool that
-              automated the entire swap process using an event-driven
-              architecture. This tool allowed non-engineering teams to schedule
-              updates independently, reducing reliance on developers and
-              minimizing operational friction.
-            </p>
-          </div>
+          <!-- Problem - Visual Storytelling -->
+          <div class="mb-20">
+            <div
+              class="bg-gradient-to-br bg-red-50 to-red-100 rounded-2xl p-8 border border-red-200"
+            >
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                  <div
+                    class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <svg
+                      class="w-8 h-8 text-red-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="font-bold text-gray-900 mb-2">
+                    Developer Bottleneck
+                  </h3>
+                  <p class="text-gray-600 text-sm">
+                    Marketing teams waited for engineering to manually update
+                    coupon configurations
+                  </p>
+                </div>
 
-          <!-- My Role -->
-          <div class="mb-12">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-4">My Role</h2>
-            <p class="text-gray-700 leading-relaxed mb-4">
-              I led the frontend and backend development while collaborating closely with our DevOps
-              engineer for AWS integration and deployment. My responsibilities
-              included:
-            </p>
-            <ul class="space-y-2 text-gray-700 mb-6 ml-4">
-              <li>
-                • Designing and building a minimal internal UI for the revenue
-                team.
-              </li>
-              <li>
-                • Co-architecting the system using AWS EventBridge and Lambda.
-              </li>
-              <li>• Implementing scheduling logic and coupon updates.</li>
-              <li>
-                • Coordinating with the DevOps engineer on IAM policies,
-                environment variable management, and optimizing the deployment
-                pipeline.
-              </li>
-            </ul>
-            <div class="bg-blue-50 p-4 rounded-lg">
-              <p class="text-sm font-medium text-blue-900 mb-2">
-                Key learnings:
-              </p>
-              <ul class="space-y-1 text-sm text-blue-800">
-                <li>
-                  • Deeper understanding of event-driven architecture and AWS
-                  orchestration.
-                </li>
-                <li>• Balancing MVP backend functionality vs UI investment.</li>
-                <li>
-                  • Real-world lessons in multi-repo coordination and Lambda
-                  quirks.
-                </li>
-              </ul>
+                <div class="text-center">
+                  <div
+                    class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <svg
+                      class="w-8 h-8 text-red-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="font-bold text-gray-900 mb-2">
+                    Time-Sensitive Process
+                  </h3>
+                  <p class="text-gray-600 text-sm">
+                    <strong>2 hours/week</strong> of manual work and testing with zero room for
+                    error
+                  </p>
+                </div>
+
+                <div class="text-center">
+                  <div
+                    class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <svg
+                      class="w-8 h-8 text-red-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3 class="font-bold text-gray-900 mb-2">Campaign Delays</h3>
+                  <p class="text-gray-600 text-sm">
+                    Ad-hoc requests and urgent swaps disrupted development
+                    cycles
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- How It Works -->
-          <div class="mb-12">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-4">
-              How It Works
-            </h2>
+          <!-- Solution - The Journey -->
+          <div class="mb-20">
+            <div class="text-center mb-12">
+              <div
+                class="inline-flex items-center bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
+              >
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                The Solution
+              </div>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Automation That Empowers
+              </h2>
+              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                I built an event-driven system that gave marketing teams full
+                control while eliminating developer bottlenecks.
+              </p>
+            </div>
 
-            <!-- Diagram -->
-            <div class="mb-6">
-              <h3 class="text-lg font-medium text-gray-800 mb-4">Diagram</h3>
+            <div
+              class="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 border border-green-100"
+            >
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                  <div
+                    class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <svg
+                      class="w-8 h-8 text-green-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="font-bold text-gray-900 mb-2">
+                    Self-Service Scheduling
+                  </h3>
+                  <p class="text-gray-600 text-sm">
+                    Marketing teams can schedule coupon swaps independently
+                  </p>
+                </div>
+
+                <div class="text-center">
+                  <div
+                    class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <svg
+                      class="w-8 h-8 text-green-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="font-bold text-gray-900 mb-2">
+                    Event-Driven Architecture
+                  </h3>
+                  <p class="text-gray-600 text-sm">
+                    AWS EventBridge and Lambda functions handle everything
+                    automatically
+                  </p>
+                </div>
+
+                <div class="text-center">
+                  <div
+                    class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <svg
+                      class="w-8 h-8 text-green-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3 class="font-bold text-gray-900 mb-2">
+                    Zero Developer Intervention
+                  </h3>
+                  <p class="text-gray-600 text-sm">
+                    Completely eliminates manual developer work and reduces
+                    errors
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- My Role - Behind the Scenes -->
+          <div class="mb-20">
+            <div class="text-center mb-12">
+              <div
+                class="inline-flex items-center bg-purple-50 text-purple-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
+              >
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                My Role
+              </div>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                From Vision to Reality
+              </h2>
+              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                I led both frontend and backend development, collaborating
+                closely with our DevOps team to bring this automation vision to
+                life.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <div
+                class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm"
+              >
+                <div
+                  class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6"
+                >
+                  <svg
+                    class="w-6 h-6 text-purple-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                  Technical Leadership
+                </h3>
+                <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      >Co-architected event-driven system with AWS EventBridge &
+                      Lambda</span
+                    >
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      >Built React UI optimized for internal team workflows</span
+                    >
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      >Implemented robust scheduling logic and error handling</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm"
+              >
+                <div
+                  class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6"
+                >
+                  <svg
+                    class="w-6 h-6 text-purple-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                  Cross-Team Collaboration
+                </h3>
+                <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      >Coordinated IAM policies & deployment pipeline with
+                      DevOps</span
+                    >
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      >Optimized multi-repo coordination and Lambda packaging</span
+                    >
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      >Gathered requirements from marketing teams for UX design</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border border-purple-100"
+            >
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0"
+                >
+                  <svg
+                    class="w-6 h-6 text-purple-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    Key Learnings
+                  </h3>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                    <div>
+                      <h4 class="font-semibold text-purple-900 mb-2">
+                        AWS Mastery
+                      </h4>
+                      <p class="text-purple-700">
+                        Deep-dive into event-driven architecture and serverless
+                        orchestration patterns
+                      </p>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-purple-900 mb-2">
+                        MVP Strategy
+                      </h4>
+                      <p class="text-purple-700">
+                        Balancing minimal UI investment with robust backend
+                        automation
+                      </p>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-purple-900 mb-2">
+                        DevOps Reality
+                      </h4>
+                      <p class="text-purple-700">
+                        Real-world Lambda quirks and multi-repo deployment
+                        challenges
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- How It Works - Technical Deep Dive -->
+          <div class="mb-20">
+            <div class="text-center mb-12">
+              <div
+                class="inline-flex items-center bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
+              >
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                The Architecture
+              </div>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Event-Driven Magic
+              </h2>
+              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                A serverless architecture that orchestrates coupon swaps with
+                precision timing and zero manual intervention.
+              </p>
+            </div>
+
+            <!-- Architecture Diagram -->
+            <div
+              class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm mb-12"
+            >
               <div class="relative">
                 <!-- Diagram recreated from the PNG -->
                 <svg viewBox="0 0 1200 600" class="w-full h-auto">
@@ -384,130 +776,449 @@ export const prerender = true;
                     marker-end="url(#arrowhead)"></polyline>
                 </svg>
               </div>
+            </div>
 
-              <!-- Architecture Stack -->
-              <div class="mb-6">
-                <h3 class="text-lg font-medium text-gray-800 mb-3">
-                  Architecture Stack
+            <!-- Technical Stack & Trade-offs -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <!-- Stack -->
+              <div
+                class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl border border-blue-200"
+              >
+                <div
+                  class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6"
+                >
+                  <svg
+                    class="w-6 h-6 text-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 11H5m14-4L14 3m5 4L9 3v18l10-4"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                  Technology Stack
                 </h3>
-                <ul class="space-y-2 text-gray-700">
-                  <li>
-                    • <strong>AWS EventBridge</strong> – for rule-based and time-based
-                    (scheduled) triggers.
+                <ul class="space-y-3 text-gray-700">
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      ><strong>AWS EventBridge</strong> – rule-based and time-based
+                      triggers</span
+                    >
                   </li>
-                  <li>
-                    • <strong>AWS Lambda</strong> – to handle logic for live and
-                    scheduled coupon updates.
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      ><strong>AWS Lambda</strong> – serverless execution for coupon
+                      logic</span
+                    >
                   </li>
-                  <li>
-                    • <strong>Backend (Node.js)</strong> – internal function applyCouponSwapInEventBridge.
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      ><strong>Node.js Backend</strong> – API integration layer</span
+                    >
                   </li>
-                  <li>
-                    • <strong>Minimal Frontend UI</strong> – for internal team scheduling
-                    (React).
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      ><strong>React Frontend</strong> – minimal scheduling interface</span
+                    >
                   </li>
-                  <li>
-                    • <strong>Statsig</strong> – for updating dynamic banner text.
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      ><strong>Statsig</strong> – dynamic banner text updates</span
+                    >
                   </li>
                 </ul>
               </div>
 
               <!-- Trade-offs -->
-              <div class="mb-6">
-                <h3 class="text-lg font-medium text-gray-800 mb-3">
-                  Trade-offs
+              <div
+                class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl border border-blue-200"
+              >
+                <div
+                  class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6"
+                >
+                  <svg
+                    class="w-6 h-6 text-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                  Strategic Decisions
                 </h3>
-                <ul class="space-y-2 text-gray-700">
-                  <li>
-                    • Chose minimal UI and focused engineering time on backend
-                    automation to meet short-term MVP goals.
+                <ul class="space-y-3 text-gray-700">
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      >Minimal UI investment focused on backend automation for
+                      MVP speed</span
+                    >
                   </li>
-                  <li>
-                    • Used shared Yarn cache to minimize deployment time for
-                    multiple Lambda functions.
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      >Shared Yarn cache to optimize Lambda deployment times</span
+                    >
                   </li>
-                  <li>
-                    • Managed shared logic and permissions across Lambdas
-                    carefully to avoid IAM overreach and function duplication.
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      >Careful IAM scoping to avoid permission bloat across
+                      functions</span
+                    >
                   </li>
                 </ul>
               </div>
             </div>
+          </div>
 
-            <!-- Impact -->
-            <div class="mb-12">
-              <h2 class="text-2xl font-semibold text-gray-900 mb-4">Impact</h2>
-              <ul class="space-y-2 text-gray-700 mb-6">
-                <li>- Eliminated ~2 hours/week of manual developer time.</li>
-                <li>
-                  - Removed the need for ad-hoc reversals and urgent swaps.
-                </li>
-                <li>
-                  - Empowered non-technical teams with self-service scheduling.
-                </li>
-                <li>
-                  - Enabled faster experimentation with promotional campaigns.
-                </li>
-              </ul>
+          <!-- Impact - The Results -->
+          <div class="mb-20">
+            <div class="text-center mb-12">
               <div
-                class="bg-blue-50 border-l-4 border-blue-200 p-4 rounded-r-lg"
+                class="inline-flex items-center bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
               >
-                <p class="text-blue-800 italic">
-                  "This saves us from bugging devs every week. Total
-                  game-changer!" — Marketing Director
-                </p>
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                The Impact
+              </div>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Measurable Success
+              </h2>
+              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                From manual bottlenecks to seamless automation.
+              </p>
+            </div>
+
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+            >
+              <div
+                class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center"
+              >
+                <div
+                  class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <svg
+                    class="w-8 h-8 text-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div class="text-3xl font-bold text-gray-900 mb-2">2 hrs</div>
+                <div class="text-gray-600 text-sm">Weekly time saved</div>
+              </div>
+
+              <div
+                class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center"
+              >
+                <div
+                  class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <svg
+                    class="w-8 h-8 text-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+                <div class="text-3xl font-bold text-gray-900 mb-2">0</div>
+                <div class="text-gray-600 text-sm">Ad-hoc requests</div>
+              </div>
+
+              <div
+                class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center"
+              >
+                <div
+                  class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <svg
+                    class="w-8 h-8 text-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="text-3xl font-bold text-gray-900 mb-2">100%</div>
+                <div class="text-gray-600 text-sm">Self-service adoption</div>
+              </div>
+
+              <div
+                class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center"
+              >
+                <div
+                  class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <svg
+                    class="w-8 h-8 text-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="text-3xl font-bold text-gray-900 mb-2">5x</div>
+                <div class="text-gray-600 text-sm">Faster campaign testing</div>
               </div>
             </div>
 
-            <!-- Reflection -->
-            <div class="mb-12">
-              <h2 class="text-2xl font-semibold text-gray-900 mb-4">
-                Reflection
+            <!-- Quote Section -->
+            <div
+              class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl border border-green-200"
+            >
+              <div class="flex items-start space-x-6">
+                <div
+                  class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0"
+                >
+                  <svg
+                    class="w-8 h-8 text-green-600"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <blockquote class="text-xl text-gray-900 font-medium mb-3">
+                    "This saves us from bugging devs every week. Total
+                    game-changer!"
+                  </blockquote>
+                  <div class="text-gray-700 font-medium">
+                    — Marketing Director
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reflection - Looking Forward -->
+          <div class="mb-12">
+            <div class="text-center mb-12">
+              <div
+                class="inline-flex items-center bg-orange-50 text-orange-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
+              >
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                  ></path>
+                </svg>
+                Looking Back
+              </div>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                What I'd Do Differently
               </h2>
-              <p class="text-gray-700 leading-relaxed mb-3">
-                If I were to revisit this project:
+              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Every project teaches valuable lessons. Here's what I'd
+                prioritize in a v2.
               </p>
-              <ul class="space-y-2 text-gray-700">
-                <li>
-                  • <strong>Improve the UI experience</strong> with real-time feedback and logs to help non-technical teammates feel more confident and reduce support questions.
-                </li>
-                <li>
-                  • <strong>Simplify setup and permissions</strong> earlier to make handoff and future updates easier for the team.
-                </li>
-                <li>
-                  • <strong>Explore more flexible backend workflows</strong> (like AWS Step Functions) if the logic grows so we can adapt faster without overcomplicating the system.
-                </li>
-              </ul>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div
+                class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm"
+              >
+                <div
+                  class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-6"
+                >
+                  <svg
+                    class="w-6 h-6 text-orange-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                  Enhanced UI Experience
+                </h3>
+                <p class="text-gray-600">
+                  Add real-time feedback, execution logs, and status indicators
+                  to build confidence for non-technical users and reduce support
+                  overhead.
+                </p>
+              </div>
+
+              <div
+                class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm"
+              >
+                <div
+                  class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-6"
+                >
+                  <svg
+                    class="w-6 h-6 text-orange-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                  Streamlined Setup
+                </h3>
+                <p class="text-gray-600">
+                  Simplify IAM configurations and deployment processes earlier
+                  to enable easier handoffs and maintainability for future team
+                  members.
+                </p>
+              </div>
+
+              <div
+                class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm"
+              >
+                <div
+                  class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-6"
+                >
+                  <svg
+                    class="w-6 h-6 text-orange-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                  Scalable Architecture
+                </h3>
+                <p class="text-gray-600">
+                  Consider AWS Step Functions for complex workflows to handle
+                  growing business logic without overcomplicating the core
+                  system.
+                </p>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        <!-- Back Navigation -->
-        <section class="py-12 px-6 bg-gray-50 border-t border-gray-200">
-          <div class="max-w-4xl mx-auto text-center">
-            <a
-              href="/#work"
-              class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-lg transition-colors duration-200"
+      <!-- Back Navigation -->
+      <section class="py-12 px-6 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto text-center">
+          <a
+            href="/#work"
+            class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-lg transition-colors duration-200"
+          >
+            <svg
+              class="w-5 h-5 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <svg
-                class="w-5 h-5 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-              </svg>
-              Back to All Projects
-            </a>
-            <p class="text-gray-600 mt-2">
-              Explore more case studies and technical projects
-            </p>
-          </div>
-        </section>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to All Projects
+          </a>
+          <p class="text-gray-600 mt-2">
+            Explore more case studies and technical projects
+          </p>
+        </div>
       </section>
     </main>
   </body>
