@@ -1,0 +1,54 @@
+---
+export interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  modalId: string;
+  class?: string;
+}
+
+const { src, alt, caption, modalId, class: className = "" } = Astro.props;
+---
+
+<div 
+  class={`bg-gray-100 rounded-lg p-8 mb-4 cursor-pointer hover:bg-gray-200 transition-colors duration-200 relative group ${className}`}
+  data-open-modal={modalId}
+  data-image-src={src}
+  data-image-alt={alt}
+>
+  <img src={src} alt={alt} class="w-full h-auto rounded shadow-lg" />
+  
+  <!-- Hover overlay with zoom icon -->
+  <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-200 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100">
+    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+    </svg>
+  </div>
+  
+  {caption && <p class="text-sm text-gray-600 mt-2 text-center">{caption}</p>}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const clickableImages = document.querySelectorAll('[data-open-modal]');
+    
+    clickableImages.forEach((element) => {
+      element.addEventListener('click', () => {
+        const modalId = element.getAttribute('data-open-modal');
+        const imageSrc = element.getAttribute('data-image-src');
+        const imageAlt = element.getAttribute('data-image-alt');
+        
+        if (modalId && imageSrc && imageAlt) {
+          console.log(`Looking for modal: imageModal_${modalId}`);
+          const modal = (window as any)[`imageModal_${modalId}`];
+          console.log(`Found modal:`, modal);
+          if (modal) {
+            modal.open(imageSrc, imageAlt);
+          } else {
+            console.error(`Modal not found: imageModal_${modalId}`);
+          }
+        }
+      });
+    });
+  });
+</script>

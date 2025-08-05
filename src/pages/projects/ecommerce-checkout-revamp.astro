@@ -1,0 +1,1007 @@
+---
+import Header from "../../components/Header.astro";
+import ImageModal from '../../components/ImageModal.astro';
+import ClickableImage from '../../components/ClickableImage.astro';
+export const prerender = true;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>E-Commerce Checkout UX Revamp - Annie Liao</title>
+  </head>
+  <body class="bg-white">
+    <Header />
+
+    <!-- Main Content -->
+    <main class="pt-20">
+      <!-- Hero Section -->
+      <section class="py-16 px-6 bg-gradient-to-br from-purple-700 to-indigo-900">
+        <div class="max-w-4xl mx-auto">
+          <h1 class="text-4xl md:text-5xl font-light text-white mb-6">
+            E-Commerce Checkout UX Revamp
+          </h1>
+          <p class="text-xl text-white leading-relaxed mb-8">
+            Transformed a three-step popup checkout into a seamless single-page experience, 
+            boosting conversion rates by 12% YoY through strategic UX improvements and A/B testing.
+          </p>
+
+          <!-- Visual Tags -->
+          <div class="flex flex-wrap gap-3">
+            <span
+              class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full"
+              >React</span
+            >
+            <span
+              class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1.5 rounded-full"
+              >Node.js</span
+            >
+            <span
+              class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1.5 rounded-full"
+              >Statsig A/B Testing</span
+            >
+            <span
+              class="bg-orange-100 text-orange-800 text-sm font-medium px-3 py-1.5 rounded-full"
+              >UX Design</span
+            >
+            <span
+              class="bg-gray-100 text-gray-800 text-sm font-medium px-3 py-1.5 rounded-full"
+              >Frontend Lead</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Details -->
+      <section class="py-16 px-6">
+        <div class="max-w-6xl mx-auto">
+          <!-- Story Introduction -->
+          <div class="text-center mb-12">
+            <div
+              class="inline-flex items-center bg-red-50 text-red-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
+            >
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              The Challenge
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              When Checkout Becomes a Roadblock
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+              Our three-step popup checkout was bleeding customers at every step, 
+              with sharp drop-off rates after the first step and stagnating conversion rates.
+            </p>
+          </div>
+
+          <!-- Problem - Visual Storytelling -->
+          <div class="mb-20">
+            <div
+              class="bg-gradient-to-br bg-red-50 to-red-100 rounded-2xl p-8 border border-red-200"
+            >
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                  <div
+                    class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <svg
+                      class="w-8 h-8 text-red-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
+                    </svg>
+                  </div>
+                  <h3 class="font-bold text-gray-900 mb-2">
+                    Sharp Drop-off Rate
+                  </h3>
+                  <p class="text-gray-600 text-sm">
+                    Customers abandoned checkout after the first step, creating a conversion funnel bottleneck
+                  </p>
+                </div>
+
+                <div class="text-center">
+                  <div
+                    class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <svg
+                      class="w-8 h-8 text-red-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="font-bold text-gray-900 mb-2">
+                    Stagnating Conversion
+                  </h3>
+                  <p class="text-gray-600 text-sm">
+                    <strong>Conversion rates plateaued</strong> despite marketing efforts and traffic growth
+                  </p>
+                </div>
+
+                <div class="text-center">
+                  <div
+                    class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <svg
+                      class="w-8 h-8 text-red-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="font-bold text-gray-900 mb-2">Three-Step Friction</h3>
+                  <p class="text-gray-600 text-sm">
+                    Multiple steps in a popup created cognitive load and increased abandonment
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Solution - The Journey -->
+          <div class="mb-20">
+            <div class="text-center mb-12">
+              <div
+                class="inline-flex items-center bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
+              >
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                The Solution
+              </div>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Single-Page Checkout Revolution
+              </h2>
+              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Dev team led the transformation from a fragmented popup experience to a cohesive
+                checkout with UX optimizations and data-driven improvements.
+              </p>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 border border-green-100"
+            >
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                  <div
+                    class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <svg
+                      class="w-8 h-8 text-green-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="font-bold text-gray-900 mb-2">
+                    Single-Page Design
+                  </h3>
+                  <p class="text-gray-600 text-sm">
+                    Eliminated multi-step friction with integrated payment flow and smart form design
+                  </p>
+                </div>
+
+                <div class="text-center">
+                  <div
+                    class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <svg
+                      class="w-8 h-8 text-green-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="font-bold text-gray-900 mb-2">
+                    Real-time Tax Calculation
+                  </h3>
+                  <p class="text-gray-600 text-sm">
+                    Enhanced UX with automatic tax updates based on zip code input
+                  </p>
+                </div>
+
+                <div class="text-center">
+                  <div
+                    class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <svg
+                      class="w-8 h-8 text-green-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3 class="font-bold text-gray-900 mb-2">
+                    A/B Testing with Statsig
+                  </h3>
+                  <p class="text-gray-600 text-sm">
+                    Data-driven optimization with systematic adoption rate monitoring
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Before/After Visual -->
+          <div class="mb-20">
+            <div class="text-center mb-12">
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Before vs. After
+              </h2>
+              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Visual transformation from a multi-step popup to single-page experience
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <!-- Before -->
+              <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                <div class="text-center mb-4">
+                  <span class="bg-red-100 text-red-800 text-sm font-medium px-3 py-1.5 rounded-full">
+                    Before
+                  </span>
+                </div>
+                <ClickableImage 
+                  src="/images/Bump Checkout - Before.png" 
+                  alt="Original three-step popup checkout interface"
+                  modalId="checkoutModal"
+                />
+                <h3 class="font-bold text-gray-900 mb-2">Three-Step Popup</h3>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• Multi-step process with high cognitive load</li>
+                  <li>• Payment separated from main flow</li>
+                  <li>• Add-on prompts before payment</li>
+                  <li>• High abandonment after step 1</li>
+                </ul>
+              </div>
+
+              <!-- After -->
+              <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                <div class="text-center mb-4">
+                  <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1.5 rounded-full">
+                    After
+                  </span>
+                </div>
+                <ClickableImage 
+                  src="/images/Bump Checkout - After.png" 
+                  alt="New single-page checkout interface with integrated payment"
+                  modalId="checkoutModal"
+                />
+                <h3 class="font-bold text-gray-900 mb-2">Single-Page Flow</h3>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• Unified checkout experience</li>
+                  <li>• Integrated payment within main page</li>
+                  <li>• Add-ons positioned after payment input</li>
+                  <li>• Real-time tax calculation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- My Role - Behind the Scenes -->
+          <div class="mb-20">
+            <div class="text-center mb-12">
+              <div
+                class="inline-flex items-center bg-purple-50 text-purple-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
+              >
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                My Role
+              </div>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Leading Frontend Innovation
+              </h2>
+              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                I spearheaded both frontend development and cross-functional collaboration, 
+                navigating time constraints and legacy code to deliver a successful revamp.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <div
+                class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm"
+              >
+                <div
+                  class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6"
+                >
+                  <svg
+                    class="w-6 h-6 text-purple-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                  Lead Frontend Development
+                </h3>
+                <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      >Enhanced UX with real-time tax calculation based on zip code input</span
+                    >
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      >Debugged and integrated legacy backend APIs for seamless functionality</span
+                    >
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      >Worked with complex legacy React class components and technical debt</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm"
+              >
+                <div
+                  class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6"
+                >
+                  <svg
+                    class="w-6 h-6 text-purple-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                  Cross-Functional Collaboration
+                </h3>
+                <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      >Collaborated closely with designer, adapting to change requests iteratively</span
+                    >
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      >Shipped iteratively to compensate for lack of hi-fi prototypes</span
+                    >
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      >Added backend API endpoints to support new UX requirements</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border border-purple-100"
+            >
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0"
+                >
+                  <svg
+                    class="w-6 h-6 text-purple-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    Technical Challenges Overcome
+                  </h3>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                    <div>
+                      <h4 class="font-semibold text-purple-900 mb-2">
+                        Legacy Code Navigation
+                      </h4>
+                      <p class="text-purple-700">
+                        Successfully worked with complex class components and accumulated technical debt
+                      </p>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-purple-900 mb-2">
+                        API Integration
+                      </h4>
+                      <p class="text-purple-700">
+                        Debugged legacy backend APIs and added new endpoints for tax calculation
+                      </p>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-purple-900 mb-2">
+                        Time-Constrained Delivery
+                      </h4>
+                      <p class="text-purple-700">
+                        Launched successfully under tight deadlines with manual testing approach
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- How It Works - Technical Deep Dive -->
+          <div class="mb-20">
+            <div class="text-center mb-12">
+              <div
+                class="inline-flex items-center bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
+              >
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                How It Works
+              </div>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Technical Implementation & Strategy
+              </h2>
+              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                A strategic blend of frontend optimization, backend API enhancement, 
+                and data-driven experimentation to maximize conversion rates.
+              </p>
+            </div>
+
+            <!-- Technical Stack & Trade-offs -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <!-- Stack -->
+              <div
+                class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl border border-blue-200"
+              >
+                <div
+                  class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6"
+                >
+                  <svg
+                    class="w-6 h-6 text-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 11H5m14-4L14 3m5 4L9 3v18l10-4"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                  Technology Stack
+                </h3>
+                <ul class="space-y-3 text-gray-700">
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      ><strong>React Frontend</strong> – class components with legacy architecture</span
+                    >
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      ><strong>Node.js Backend</strong> – API endpoints for tax calculation</span
+                    >
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      ><strong>Statsig</strong> – A/B testing platform for adoption monitoring</span
+                    >
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      ><strong>Legacy APIs</strong> – integrated existing backend services</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Trade-offs -->
+              <div
+                class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl border border-blue-200"
+              >
+                <div
+                  class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6"
+                >
+                  <svg
+                    class="w-6 h-6 text-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                  Strategic Trade-offs
+                </h3>
+                <ul class="space-y-3 text-gray-700">
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      >Working with legacy class components and technical debt for faster launch</span
+                    >
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      >Manual testing approach due to time constraints, opting out of unit tests</span
+                    >
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span
+                      >Launched without affecting original checkout flow for risk mitigation</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Impact - The Results -->
+          <div class="mb-20">
+            <div class="text-center mb-12">
+              <div
+                class="inline-flex items-center bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
+              >
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                The Impact
+              </div>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Measurable Business Success
+              </h2>
+              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Biggest checkout transformation in company history proved successful.
+              </p>
+            </div>
+
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+            >
+              <div
+                class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center"
+              >
+                <div
+                  class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <svg
+                    class="w-8 h-8 text-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                  </svg>
+                </div>
+                <div class="text-3xl font-bold text-gray-900 mb-2">+12%</div>
+                <div class="text-gray-600 text-sm">Conversion increase YoY</div>
+              </div>
+
+              <div
+                class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center"
+              >
+                <div
+                  class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <svg
+                    class="w-8 h-8 text-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div class="text-3xl font-bold text-gray-900 mb-2">0</div>
+                <div class="text-gray-600 text-sm">Impact on original flow</div>
+              </div>
+
+              <div
+                class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center"
+              >
+                <div
+                  class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <svg
+                    class="w-8 h-8 text-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div class="text-3xl font-bold text-gray-900 mb-2">10</div>
+                <div class="text-gray-600 text-sm">Years since last revamp</div>
+              </div>
+
+              <div
+                class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center"
+              >
+                <div
+                  class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <svg
+                    class="w-8 h-8 text-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+                <div class="text-3xl font-bold text-gray-900 mb-2">Real-time</div>
+                <div class="text-gray-600 text-sm">Tax calculation</div>
+              </div>
+            </div>
+
+            <!-- Quote Section -->
+            <div
+              class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl border border-green-200"
+            >
+              <div class="flex items-start space-x-6">
+                <div
+                  class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0"
+                >
+                  <svg
+                    class="w-8 h-8 text-green-600"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <blockquote class="text-xl text-gray-900 font-medium mb-3">
+                    "I don't say this enough. This UI is amazing, Annie did awesome work!"
+                  </blockquote>
+                  <div class="text-gray-700 font-medium">
+                    — Taylor, Chief Technology Officer
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reflection - Looking Forward -->
+          <div class="mb-12">
+            <div class="text-center mb-12">
+              <div
+                class="inline-flex items-center bg-orange-50 text-orange-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
+              >
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                  ></path>
+                </svg>
+                What I'd Do Differently
+              </div>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Lessons Learned & Future Improvements
+              </h2>
+              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Reflections on the development process and strategic improvements for future projects.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div
+                class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm"
+              >
+                <div
+                  class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-6"
+                >
+                  <svg
+                    class="w-6 h-6 text-orange-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                  Add Planning Phase
+                </h3>
+                <p class="text-gray-600">
+                  Clarify MVP requirements upfront and establish clear project scope 
+                  to reduce mid-development changes and improve time estimation.
+                </p>
+              </div>
+
+              <div
+                class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm"
+              >
+                <div
+                  class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-6"
+                >
+                  <svg
+                    class="w-6 h-6 text-orange-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                  Clarify Key Metrics
+                </h3>
+                <p class="text-gray-600">
+                  Define success metrics and measurement criteria early in the project 
+                  to better track progress and impact throughout development.
+                </p>
+              </div>
+
+              <div
+                class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm"
+              >
+                <div
+                  class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-6"
+                >
+                  <svg
+                    class="w-6 h-6 text-orange-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                  Isolate Feature Launches
+                </h3>
+                <p class="text-gray-600">
+                  Separate feature launches from experiments to enable cleaner data analysis 
+                  and reduce complexity in measuring individual component impact.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Back Navigation -->
+      <section class="py-12 px-6 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto text-center">
+          <a
+            href="/#work"
+            class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-lg transition-colors duration-200"
+          >
+            <svg
+              class="w-5 h-5 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to All Projects
+          </a>
+          <p class="text-gray-600 mt-2">
+            Explore more case studies and technical projects
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <ImageModal id="checkoutModal" />
+    
+    <script>
+      // Ensure modal functionality is available
+      document.addEventListener('DOMContentLoaded', () => {
+        // Wait a bit for the ImageModal script to initialize
+        setTimeout(() => {
+          const modal = (window as any).imageModal_checkoutModal;
+          if (!modal) {
+            console.error('Modal not initialized properly, creating fallback');
+            // Create a fallback modal functionality
+            (window as any).imageModal_checkoutModal = {
+              open: (src: string, alt: string) => {
+                const modalEl = document.getElementById('checkoutModal');
+                const imgEl = modalEl?.querySelector('[data-modal-image]') as HTMLImageElement;
+                const captionEl = modalEl?.querySelector('[data-modal-caption]') as HTMLElement;
+                
+                if (modalEl && imgEl && captionEl) {
+                  imgEl.src = src;
+                  imgEl.alt = alt;
+                  captionEl.textContent = alt;
+                  modalEl.classList.remove('hidden');
+                  document.body.style.overflow = 'hidden';
+                }
+              }
+            };
+          }
+        }, 100);
+      });
+    </script>
+
+  </body>
+</html>

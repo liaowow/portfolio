@@ -45,22 +45,48 @@
         </div>
       </div>
       
-      <!-- Coming Soon Projects -->
-      <div class="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
-        <div class="w-full h-48 bg-gray-100 rounded-lg mb-6 flex items-center justify-center">
-          <div class="text-gray-400 text-center">
-            <svg class="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-            </svg>
-            <p class="text-sm">Project Coming Soon</p>
-          </div>
+      <!-- E-Commerce Checkout UX Revamp -->
+      <div class="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300 border-2 border-purple-100">
+        <div class="w-full h-48 bg-gradient-to-br from-purple-50 to-indigo-100 rounded-lg mb-6 flex items-center justify-center">
+          <!-- Checkout flow visual -->
+          <svg viewBox="0 0 200 120" class="w-32 h-20">
+            <!-- Before: 3-step popup -->
+            <rect x="10" y="20" width="25" height="15" fill="#ef4444" rx="3"/>
+            <rect x="10" y="40" width="25" height="15" fill="#ef4444" rx="3"/>
+            <rect x="10" y="60" width="25" height="15" fill="#ef4444" rx="3"/>
+            <text x="40" y="50" class="text-xs" fill="#dc2626">3-Step</text>
+            
+            <!-- Arrow -->
+            <line x1="70" y1="50" x2="90" y2="50" stroke="#6b7280" stroke-width="2"/>
+            <polygon points="90,45 95,50 90,55" fill="#6b7280"/>
+            
+            <!-- After: Single page -->
+            <rect x="110" y="30" width="50" height="40" fill="#10b981" rx="4"/>
+            <text x="125" y="80" class="text-xs" fill="#059669">Single Page</text>
+            
+            <!-- Conversion arrow -->
+            <line x1="135" y1="20" x2="145" y2="10" stroke="#10b981" stroke-width="2"/>
+            <polygon points="145,10 150,15 140,15" fill="#10b981"/>
+            <text x="155" y="15" class="text-xs" fill="#059669">+12%</text>
+          </svg>
         </div>
-        <h3 class="text-xl font-medium text-gray-900 mb-3">Next Case Study</h3>
+        <div class="flex flex-wrap gap-2 mb-3">
+          <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">React</span>
+          <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">Node.js</span>
+          <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded">Statsig A/B</span>
+          <span class="bg-orange-100 text-orange-800 text-xs font-medium px-2 py-1 rounded">UX Lead</span>
+        </div>
+        <h3 class="text-xl font-medium text-gray-900 mb-3">E-Commerce Checkout UX Revamp</h3>
         <p class="text-gray-600 mb-4">
-          More detailed case studies showcasing frontend development, system design, and technical problem-solving.
+          Transformed three-step popup checkout into single-page experience, boosting conversion rates by 12% YoY through strategic UX improvements.
         </p>
-        <div class="flex space-x-4">
-          <span class="text-gray-400 font-medium">Coming Soon</span>
+        <div class="flex justify-end">
+          <a href="/projects/ecommerce-checkout-revamp" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
+            View Details
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
         </div>
       </div>
       
