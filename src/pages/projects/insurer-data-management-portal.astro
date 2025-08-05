@@ -1,7 +1,5 @@
 ---
 import Header from "../../components/Header.astro";
-import ImageModal from '../../components/ImageModal.astro';
-import ClickableImage from '../../components/ClickableImage.astro';
 export const prerender = true;
 ---
 
@@ -11,7 +9,7 @@ export const prerender = true;
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>E-Commerce Checkout UX Revamp - Annie Liao</title>
+    <title>Insurer Data Management Portal - Annie Liao</title>
   </head>
   <body class="bg-white">
     <Header />
@@ -19,37 +17,42 @@ export const prerender = true;
     <!-- Main Content -->
     <main class="pt-20">
       <!-- Hero Section -->
-      <section class="py-16 px-6 bg-gradient-to-br from-purple-700 to-indigo-900">
+      <section class="py-16 px-6 bg-gradient-to-br from-blue-700 to-teal-900">
         <div class="max-w-4xl mx-auto">
           <h1 class="text-4xl md:text-5xl font-light text-white mb-6">
-            E-Commerce Checkout UX Revamp
+            Insurer Data Management Portal
           </h1>
           <p class="text-xl text-white leading-relaxed mb-8">
-            Transformed a three-step popup checkout into a seamless single-page experience, 
-            boosting conversion rates by 12% YoY through strategic UX improvements and A/B testing.
+            Transformed manual CSV file updates into a robust database
+            management tool with live updates, reducing dev involvement from
+            constant updates while improving data accuracy and team efficiency.
           </p>
 
           <!-- Visual Tags -->
           <div class="flex flex-wrap gap-3">
             <span
               class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full"
-              >React</span
-            >
-            <span
-              class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1.5 rounded-full"
-              >Node.js</span
+              >NextJS</span
             >
             <span
               class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1.5 rounded-full"
-              >Statsig A/B Testing</span
+              >TypeScript</span
+            >
+            <span
+              class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1.5 rounded-full"
+              >MongoDB</span
+            >
+            <span
+              class="bg-cyan-100 text-cyan-800 text-sm font-medium px-3 py-1.5 rounded-full"
+              >Tailwind CSS</span
             >
             <span
               class="bg-orange-100 text-orange-800 text-sm font-medium px-3 py-1.5 rounded-full"
-              >UX Design</span
+              >DaisyUI</span
             >
             <span
               class="bg-gray-100 text-gray-800 text-sm font-medium px-3 py-1.5 rounded-full"
-              >Frontend Lead</span
+              >Full-Stack Lead</span
             >
           </div>
         </div>
@@ -72,18 +75,19 @@ export const prerender = true;
               The Challenge
             </div>
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              When Checkout Becomes a Roadblock
+              When Manual Processes Become Revenue Bottlenecks
             </h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our three-step popup checkout was bleeding customers at every step, 
-              with sharp drop-off rates after the first step and stagnating conversion rates.
+              Our DME (Durable Medical Equipment) team's growing business was
+              constrained by a massive CSV file with thousands of insurance
+              entries that required constant manual updates.
             </p>
           </div>
 
           <!-- Problem - Visual Storytelling -->
           <div class="mb-20">
             <div
-              class="bg-gradient-to-br bg-red-50 to-red-100 rounded-2xl p-8 border border-red-200"
+              class="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-8 border border-red-200"
             >
               <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="text-center">
@@ -100,14 +104,42 @@ export const prerender = true;
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      ></path>
                     </svg>
                   </div>
                   <h3 class="font-bold text-gray-900 mb-2">
-                    Sharp Drop-off Rate
+                    Manual CSV Updates
                   </h3>
                   <p class="text-gray-600 text-sm">
-                    Customers abandoned checkout after the first step, creating a conversion funnel bottleneck
+                    Thousands of insurance entries required constant developer
+                    involvement for updates
+                  </p>
+                </div>
+
+                <div class="text-center">
+                  <div
+                    class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <svg
+                      class="w-8 h-8 text-red-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        xmlns="http://www.w3.org/2000/svg"
+                        d="M18 8.5V8.35417C18 6.50171 16.4983 5 14.6458 5H9.5C7.567 5 6 6.567 6 8.5C6 10.433 7.567 12 9.5 12H14.5C16.433 12 18 13.567 18 15.5C18 17.433 16.433 19 14.5 19H9.42708C7.53436 19 6 17.4656 6 15.5729V15.5M12 3V21"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                    </svg>
+                  </div>
+                  <h3 class="font-bold text-gray-900 mb-2">Revenue Impact</h3>
+                  <p class="text-gray-600 text-sm">
+                    <strong>Pricing changes directly tied to DME revenue</strong
+                    > were delayed by manual processes
                   </p>
                 </div>
 
@@ -125,37 +157,16 @@ export const prerender = true;
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                      ></path>
                     </svg>
                   </div>
                   <h3 class="font-bold text-gray-900 mb-2">
-                    Stagnating Conversion
+                    Data Inconsistency
                   </h3>
                   <p class="text-gray-600 text-sm">
-                    <strong>Conversion rates plateaued</strong> despite marketing efforts and traffic growth
-                  </p>
-                </div>
-
-                <div class="text-center">
-                  <div
-                    class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4"
-                  >
-                    <svg
-                      class="w-8 h-8 text-red-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-                    </svg>
-                  </div>
-                  <h3 class="font-bold text-gray-900 mb-2">Three-Step Friction</h3>
-                  <p class="text-gray-600 text-sm">
-                    Multiple steps in a popup created cognitive load and increased abandonment
+                    Users might select outdated partners or miss new
+                    partnerships due to pending updates
                   </p>
                 </div>
               </div>
@@ -181,11 +192,12 @@ export const prerender = true;
                 The Solution
               </div>
               <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Single-Page Checkout Revolution
+                From CSV Hell to Database Heaven
               </h2>
               <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Dev team led the transformation from a fragmented popup experience to a cohesive
-                checkout with UX optimizations and data-driven improvements.
+                Built a comprehensive internal web application that transformed
+                manual CSV management into a robust database tool with live
+                updates and instant customer-side reflection.
               </p>
             </div>
 
@@ -207,14 +219,16 @@ export const prerender = true;
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"
+                      ></path>
                     </svg>
                   </div>
                   <h3 class="font-bold text-gray-900 mb-2">
-                    Single-Page Design
+                    Database Management Tool
                   </h3>
                   <p class="text-gray-600 text-sm">
-                    Eliminated multi-step friction with integrated payment flow and smart form design
+                    Transformed CSV into robust MongoDB with full CRUDL
+                    operations
                   </p>
                 </div>
 
@@ -235,11 +249,10 @@ export const prerender = true;
                         d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                     </svg>
                   </div>
-                  <h3 class="font-bold text-gray-900 mb-2">
-                    Real-time Tax Calculation
-                  </h3>
+                  <h3 class="font-bold text-gray-900 mb-2">Live Updates</h3>
                   <p class="text-gray-600 text-sm">
-                    Enhanced UX with automatic tax updates based on zip code input
+                    Zero latency between database changes and customer-side UI
+                    reflection
                   </p>
                 </div>
 
@@ -254,76 +267,20 @@ export const prerender = true;
                       viewBox="0 0 24 24"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        xmlns="http://www.w3.org/2000/svg"
+                        d="M9 3.5V2M5.06066 5.06066L4 4M5.06066 13L4 14.0607M13 5.06066L14.0607 4M3.5 9H2M8.5 8.5L12.6111 21.2778L15.5 18.3889L19.1111 22L22 19.1111L18.3889 15.5L21.2778 12.6111L8.5 8.5Z"
+                        stroke="currentColor"
                         stroke-width="2"
-                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                      ></path>
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
                     </svg>
                   </div>
-                  <h3 class="font-bold text-gray-900 mb-2">
-                    A/B Testing with Statsig
-                  </h3>
+                  <h3 class="font-bold text-gray-900 mb-2">Smooth UX</h3>
                   <p class="text-gray-600 text-sm">
-                    Data-driven optimization with systematic adoption rate monitoring
+                    Inline form updates, instant search/filter, and bulk
+                    operations
                   </p>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Before/After Visual -->
-          <div class="mb-20">
-            <div class="text-center mb-12">
-              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Before vs. After
-              </h2>
-              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Visual transformation from a multi-step popup to single-page experience
-              </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <!-- Before -->
-              <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-                <div class="text-center mb-4">
-                  <span class="bg-red-100 text-red-800 text-sm font-medium px-3 py-1.5 rounded-full">
-                    Before
-                  </span>
-                </div>
-                <ClickableImage 
-                  src="/images/Bump Checkout - Before.png" 
-                  alt="Original three-step popup checkout interface"
-                  modalId="checkoutModal"
-                />
-                <h3 class="font-bold text-gray-900 mb-2">Three-Step Popup</h3>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• Multi-step process with high cognitive load</li>
-                  <li>• Payment separated from main flow</li>
-                  <li>• Add-on prompts before payment</li>
-                  <li>• High abandonment after step 1</li>
-                </ul>
-              </div>
-
-              <!-- After -->
-              <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-                <div class="text-center mb-4">
-                  <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1.5 rounded-full">
-                    After
-                  </span>
-                </div>
-                <ClickableImage 
-                  src="/images/Bump Checkout - After.png" 
-                  alt="New single-page checkout interface with integrated payment"
-                  modalId="checkoutModal"
-                />
-                <h3 class="font-bold text-gray-900 mb-2">Single-Page Flow</h3>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• Unified checkout experience</li>
-                  <li>• Integrated payment within main page</li>
-                  <li>• Add-ons positioned after payment input</li>
-                  <li>• Real-time tax calculation</li>
-                </ul>
               </div>
             </div>
           </div>
@@ -345,11 +302,12 @@ export const prerender = true;
                 My Role
               </div>
               <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Leading Frontend Innovation
+                Leading Full-Stack Development & Modernization
               </h2>
               <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                I spearheaded both frontend development and cross-functional collaboration, 
-                navigating time constraints and legacy code to deliver a successful revamp.
+                I led both frontend and backend development while spearheading
+                the team's modernization efforts by introducing new technologies
+                and practices.
               </p>
             </div>
 
@@ -374,7 +332,7 @@ export const prerender = true;
                   </svg>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-4">
-                  Lead Frontend Development
+                  Full-Stack Development
                 </h3>
                 <ul class="space-y-3 text-gray-600">
                   <li class="flex items-start space-x-3">
@@ -383,7 +341,8 @@ export const prerender = true;
                     >
                     </div>
                     <span
-                      >Enhanced UX with real-time tax calculation based on zip code input</span
+                      >Built all API endpoints using NextJS's full-stack
+                      capabilities</span
                     >
                   </li>
                   <li class="flex items-start space-x-3">
@@ -392,7 +351,7 @@ export const prerender = true;
                     >
                     </div>
                     <span
-                      >Debugged and integrated legacy backend APIs for seamless functionality</span
+                      >Connected with MongoDB for comprehensive CRUDL operations</span
                     >
                   </li>
                   <li class="flex items-start space-x-3">
@@ -401,7 +360,8 @@ export const prerender = true;
                     >
                     </div>
                     <span
-                      >Worked with complex legacy React class components and technical debt</span
+                      >Designed smooth UX with inline form updates, instant
+                      search, and pagination controls</span
                     >
                   </li>
                 </ul>
@@ -423,12 +383,11 @@ export const prerender = true;
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
-                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                    ></path>
+                      d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-4">
-                  Cross-Functional Collaboration
+                  Team Modernization
                 </h3>
                 <ul class="space-y-3 text-gray-600">
                   <li class="flex items-start space-x-3">
@@ -437,7 +396,8 @@ export const prerender = true;
                     >
                     </div>
                     <span
-                      >Collaborated closely with designer, adapting to change requests iteratively</span
+                      >Introduced NextJS, TypeScript, Tailwind, and DaisyUI to
+                      the dev stack</span
                     >
                   </li>
                   <li class="flex items-start space-x-3">
@@ -446,7 +406,8 @@ export const prerender = true;
                     >
                     </div>
                     <span
-                      >Shipped iteratively to compensate for lack of hi-fi prototypes</span
+                      >Established GitHub workflow alongside DevOps team as part
+                      of modernization efforts</span
                     >
                   </li>
                   <li class="flex items-start space-x-3">
@@ -455,65 +416,11 @@ export const prerender = true;
                     >
                     </div>
                     <span
-                      >Added backend API endpoints to support new UX requirements</span
+                      >Implemented bulk add/edit functionality with real-time
+                      reflection</span
                     >
                   </li>
                 </ul>
-              </div>
-            </div>
-
-            <div
-              class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border border-purple-100"
-            >
-              <div class="flex items-start space-x-4">
-                <div
-                  class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0"
-                >
-                  <svg
-                    class="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                    ></path>
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="text-xl font-bold text-gray-900 mb-3">
-                    Technical Challenges Overcome
-                  </h3>
-                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-                    <div>
-                      <h4 class="font-semibold text-purple-900 mb-2">
-                        Legacy Code Navigation
-                      </h4>
-                      <p class="text-purple-700">
-                        Successfully worked with complex class components and accumulated technical debt
-                      </p>
-                    </div>
-                    <div>
-                      <h4 class="font-semibold text-purple-900 mb-2">
-                        API Integration
-                      </h4>
-                      <p class="text-purple-700">
-                        Debugged legacy backend APIs and added new endpoints for tax calculation
-                      </p>
-                    </div>
-                    <div>
-                      <h4 class="font-semibold text-purple-900 mb-2">
-                        Time-Constrained Delivery
-                      </h4>
-                      <p class="text-purple-700">
-                        Launched successfully under tight deadlines with manual testing approach
-                      </p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -540,11 +447,12 @@ export const prerender = true;
                 How It Works
               </div>
               <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Technical Implementation & Strategy
+                Tech Stack & Strategic Trade-offs
               </h2>
               <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                A strategic blend of frontend optimization, backend API enhancement, 
-                and data-driven experimentation to maximize conversion rates.
+                A modern full-stack approach with careful technology choices and
+                documented challenges that informed future development
+                decisions.
               </p>
             </div>
 
@@ -580,7 +488,7 @@ export const prerender = true;
                     >
                     </div>
                     <span
-                      ><strong>React Frontend</strong> – class components with legacy architecture</span
+                      ><strong>NextJS</strong> – Full-stack framework with API routes</span
                     >
                   </li>
                   <li class="flex items-start space-x-3">
@@ -589,7 +497,8 @@ export const prerender = true;
                     >
                     </div>
                     <span
-                      ><strong>Node.js Backend</strong> – API endpoints for tax calculation</span
+                      ><strong>TypeScript</strong> – Type safety and improved developer
+                      experience</span
                     >
                   </li>
                   <li class="flex items-start space-x-3">
@@ -598,7 +507,8 @@ export const prerender = true;
                     >
                     </div>
                     <span
-                      ><strong>Statsig</strong> – A/B testing platform for adoption monitoring</span
+                      ><strong>Tailwind + DaisyUI</strong> – Rapid UI development
+                      with component library</span
                     >
                   </li>
                   <li class="flex items-start space-x-3">
@@ -607,7 +517,8 @@ export const prerender = true;
                     >
                     </div>
                     <span
-                      ><strong>Legacy APIs</strong> – integrated existing backend services</span
+                      ><strong>MongoDB</strong> – Document database for flexible
+                      insurance data</span
                     >
                   </li>
                 </ul>
@@ -630,7 +541,7 @@ export const prerender = true;
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
-                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
                     ></path>
                   </svg>
                 </div>
@@ -644,7 +555,8 @@ export const prerender = true;
                     >
                     </div>
                     <span
-                      >Working with legacy class components and technical debt for faster launch</span
+                      >Limited TypeScript best practices knowledge created
+                      learning curve</span
                     >
                   </li>
                   <li class="flex items-start space-x-3">
@@ -653,7 +565,7 @@ export const prerender = true;
                     >
                     </div>
                     <span
-                      >Manual testing approach due to time constraints, opting out of unit tests</span
+                      >NextJS auth configuration created deployment roadblocks</span
                     >
                   </li>
                   <li class="flex items-start space-x-3">
@@ -662,7 +574,8 @@ export const prerender = true;
                     >
                     </div>
                     <span
-                      >Launched without affecting original checkout flow for risk mitigation</span
+                      >Configuration by convention required env variables in
+                      Docker image</span
                     >
                   </li>
                 </ul>
@@ -689,10 +602,11 @@ export const prerender = true;
                 The Impact
               </div>
               <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Measurable Business Success
+                Transformational Business Results
               </h2>
               <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Biggest checkout transformation in company history proved successful.
+                Eliminated bottlenecks and transformed how we manage critical
+                business data.
               </p>
             </div>
 
@@ -715,57 +629,11 @@ export const prerender = true;
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
-                      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                  </svg>
-                </div>
-                <div class="text-3xl font-bold text-gray-900 mb-2">+12%</div>
-                <div class="text-gray-600 text-sm">Conversion increase YoY</div>
-              </div>
-
-              <div
-                class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center"
-              >
-                <div
-                  class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
-                >
-                  <svg
-                    class="w-8 h-8 text-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
                       d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                   </svg>
                 </div>
                 <div class="text-3xl font-bold text-gray-900 mb-2">0</div>
-                <div class="text-gray-600 text-sm">Impact on original flow</div>
-              </div>
-
-              <div
-                class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center"
-              >
-                <div
-                  class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
-                >
-                  <svg
-                    class="w-8 h-8 text-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                </div>
-                <div class="text-3xl font-bold text-gray-900 mb-2">10</div>
-                <div class="text-gray-600 text-sm">Years since last revamp</div>
+                <div class="text-gray-600 text-sm">Dev involvement needed</div>
               </div>
 
               <div
@@ -787,8 +655,59 @@ export const prerender = true;
                       d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
                 </div>
-                <div class="text-3xl font-bold text-gray-900 mb-2">Real-time</div>
-                <div class="text-gray-600 text-sm">Tax calculation</div>
+                <div class="text-3xl font-bold text-gray-900 mb-2">0ms</div>
+                <div class="text-gray-600 text-sm">Latency for UI updates</div>
+              </div>
+
+              <div
+                class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center"
+              >
+                <div
+                  class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <svg
+                    class="w-8 h-8 text-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                  </svg>
+                </div>
+                <div class="text-3xl font-bold text-gray-900 mb-2">98.5%</div>
+                <div class="text-gray-600 text-sm">
+                  Code reduction (20k→300 lines)
+                </div>
+              </div>
+
+              <div
+                class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center"
+              >
+                <div
+                  class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <svg
+                    class="w-8 h-8 text-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="text-3xl font-bold text-gray-900 mb-2">1000s</div>
+                <div class="text-gray-600 text-sm">
+                  Insurance entries managed
+                </div>
               </div>
             </div>
 
@@ -813,10 +732,13 @@ export const prerender = true;
                 </div>
                 <div>
                   <blockquote class="text-xl text-gray-900 font-medium mb-3">
-                    "I don't say this enough. This UI is amazing, Annie did awesome work!"
+                    "Annie has taken the lead on processing the data, and has
+                    made headway on several other full stack code improvements.
+                    She's not afraid to take on a challenging project and
+                    succeed!!"
                   </blockquote>
                   <div class="text-gray-700 font-medium">
-                    — Taylor, CTO
+                    — Christine, CEO & Co-Founder
                   </div>
                 </div>
               </div>
@@ -845,10 +767,11 @@ export const prerender = true;
                 Looking Back
               </div>
               <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Lessons Learned & Future Improvements
+                Lessons Learned & Process Improvements
               </h2>
               <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Reflections on the development process and improvements for future projects.
+                Key insights from leading a full-stack project with new
+                technologies and team modernization goals.
               </p>
             </div>
 
@@ -869,16 +792,47 @@ export const prerender = true;
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
                     ></path>
                   </svg>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-4">
-                  Add Planning Phase
+                  Involve Other Devs for Knowledge Share
                 </h3>
                 <p class="text-gray-600">
-                  Clarify MVP requirements upfront and establish clear project scope 
-                  to reduce mid-development changes and improve time estimation.
+                  Collaborate more closely with team members to share learnings
+                  about new technologies and reduce the risk of knowledge silos
+                  in critical projects.
+                </p>
+              </div>
+
+              <div
+                class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm"
+              >
+                <div
+                  class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-6"
+                >
+                  <svg
+                    class="w-6 h-6 text-orange-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                  Deep-dive on Framework Challenges
+                </h3>
+                <p class="text-gray-600">
+                  Invest more time understanding framework-specific challenges
+                  like NextJS auth configuration and deployment patterns to
+                  avoid roadblocks during implementation.
                 </p>
               </div>
 
@@ -903,40 +857,12 @@ export const prerender = true;
                   </svg>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-4">
-                  Clarify Key Metrics
+                  Compare Framework Options
                 </h3>
                 <p class="text-gray-600">
-                  Define success metrics and measurement criteria early in the project 
-                  to better track progress and impact throughout development.
-                </p>
-              </div>
-
-              <div
-                class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm"
-              >
-                <div
-                  class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-6"
-                >
-                  <svg
-                    class="w-6 h-6 text-orange-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"
-                    ></path>
-                  </svg>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">
-                  Isolate Feature Launches
-                </h3>
-                <p class="text-gray-600">
-                  Separate feature launches from experiments to enable cleaner data analysis 
-                  and reduce complexity in measuring individual component impact.
+                  Conduct thorough framework comparison and evaluation phase to
+                  select the best tool for our specific use case and team
+                  capabilities before committing to implementation.
                 </p>
               </div>
             </div>
@@ -971,37 +897,5 @@ export const prerender = true;
         </div>
       </section>
     </main>
-
-    <ImageModal id="checkoutModal" />
-    
-    <script>
-      // Ensure modal functionality is available
-      document.addEventListener('DOMContentLoaded', () => {
-        // Wait a bit for the ImageModal script to initialize
-        setTimeout(() => {
-          const modal = (window as any).imageModal_checkoutModal;
-          if (!modal) {
-            console.error('Modal not initialized properly, creating fallback');
-            // Create a fallback modal functionality
-            (window as any).imageModal_checkoutModal = {
-              open: (src: string, alt: string) => {
-                const modalEl = document.getElementById('checkoutModal');
-                const imgEl = modalEl?.querySelector('[data-modal-image]') as HTMLImageElement;
-                const captionEl = modalEl?.querySelector('[data-modal-caption]') as HTMLElement;
-                
-                if (modalEl && imgEl && captionEl) {
-                  imgEl.src = src;
-                  imgEl.alt = alt;
-                  captionEl.textContent = alt;
-                  modalEl.classList.remove('hidden');
-                  document.body.style.overflow = 'hidden';
-                }
-              }
-            };
-          }
-        }, 100);
-      });
-    </script>
-
   </body>
 </html>
