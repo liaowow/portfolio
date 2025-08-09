@@ -34,7 +34,7 @@ A modern, performant portfolio website built with Astro, React, and Tailwind CSS
 │   │   ├── Hero.astro            # Main hero section
 │   │   ├── Work.astro            # Portfolio projects section
 │   │   ├── About.astro           # About me section
-│   │   ├── Contact.astro         # Contact form and info
+│   │   ├── Footer.astro          # Footer with social links
 │   │   └── SmoothScroll.tsx      # Smooth scroll functionality
 │   └── pages/
 │       └── index.astro           # Main page layout
@@ -83,7 +83,7 @@ npm run dev
 
 1. **Work Projects**: Edit `/src/components/Work.astro` to add your actual projects
 2. **About Section**: Update `/src/components/About.astro` with your personal story
-3. **Contact Info**: Modify `/src/components/Contact.astro` with your contact details
+3. **Footer Links**: Modify `/src/components/Footer.astro` with your social links
 4. **Avatar**: Replace `/public/images/avatar.png` with your photo
 
 ### Adding Animations
