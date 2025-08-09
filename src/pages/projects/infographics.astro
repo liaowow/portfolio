@@ -1,0 +1,402 @@
+---
+import Header from "../../components/Header.astro";
+import ImageModal from '../../components/ImageModal.astro';
+import ClickableImage from '../../components/ClickableImage.astro';
+export const prerender = true;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Infographics Collection - Annie Liao</title>
+  </head>
+  <body class="bg-white">
+    <Header />
+
+    <!-- Main Content -->
+    <main class="pt-20">
+      <!-- Hero Section -->
+      <section class="py-16 px-6 bg-gradient-to-br from-indigo-600 to-blue-800">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl font-light text-white mb-6">
+            Infographics Collection
+          </h1>
+          <p class="text-xl text-indigo-100 leading-relaxed mb-8">
+            A curated selection of print and digital visualizations from my design career in the newsroom, 
+            where complex stories became clear through thoughtful design.
+          </p>
+
+          <!-- Visual Tags -->
+          <div class="flex flex-wrap justify-center gap-2">
+            <span class="bg-white/20 text-white text-sm font-medium px-3 py-1 rounded-full">Adobe Illustrator</span>
+            <span class="bg-white/20 text-white text-sm font-medium px-3 py-1 rounded-full">Print Design</span>
+            <span class="bg-white/20 text-white text-sm font-medium px-3 py-1 rounded-full">Digital Media</span>
+            <span class="bg-white/20 text-white text-sm font-medium px-3 py-1 rounded-full">Data Visualization</span>
+            <span class="bg-white/20 text-white text-sm font-medium px-3 py-1 rounded-full">Editorial Design</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Design Philosophy & Gallery Introduction -->
+      <section class="py-12 px-6">
+        <div class="max-w-6xl mx-auto">
+          <!-- Design Philosophy -->
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Visual Storytelling Philosophy</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+              Each infographic represents a different challenge in visual communication, and a commitment to making complex information accessible and engaging.
+            </p>
+          </div>
+
+          <!-- Design Philosophy Principles -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div class="text-center">
+              <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-2">Clarity First</h3>
+              <p class="text-sm text-gray-600">Every design choice serves the story, removing visual noise to highlight key information</p>
+            </div>
+
+            <div class="text-center">
+              <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-2">Audience Awareness</h3>
+              <p class="text-sm text-gray-600">Designs tailored to reader needs, from health education to entertainment</p>
+            </div>
+
+            <div class="text-center">
+              <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-2">Data Integrity</h3>
+              <p class="text-sm text-gray-600">Accurate representation of facts and statistics, maintaining journalistic standards</p>
+            </div>
+          </div>
+
+          <!-- Featured Gallery -->
+          <div class="space-y-20">
+            
+            <!-- How Sunglasses Work -->
+            <div class="relative">
+              <!-- Scrapbook frame with tape effect -->
+              <div class="bg-white p-8 rounded-3xl shadow-xl border-4 border-orange-100 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                  <div class="order-2 lg:order-1 relative">
+                    
+                    <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl border-2 border-dashed border-orange-200 relative">
+                      <!-- Washi tape effect -->
+                      <div class="absolute -top-3 left-6 w-16 h-6 bg-orange-300 opacity-70 rounded-sm transform -rotate-12"></div>
+                      
+                      <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center mr-4 shadow-inner">
+                          <svg class="w-6 h-6 text-orange-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                          </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 font-serif">How Sunglasses Work</h3>
+                      </div>
+                      <p class="text-gray-800 mb-6 text-lg leading-relaxed">
+                        Breaking down the science behind UV protection and lens technology. This educational piece 
+                        details the anatomy of sunglasses and provides practical tips for choosing the right lens colors for different activities.
+                      </p>
+                      <div class="flex items-center text-sm text-orange-700 bg-white px-3 py-2 rounded-full inline-flex">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Educational • Health & Science
+                      </div>
+                    </div>
+                  </div>
+                  <div class="order-1 lg:order-2 relative">
+                    <!-- Photo frame with shadow -->
+                    <div class="bg-white p-4 rounded-2xl shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-300">
+                      <ClickableImage 
+                        src="/images/infographic_1_how_sunglasses_work.jpg" 
+                        alt="How Sunglasses Work infographic showing UV protection and lens anatomy"
+                        modalId="infographicModal"
+                        class="w-full rounded-xl"
+                      />
+                      <!-- Corner photo tabs -->
+                      <div class="absolute -top-2 -left-2 w-6 h-6 bg-gray-300 transform rotate-45"></div>
+                      <div class="absolute -top-2 -right-2 w-6 h-6 bg-gray-300 transform rotate-45"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- When Stroke Strikes -->
+            <div class="relative">
+              <!-- Scrapbook frame with different rotation -->
+              <div class="bg-white p-8 rounded-3xl shadow-xl border-4 border-red-100 transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                  <div class="order-1 relative">
+                    <!-- Photo frame with shadow -->
+                    <div class="bg-white p-4 rounded-2xl shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-300">
+                      <ClickableImage 
+                        src="/images/infographic_2_when_stroke_strikes.jpg" 
+                        alt="When Stroke Strikes infographic showing symptoms and prevention"
+                        modalId="infographicModal"
+                        class="w-full rounded-xl"
+                      />
+                      <!-- Corner photo tabs -->
+                      <div class="absolute -top-2 -left-2 w-6 h-6 bg-gray-300 transform rotate-45"></div>
+                      <div class="absolute -bottom-2 -right-2 w-6 h-6 bg-gray-300 transform rotate-45"></div>
+                    </div>
+                  </div>
+                  <div class="order-2 relative">
+                    
+                    <div class="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-2xl border-2 border-dashed border-red-200 relative">
+                      <!-- Washi tape effect -->
+                      <div class="absolute -top-3 right-6 w-20 h-6 bg-red-300 opacity-70 rounded-sm transform rotate-12"></div>
+                      
+                      <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-red-200 rounded-full flex items-center justify-center mr-4 shadow-inner">
+                          <svg class="w-6 h-6 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                          </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 font-serif">When Stroke Strikes</h3>
+                      </div>
+                      <p class="text-gray-800 mb-6 text-lg leading-relaxed">
+                        A comprehensive health awareness piece covering stroke symptoms, prevention strategies, 
+                        and critical statistics. Designed to educate readers on recognizing warning signs and taking preventive action.
+                      </p>
+                      <div class="flex items-center text-sm text-red-700 bg-white px-3 py-2 rounded-full inline-flex">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                        Public Health • Medical Information
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- The Path of the Pill -->
+            <div class="relative">
+              <!-- Scrapbook frame with slight rotation -->
+              <div class="bg-white p-8 rounded-3xl shadow-xl border-4 border-purple-100 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                  <div class="order-2 lg:order-1 relative">
+                    
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl border-2 border-dashed border-purple-200 relative">
+                      <!-- Washi tape effect -->
+                      <div class="absolute -top-3 left-8 w-18 h-6 bg-purple-300 opacity-70 rounded-sm transform -rotate-6"></div>
+                      
+                      <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center mr-4 shadow-inner">
+                          <svg class="w-6 h-6 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                          </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 font-serif">The Path of the Pill</h3>
+                      </div>
+                      <p class="text-gray-800 mb-6 text-lg leading-relaxed">
+                        Commemorating the 51st anniversary of Enovid, the first oral contraceptive. 
+                        This historical timeline traces the development and impact of birth control, marking a significant milestone in women's health.
+                      </p>
+                      <div class="text-sm text-purple-700 bg-white px-3 py-2 rounded-full inline-flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                        Historical • Women's Health
+                      </div>
+                    </div>
+                  </div>
+                  <div class="order-1 lg:order-2 relative">
+                    <!-- Photo frame with shadow -->
+                    <div class="bg-white p-4 rounded-2xl shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                      <ClickableImage 
+                        src="/images/infographic_3_path_of_pill.png" 
+                        alt="The Path of the Pill infographic showing birth control history"
+                        modalId="infographicModal"
+                        class="w-full rounded-xl"
+                      />
+                      <!-- Corner photo tabs -->
+                      <div class="absolute -top-2 -right-2 w-6 h-6 bg-gray-300 transform rotate-45"></div>
+                      <div class="absolute -bottom-2 -left-2 w-6 h-6 bg-gray-300 transform rotate-45"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Arena Football 101 -->
+            <div class="relative">
+              <!-- Scrapbook frame -->
+              <div class="bg-white p-8 rounded-3xl shadow-xl border-4 border-green-100 transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                  <div class="order-1 relative">
+                    <!-- Photo frame with shadow -->
+                    <div class="bg-white p-4 rounded-2xl shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+                      <ClickableImage 
+                        src="/images/infographic_4_arena_football.png" 
+                        alt="Arena Football 101 infographic comparing AFL and NFL"
+                        modalId="infographicModal"
+                        class="w-full rounded-xl"
+                      />
+                      <!-- Corner photo tabs -->
+                      <div class="absolute -top-2 -left-2 w-6 h-6 bg-gray-300 transform rotate-45"></div>
+                      <div class="absolute -bottom-2 -right-2 w-6 h-6 bg-gray-300 transform rotate-45"></div>
+                    </div>
+                  </div>
+                  <div class="order-2 relative">
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl border-2 border-dashed border-green-200 relative">
+                      <!-- Washi tape effect -->
+                      <div class="absolute -top-3 right-8 w-16 h-6 bg-green-300 opacity-70 rounded-sm transform rotate-6"></div>
+                      
+                      <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-green-200 rounded-full flex items-center justify-center mr-4 shadow-inner">
+                          <svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                          </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 font-serif">Arena Football 101</h3>
+                      </div>
+                      <p class="text-gray-800 mb-6 text-lg leading-relaxed">
+                        Created in response to Jacksonville's growing arena football fanbase. This educational comparison 
+                        breaks down the key differences between Arena Football League (AFL) and National Football League (NFL) rules and gameplay.
+                      </p>
+                      <div class="text-sm text-green-700 bg-white px-3 py-2 rounded-full inline-flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                        Sports • Educational Comparison
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Rubber Duck Sizes -->
+            <div class="relative">
+              <!-- Scrapbook frame -->
+              <div class="bg-white p-8 rounded-3xl shadow-xl border-4 border-yellow-100 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                  <div class="order-2 lg:order-1 relative">
+                    <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-8 rounded-2xl border-2 border-dashed border-yellow-200 relative">
+                      <!-- Washi tape effect -->
+                      <div class="absolute -top-3 left-10 w-20 h-6 bg-yellow-300 opacity-70 rounded-sm transform -rotate-6"></div>
+                      
+                      <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-yellow-200 rounded-full flex items-center justify-center mr-4 shadow-inner">
+                          <svg class="w-6 h-6 text-yellow-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1.01M15 10h1.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                          </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 font-serif">Rubber Duck Sizes</h3>
+                      </div>
+                      <p class="text-gray-800 mb-6 text-lg leading-relaxed">
+                        Celebrating the arrival of the famous giant rubber duck in Taiwan! This playful infographic 
+                        was part of a campaign site documenting the duck's journey, featuring fun facts and size comparisons that captured public imagination.
+                      </p>
+                      <div class="text-sm text-yellow-700 bg-white px-3 py-2 rounded-full inline-flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m3 0v16a2 2 0 01-2 2H6a2 2 0 01-2-2V4h16z"></path>
+                        </svg>
+                        Cultural Event • Entertainment
+                      </div>
+                    </div>
+                  </div>
+                  <div class="order-1 lg:order-2 relative">
+                    <!-- Photo frame with shadow -->
+                    <div class="bg-white p-4 rounded-2xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                      <ClickableImage 
+                        src="/images/infographic_5_rubber_duck.jpg" 
+                        alt="Rubber Duck Sizes infographic showing scale comparisons"
+                        modalId="infographicModal"
+                        class="w-full rounded-xl"
+                      />
+                      <!-- Corner photo tabs -->
+                      <div class="absolute -top-2 -left-2 w-6 h-6 bg-gray-300 transform rotate-45"></div>
+                      <div class="absolute -top-2 -right-2 w-6 h-6 bg-gray-300 transform rotate-45"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Build-A-Chesney Workshop -->
+            <div class="relative">
+              <!-- Scrapbook frame -->
+              <div class="bg-white p-8 rounded-3xl shadow-xl border-4 border-blue-100 transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                  <div class="order-1 relative">
+                    <!-- Photo frame with shadow -->
+                    <div class="bg-white p-4 rounded-2xl shadow-2xl transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+                      <ClickableImage 
+                        src="/images/infographic_6_chesney_workshop.png" 
+                        alt="Build-A-Chesney Workshop interactive paper doll infographic"
+                        modalId="infographicModal"
+                        class="w-full rounded-xl"
+                      />
+                      <!-- Corner photo tabs -->
+                      <div class="absolute -bottom-2 -left-2 w-6 h-6 bg-gray-300 transform rotate-45"></div>
+                      <div class="absolute -top-2 -right-2 w-6 h-6 bg-gray-300 transform rotate-45"></div>
+                    </div>
+                  </div>
+                  <div class="order-2 relative">
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl border-2 border-dashed border-blue-200 relative">
+                      <!-- Washi tape effect -->
+                      <div class="absolute -top-3 right-4 w-18 h-6 bg-blue-300 opacity-70 rounded-sm transform rotate-12"></div>
+                      
+                      <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-200 rounded-full flex items-center justify-center mr-4 shadow-inner">
+                          <svg class="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1.01M15 10h1.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                          </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 font-serif">Build-A-Chesney Workshop</h3>
+                      </div>
+                      <p class="text-gray-800 mb-6 text-lg leading-relaxed">
+                        An interactive paper doll featuring Kenny Chesney, a frequent performer in Jacksonville, FL. 
+                        This playful, engaging piece combined entertainment value with local interest, showcasing the lighter side of news design.
+                      </p>
+                      <div class="text-sm text-blue-700 bg-white px-3 py-2 rounded-full inline-flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                        </svg>
+                        Interactive • Entertainment
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Back Navigation -->
+      <section class="py-8 px-6 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto text-center">
+          <a href="/#work" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to All Projects
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <ImageModal id="infographicModal" />
+  </body>
+</html>
