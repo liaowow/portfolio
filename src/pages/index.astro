@@ -34,5 +34,20 @@ import SmoothScroll from "../components/SmoothScroll.tsx";
       <Work />
       <Footer />
     </main>
+    
+    <!-- Global scroll indicator -->
+    <div id="global-scroll-arrow" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 opacity-0 transition-opacity duration-500">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-600">
+        <path d="M12 5v14M19 12l-7 7-7-7"/>
+      </svg>
+    </div>
+
+    <script>
+      import { initGlobalScrollArrow } from '../scripts/global-scroll-arrow.ts';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        initGlobalScrollArrow();
+      });
+    </script>
   </body>
 </html>
