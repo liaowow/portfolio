@@ -25,7 +25,7 @@ export function initHeroAnimation(): void {
     // Annie appears
     .to('[data-reveal="annie"]', {
       opacity: 1,
-      duration: 1,
+      duration: 0.5,
     })
     
     // Show B, C, D lines first
