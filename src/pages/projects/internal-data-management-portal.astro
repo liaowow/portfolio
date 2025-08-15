@@ -19,20 +19,30 @@ export const prerender = true;
       <!-- Hero Section -->
       <section class="py-32 px-6 bg-white">
         <div class="max-w-4xl mx-auto">
-          <div class="mb-6">
-            <span class="text-6xl md:text-8xl font-light text-gray-500">03</span>
-          </div>
-          <h1 class="text-4xl md:text-6xl font-light text-gray-900 mb-6">
-            Internal Data Management Portal
-          </h1>
-          <p class="text-xl md:text-2xl font-light text-gray-700 leading-relaxed mb-8">
-            Transformed manual CSV file updates into a robust database
-            management tool with live updates, reducing dev involvement from
-            constant updates while improving data accuracy and team efficiency.
-          </p>
+          <!-- Thumbnail and Title Row -->
+          <div class="flex items-start gap-8 mb-8">
+            <!-- Thumbnail -->
+            <div class="flex-shrink-0">
+              <img 
+                src="/images/internal-data-thumbnail.png"
+                alt="Internal data management portal interface"
+                class="w-32 h-32 object-cover rounded-2xl shadow-lg"
+              />
+            </div>
+            
+            <!-- Title and Description -->
+            <div class="flex-1 min-w-0">
+              <h1 class="text-4xl md:text-6xl font-light text-gray-900 mb-6">
+                Internal Data Management Portal
+              </h1>
+              <p class="text-xl md:text-2xl font-light text-gray-700 leading-relaxed mb-8">
+                Transformed manual CSV file updates into a robust database
+                management tool with live updates, reducing dev involvement from
+                constant updates while improving data accuracy and team efficiency.
+              </p>
 
-          <!-- Visual Tags -->
-          <div class="flex flex-wrap gap-3 items-center">
+              <!-- Visual Tags -->
+              <div class="flex flex-wrap gap-3 items-center">
             <span class="text-sm text-gray-600">NextJS</span>
             <span class="text-gray-400">•</span>
             <span class="text-sm text-gray-600">TypeScript</span>
@@ -44,6 +54,8 @@ export const prerender = true;
             <span class="text-sm text-gray-600">DaisyUI</span>
             <span class="text-gray-400">•</span>
             <span class="text-sm text-gray-600">Full-Stack Lead</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
