@@ -3,12 +3,14 @@ import Header from "../../components/Header.astro";
 import ImageModal from "../../components/ImageModal.astro";
 import ClickableImage from "../../components/ClickableImage.astro";
 export const prerender = true;
+
+const baseUrl = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + "/";
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" href={`${baseUrl}favicon.png`} />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Bump Health Branding - Annie Liao</title>
@@ -26,7 +28,7 @@ export const prerender = true;
             <!-- Thumbnail -->
             <div class="flex-shrink-0">
               <img
-                src={`${import.meta.env.BASE_URL}images/bump_logo_final.jpg`}
+                src={`${baseUrl}images/bump_logo_final.jpg`}
                 alt="Bump Health logo design"
                 class="w-32 h-32 object-cover rounded-2xl shadow-lg"
               />
@@ -235,7 +237,7 @@ export const prerender = true;
                       class="border-2 border-gray-200 p-6 rounded-lg text-center"
                     >
                       <ClickableImage
-                        src={`${import.meta.env.BASE_URL}images/bump_logo_v1.png`}
+                        src={`${baseUrl}images/bump_logo_v1.png`}
                         alt="Bump Health Logo Version 1 - Initial concept with complex design elements"
                         modalId="logoModal"
                         class="mb-4"
@@ -249,7 +251,7 @@ export const prerender = true;
                       class="border-2 border-gray-200 p-6 rounded-lg text-center"
                     >
                       <ClickableImage
-                        src={`${import.meta.env.BASE_URL}images/bump_logo_v2.png`}
+                        src={`${baseUrl}images/bump_logo_v2.png`}
                         alt="Bump Health Logo Version 2 - Simplified design iteration"
                         modalId="logoModal"
                         class="mb-4"
@@ -263,7 +265,7 @@ export const prerender = true;
                       class="border-2 border-gray-200 p-6 rounded-lg text-center"
                     >
                       <ClickableImage
-                        src={`${import.meta.env.BASE_URL}images/bump_logo_v3.png`}
+                        src={`${baseUrl}images/bump_logo_v3.png`}
                         alt="Bump Health Logo Version 3 - Refined design before final"
                         modalId="logoModal"
                         class="mb-4"
@@ -277,7 +279,7 @@ export const prerender = true;
                       class="bg-green-50 p-6 rounded-lg text-center border-2 border-green-200"
                     >
                       <ClickableImage
-                        src={`${import.meta.env.BASE_URL}images/bump_logo_final.jpg`}
+                        src={`${baseUrl}images/bump_logo_final.jpg`}
                         alt="Bump Health Final Logo - The approved design still in use today"
                         modalId="logoModal"
                         class="mb-4"
@@ -313,7 +315,7 @@ export const prerender = true;
                   <!-- Website Screenshot -->
                   <div class="max-w-6xl mx-auto">
                     <ClickableImage
-                      src={`${import.meta.env.BASE_URL}images/bump_health_website.png`}
+                      src={`${baseUrl}images/bump_health_website.png`}
                       alt="Bump Health website homepage showing the final logo and unified brand design"
                       modalId="websiteModal"
                       class="mb-4"
@@ -421,7 +423,7 @@ export const prerender = true;
                 Logo in Action
               </h4>
               <ClickableImage
-                src={`${import.meta.env.BASE_URL}images/bump_logo_cooler_bag.png`}
+                src={`${baseUrl}images/bump_logo_cooler_bag.png`}
                 alt="Bump Health logo applied to company cooler bag merchandise"
                 modalId="coolerBagModal"
                 class="mb-2"
@@ -543,7 +545,7 @@ export const prerender = true;
         <section class="py-12 px-6 bg-gray-50 border-t border-gray-200">
           <div class="max-w-4xl mx-auto text-center">
             <a
-              href={`${import.meta.env.BASE_URL}#work`}
+              href={`${baseUrl}#work`}
               class="inline-block px-4 py-2 bg-gray-900 text-white hover:bg-gray-700 rounded-md font-medium transition-colors duration-200"
             >
               Back to All Projects

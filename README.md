@@ -68,10 +68,19 @@ This portfolio is deployed via GitHub Actions to GitHub Pages with a custom doma
 ### Base URL Configuration
 - **Issue**: GitHub Pages deploys to `/portfolio/` subpath, breaking assets and navigation
 - **Solution**: Updated `astro.config.mjs` with `base: '/portfolio'`
-- **Implementation**: All components use `import.meta.env.BASE_URL` for:
-  - Image paths: `${baseUrl}images/...`
-  - Navigation links: `${baseUrl}#work`
-  - Project URLs: `${baseUrl}projects/...`
+- **Astro's BASE_URL**: `import.meta.env.BASE_URL` automatically gets value from config (`/portfolio`)
+- **Trailing Slash Fix**: Added logic to ensure BASE_URL always ends with `/`
+- **Implementation**: All components use proper base URL handling:
+  ```javascript
+  const baseUrl = import.meta.env.BASE_URL.endsWith('/') 
+    ? import.meta.env.BASE_URL 
+    : import.meta.env.BASE_URL + '/';
+  ```
+- **Results**:
+  - Image paths: `${baseUrl}images/...` → `/portfolio/images/...` ✅
+  - Navigation links: `${baseUrl}#work` → `/portfolio/#work` ✅  
+  - Project URLs: `${baseUrl}projects/...` → `/portfolio/projects/...` ✅
+  - Prevents broken paths like `/portfolioimages/...` ❌
 
 ### Files Modified
 - `astro.config.mjs` - Added base URL configuration

@@ -3,12 +3,14 @@ import Header from "../../components/Header.astro";
 import ImageModal from "../../components/ImageModal.astro";
 import ClickableImage from "../../components/ClickableImage.astro";
 export const prerender = true;
+
+const baseUrl = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + "/";
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" href={`${baseUrl}favicon.png`} />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>E-Commerce Checkout UX Revamp - Annie Liao</title>
@@ -26,7 +28,7 @@ export const prerender = true;
             <!-- Thumbnail -->
             <div class="flex-shrink-0">
               <img
-                src={`${import.meta.env.BASE_URL}images/bump_checkout_before.png`}
+                src={`${baseUrl}images/bump_checkout_before.png`}
                 alt="E-Commerce checkout interface"
                 class="w-32 h-32 object-cover rounded-2xl shadow-lg"
               />
@@ -281,7 +283,7 @@ export const prerender = true;
                   </span>
                 </div>
                 <ClickableImage
-                  src={`${import.meta.env.BASE_URL}images/bump_checkout_before.png`}
+                  src={`${baseUrl}images/bump_checkout_before.png`}
                   alt="Original three-step popup checkout interface"
                   modalId="checkoutModal"
                 />
@@ -306,7 +308,7 @@ export const prerender = true;
                   </span>
                 </div>
                 <ClickableImage
-                  src={`${import.meta.env.BASE_URL}images/bump_checkout_after.png`}
+                  src={`${baseUrl}images/bump_checkout_after.png`}
                   alt="New single-page checkout interface with integrated payment"
                   modalId="checkoutModal"
                 />
@@ -836,7 +838,7 @@ export const prerender = true;
       <section class="py-12 px-6 bg-white border-t border-gray-200">
         <div class="max-w-4xl mx-auto text-center">
           <a
-            href={`${import.meta.env.BASE_URL}#work`}
+            href={`${baseUrl}#work`}
             class="inline-block px-4 py-2 bg-gray-900 text-white hover:bg-gray-700 rounded-md font-medium transition-colors duration-200"
           >
             Back to All Projects
