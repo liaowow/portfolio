@@ -1,0 +1,109 @@
+---
+export interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<!-- Modal Overlay -->
+<div id={id} class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+  <!-- Close Button - Fixed to viewport -->
+  <button 
+    class="fixed top-4 right-4 text-white hover:bg-opacity-100 z-60 bg-black bg-opacity-50 rounded-full p-2"
+    data-close-modal={id}
+  >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  
+  <div class="relative max-w-7xl max-h-full p-4">
+    <!-- Modal Image -->
+    <img 
+      class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+      data-modal-image={id}
+      alt=""
+    />
+    
+    <!-- Modal Caption -->
+    <div class="text-white text-center mt-4 text-lg font-medium" data-modal-caption={id}></div>
+  </div>
+</div>
+
+<script>
+  class ImageModal {
+    constructor(modalId: string) {
+      this.modalId = modalId;
+      this.modal = document.getElementById(modalId);
+      this.modalImage = document.querySelector(`[data-modal-image="${modalId}"]`) as HTMLImageElement;
+      this.modalCaption = document.querySelector(`[data-modal-caption="${modalId}"]`) as HTMLElement;
+      this.closeButton = document.querySelector(`[data-close-modal="${modalId}"]`) as HTMLElement;
+      
+      this.setupEventListeners();
+    }
+
+    private modalId: string;
+    private modal: HTMLElement | null;
+    private modalImage: HTMLImageElement | null;
+    private modalCaption: HTMLElement | null;
+    private closeButton: HTMLElement | null;
+
+    private setupEventListeners() {
+      if (!this.modal) return;
+
+      // Close button
+      this.closeButton?.addEventListener('click', () => this.close());
+
+      // Click outside to close
+      this.modal.addEventListener('click', (e) => {
+        if (e.target === this.modal) {
+          this.close();
+        }
+      });
+
+      // Escape key to close
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !this.modal?.classList.contains('hidden')) {
+          this.close();
+        }
+      });
+    }
+
+    public open(imageSrc: string, imageAlt: string) {
+      if (!this.modal || !this.modalImage || !this.modalCaption) return;
+
+      this.modalImage.src = imageSrc;
+      this.modalImage.alt = imageAlt;
+      this.modalCaption.textContent = imageAlt;
+      this.modal.classList.remove('hidden');
+      
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = 'hidden';
+    }
+
+    public close() {
+      if (!this.modal) return;
+
+      this.modal.classList.add('hidden');
+      // Restore body scroll
+      document.body.style.overflow = 'auto';
+    }
+  }
+
+  // Initialize modal when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    // Find all modal divs by looking for the modal containers
+    const modals = document.querySelectorAll('[data-modal-image]');
+    
+    modals.forEach(modalImage => {
+      // The modal ID is stored in the data-modal-image attribute
+      const modalId = modalImage.getAttribute('data-modal-image');
+      if (modalId) {
+        console.log(`Initializing modal: ${modalId}`);
+        (window as any)[`imageModal_${modalId}`] = new ImageModal(modalId);
+        console.log(`Modal registered:`, (window as any)[`imageModal_${modalId}`]);
+      }
+    });
+  });
+</script>

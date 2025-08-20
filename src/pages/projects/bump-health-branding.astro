@@ -1,0 +1,562 @@
+---
+import Header from "../../components/Header.astro";
+import ImageModal from "../../components/ImageModal.astro";
+import ClickableImage from "../../components/ClickableImage.astro";
+export const prerender = true;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Bump Health Branding - Annie Liao</title>
+  </head>
+  <body class="bg-white">
+    <Header />
+
+    <!-- Main Content -->
+    <main class="pt-20">
+      <!-- Hero Section -->
+      <section class="py-32 pb-4 px-6 bg-white">
+        <div class="max-w-4xl mx-auto">
+          <!-- Thumbnail and Title Row -->
+          <div class="flex flex-col md:flex-row md:items-start gap-8 mb-8">
+            <!-- Thumbnail -->
+            <div class="flex-shrink-0">
+              <img
+                src="/images/bump_logo_final.jpg"
+                alt="Bump Health logo design"
+                class="w-32 h-32 object-cover rounded-2xl shadow-lg"
+              />
+            </div>
+
+            <!-- Title and Description -->
+            <div class="flex-1 min-w-0">
+              <h1 class="text-4xl md:text-6xl font-light text-gray-900 mb-6">
+                Bump Health Branding
+              </h1>
+              <p
+                class="text-xl md:text-2xl font-light text-gray-700 leading-relaxed mb-8"
+              >
+                From software engineer to surprise art director: Created a
+                company logo and brand identity in one week that's still going
+                strong years later.
+              </p>
+
+              <!-- Visual Tags -->
+              <div class="flex flex-wrap gap-3 items-center">
+                <span class="text-sm text-gray-600">Adobe Illustrator</span>
+                <span class="text-gray-400">•</span>
+                <span class="text-sm text-gray-600">Squarespace</span>
+                <span class="text-gray-400">•</span>
+                <span class="text-sm text-gray-600">Logo Design</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="mt-32 border-gray-200" />
+      </section>
+
+      <!-- Project Details -->
+      <section class="py-16 px-6">
+        <div class="max-w-6xl mx-auto">
+          <!-- Story Introduction -->
+          <div class="text-center mb-16">
+            <div
+              class="inline-flex items-center bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
+            >
+              Plot Twist
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              "Oh, You Can Design? Can You Make Us a Logo?"
+            </h2>
+            <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Six months into my software engineering role at Bump Health,
+              someone discovered my design background. What followed was a
+              week-long creative sprint that would define the company's visual
+              identity for years to come.
+            </p>
+          </div>
+
+          <!-- Problem - Visual Storytelling -->
+          <div class="mb-20">
+            <div class="bg-white rounded-2xl p-8 border border-gray-200">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                  <div
+                    class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <svg
+                      class="w-8 h-8 text-gray-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="font-bold text-gray-900 mb-2">
+                    One Week Timeline
+                  </h3>
+                  <p class="text-gray-600 text-sm">
+                    Create a unified brand identity for multiple business units in
+                    just seven days
+                  </p>
+                </div>
+
+                <div class="text-center">
+                  <div
+                    class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <svg
+                      class="w-8 h-8 text-gray-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <g>
+                        <circle cx="7" cy="15" r="4" stroke-width="2"></circle>
+                        <circle cx="17" cy="15" r="4" stroke-width="2"></circle>
+                        <circle cx="12" cy="7" r="4" stroke-width="2"></circle>
+                      </g>
+                    </svg>
+                  </div>
+                  <h3 class="font-bold text-gray-900 mb-2">
+                    Multi-Brand Unification
+                  </h3>
+                  <p class="text-gray-600 text-sm">
+                    Three distinct brands needed cohesive company identity: Bump
+                    Boxes, Bitsy Boxes, Bump Medical
+                  </p>
+                </div>
+
+                <div class="text-center">
+                  <div
+                    class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <svg
+                      class="w-8 h-8 text-gray-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3 class="font-bold text-gray-900 mb-2">"Just Temporary"</h3>
+                  <p class="text-gray-600 text-sm">
+                    This was supposed to be a quick placeholder while
+                    the "real" branding strategy was figured out
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- The Creative Process -->
+          <div class="mb-20 max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+              <div
+                class="inline-flex items-center bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
+              >
+                The Creative Journey
+              </div>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                From Pen & Paper to Corporate Identity
+              </h2>
+              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Armed with Adobe Illustrator, Squarespace, and dangerous amounts
+                of coffee, I embarked on a design odyssey that would make Don
+                Draper proud.
+              </p>
+            </div>
+
+            <!-- Design Process Timeline -->
+            <div class="space-y-8">
+              <!-- Day 1-2: Sketching -->
+              <div class="flex items-start space-x-6">
+                <div
+                  class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0"
+                >
+                  <span class="text-gray-700 font-bold text-xs">Day 1</span>
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-semibold text-gray-900 mb-2">
+                    The Sketching Marathon
+                  </h4>
+                  <p class="text-gray-600 mb-3">
+                    Started with good old pen and paper, explored concepts that
+                    would unify our diverse brand family while maintaining
+                    individual identities.
+                  </p>
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-700 italic">
+                      "What if we make it look medical but approachable?
+                      Health-focused but not intimidating? Professional but
+                      still startup-y?" — My internal monologue, hour 6
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Day 3-4: Digital Exploration -->
+              <div class="flex items-start space-x-6">
+                <div
+                  class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0"
+                >
+                  <span class="text-gray-700 font-bold text-xs">Day 3</span>
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-semibold text-gray-900 mb-2">
+                    Adobe Illustrator Deep Dive
+                  </h4>
+                  <p class="text-gray-600 mb-3">
+                    Translated sketches into digital format, creating multiple
+                    logo variations. The evolution from v1 to v2 to v3, each
+                    iteration getting closer to that "just right" feeling.
+                  </p>
+                  <!-- Logo Evolution Showcase -->
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+                  >
+                    <div
+                      class="border-2 border-gray-200 p-6 rounded-lg text-center"
+                    >
+                      <ClickableImage
+                        src="/images/bump_logo_v1.png"
+                        alt="Bump Health Logo Version 1 - Initial concept with complex design elements"
+                        modalId="logoModal"
+                        class="mb-4"
+                      />
+                      <h5 class="font-semibold text-gray-900 mb-2">
+                        Version 1
+                      </h5>
+                      <p class="text-sm text-gray-600">Too complex</p>
+                    </div>
+                    <div
+                      class="border-2 border-gray-200 p-6 rounded-lg text-center"
+                    >
+                      <ClickableImage
+                        src="/images/bump_logo_v2.png"
+                        alt="Bump Health Logo Version 2 - Simplified design iteration"
+                        modalId="logoModal"
+                        class="mb-4"
+                      />
+                      <h5 class="font-semibold text-gray-900 mb-2">
+                        Version 2
+                      </h5>
+                      <p class="text-sm text-gray-600">Too simple?</p>
+                    </div>
+                    <div
+                      class="border-2 border-gray-200 p-6 rounded-lg text-center"
+                    >
+                      <ClickableImage
+                        src="/images/bump_logo_v3.png"
+                        alt="Bump Health Logo Version 3 - Refined design before final"
+                        modalId="logoModal"
+                        class="mb-4"
+                      />
+                      <h5 class="font-semibold text-gray-900 mb-2">
+                        Version 3
+                      </h5>
+                      <p class="text-sm text-gray-600">Getting warmer</p>
+                    </div>
+                    <div
+                      class="bg-green-50 p-6 rounded-lg text-center border-2 border-green-200"
+                    >
+                      <ClickableImage
+                        src="/images/bump_logo_final.jpg"
+                        alt="Bump Health Final Logo - The approved design still in use today"
+                        modalId="logoModal"
+                        class="mb-4"
+                      />
+                      <h5 class="font-semibold text-gray-900 mb-2">
+                        Final Version
+                      </h5>
+                      <p class="text-sm text-green-700 font-medium">
+                        Approved! ✨
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Day 5-7: Website & Finalization -->
+              <div class="flex items-start space-x-6">
+                <div
+                  class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0"
+                >
+                  <span class="text-gray-700 font-bold text-xs">Day 5</span>
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-semibold text-gray-900 mb-2">
+                    Squarespace Website Magic
+                  </h4>
+                  <p class="text-gray-600 mb-3">
+                    The final logo found its home on the Bump Health website
+                    built with Squarespace. Along the way, I created a new color scheme, crafted a new
+                    typography system, and partnered with marketing team on
+                    messaging to ensure a cohesive visual and verbal identity.
+                  </p>
+                  <!-- Website Screenshot -->
+                  <div class="max-w-6xl mx-auto">
+                    <ClickableImage
+                      src="/images/bump_health_website.png"
+                      alt="Bump Health website homepage showing the final logo and unified brand design"
+                      modalId="websiteModal"
+                      class="mb-4"
+                    />
+                    <p class="text-sm text-gray-500 italic text-center">
+                      Screenshot of <a
+                        href="https://bumphealth.com"
+                        target="_blank"
+                        class="text-gray-600 hover:underline"
+                        >Bump Health website</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- The Real-World Applications -->
+          <div class="mb-20">
+            <div class="text-center mb-12">
+              <div
+                class="inline-flex items-center bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
+              >
+                In the Wild
+              </div>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                From Screen to Swag
+              </h2>
+              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                The logo didn't just live on screens; it found its way onto
+                everything from cooler bags to pitch decks, proving its
+                versatility across all touchpoints.
+              </p>
+            </div>
+
+            <!-- Applications Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div
+                class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm"
+              >
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                  Digital Applications
+                </h3>
+                <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span>Bump Health website (built in Squarespace)</span>
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span>Internal company communications</span>
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span>Email signatures and presentations</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm"
+              >
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                  Physical Applications
+                </h3>
+                <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span>Company cooler bags and merchandise</span>
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span>Office signage and displays</span>
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <div
+                      class="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0"
+                    >
+                    </div>
+                    <span>Marketing materials and trade show swag</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Real-World Example -->
+            <div class="mt-8 max-w-2xl mx-auto">
+              <h4 class="text-lg font-semibold text-gray-900 mb-4 text-center">
+                Logo in Action
+              </h4>
+              <ClickableImage
+                src="/images/bump_logo_cooler_bag.png"
+                alt="Bump Health logo applied to company cooler bag merchandise"
+                modalId="coolerBagModal"
+                class="mb-2"
+              />
+              <p class="text-sm text-gray-500 italic text-center">
+                The logo's real-world application – still going strong!
+              </p>
+            </div>
+          </div>
+
+          <!-- The Moral of the Story -->
+          <div class="mb-12">
+            <div class="text-center mb-12">
+              <div
+                class="inline-flex items-center bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
+              >
+                Looking Back
+              </div>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                The Moral of the Story
+              </h2>
+              <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
+                Sometimes the best work happens when you're not overthinking it.
+              </p>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div
+                  class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm text-center"
+                >
+                  <div
+                    class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-6"
+                  >
+                    <svg
+                      class="w-6 h-6 text-gray-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-4">
+                    Embrace the Unexpected
+                  </h3>
+                  <p class="text-gray-600">
+                    Being open to cross-functional projects can lead to
+                    surprising career highlights.
+                  </p>
+                </div>
+
+                <div
+                  class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm text-center"
+                >
+                  <div
+                    class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-6"
+                  >
+                    <svg
+                      class="w-6 h-6 text-gray-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-4">
+                    Speed ≠ Quality Compromise
+                  </h3>
+                  <p class="text-gray-600">
+                    Working under tight deadlines can actually force you to
+                    focus on what really matters, leading to cleaner, more
+                    effective solutions.
+                  </p>
+                </div>
+
+                <div
+                  class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm text-center"
+                >
+                  <div
+                    class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-6"
+                  >
+                    <svg
+                      class="w-6 h-6 text-gray-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-4">
+                    Your Skills Travel With You
+                  </h3>
+                  <p class="text-gray-600">
+                    Career transitions don't mean abandoning your previous
+                    expertise. The best professionals find ways to blend their
+                    diverse skill sets.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Back Navigation -->
+        <section class="py-12 px-6 bg-gray-50 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto text-center">
+            <a
+              href="/#work"
+              class="inline-block px-4 py-2 bg-gray-900 text-white hover:bg-gray-700 rounded-md font-medium transition-colors duration-200"
+            >
+              Back to All Projects
+            </a>
+            <p class="text-gray-600 mt-2">
+              Explore more case studies and technical projects
+            </p>
+          </div>
+        </section>
+      </section>
+
+      <ImageModal id="websiteModal" />
+      <ImageModal id="coolerBagModal" />
+    </main>
+  </body>
+</html>
