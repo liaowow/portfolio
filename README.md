@@ -32,17 +32,18 @@ A modern, performant portfolio built with Astro showcasing software engineering 
 
 ## Development
 
-**Prerequisites**: Node.js 18+
+**Prerequisites**: Node.js 18+ and pnpm
 
 ```bash
 # Setup
 git clone https://github.com/liaowow/portfolio.git
 cd portfolio
-npm install
+pnpm install
 
 # Development
-npm run dev    # Start dev server at localhost:4321
-npm run build  # Build for production
+pnpm dev    # Start dev server at localhost:4321
+pnpm build  # Build for production
+pnpm preview # Preview production build
 ```
 
 ## Featured Projects
