@@ -1,63 +1,65 @@
 ---
+const baseUrl = import.meta.env.BASE_URL;
+
 const projects = [
   {
     id: 1,
     title: "E-Commerce Checkout Revamp",
     description: "Transformed three-step popup checkout into single-page experience, boosting conversion rates by 12% YoY through strategic UX improvements.",
-    image: "/images/bump_checkout_before.png",
+    image: `${baseUrl}images/bump_checkout_before.png`,
     imageAlt: "E-Commerce checkout interface",
     tags: ["React", "Node.js", "Statsig A/B"],
-    url: "/projects/ecommerce-checkout-revamp",
+    url: `${baseUrl}projects/ecommerce-checkout-revamp`,
     cta: "View Details"
   },
   {
     id: 2,
     title: "Coupon Swap Scheduler",
     description: "Automated, self-serve coupon scheduler that cuts ~2 hrs/week of dev work with event-driven AWS architecture.",
-    image: "/images/coupon-swap-thumbnail.png",
+    image: `${baseUrl}images/coupon-swap-thumbnail.png`,
     imageAlt: "Coupon swap scheduler interface",
     tags: ["React", "AWS Lambda", "EventBridge"],
-    url: "/projects/coupon-swap-scheduler",
+    url: `${baseUrl}projects/coupon-swap-scheduler`,
     cta: "View Details"
   },
   {
     id: 3,
     title: "Internal Data Management Portal",
     description: "Transformed manual CSV updates into robust database tool with live updates, 98.5% code reduction, and eliminated developer involvement.",
-    image: "/images/internal-data-thumbnail.png",
+    image: `${baseUrl}images/internal-data-thumbnail.png`,
     imageAlt: "Internal data management portal interface",
     tags: ["NextJS", "TypeScript", "MongoDB"],
-    url: "/projects/internal-data-management-portal",
+    url: `${baseUrl}projects/internal-data-management-portal`,
     cta: "View Details"
   },
   {
     id: 4,
     title: "Bump Health Branding",
     description: "From software engineer to surprise art director: Created a company logo and brand identity in one week that's still going strong three years later.",
-    image: "/images/bump_logo_final.jpg",
+    image: `${baseUrl}images/bump_logo_final.jpg`,
     imageAlt: "Bump Health logo design",
     tags: ["Adobe Illustrator", "Squarespace", "Logo Design"],
-    url: "/projects/bump-health-branding",
+    url: `${baseUrl}projects/bump-health-branding`,
     cta: "View Details"
   },
   {
     id: 5,
     title: "Baby Name Blossoms",
     description: "When art meets data: My first D3.js adventure that transforms decades of baby name trends into flowers, one petal at a time.",
-    image: "/images/baby_name_blossoms_color.png",
+    image: `${baseUrl}images/baby_name_blossoms_color.png`,
     imageAlt: "Baby name blossoms data visualization",
     tags: ["React", "D3.js", "Data Viz", "Personal"],
-    url: "/projects/baby-name-blossoms",
+    url: `${baseUrl}projects/baby-name-blossoms`,
     cta: "View Details"
   },
   {
     id: 6,
     title: "Infographics Collection",
     description: "A curated selection of print and digital visualizations from my newsroom design career, transforming complex stories into clear, engaging graphics.",
-    image: "/images/infographic_5_rubber_duck.jpg",
+    image: `${baseUrl}images/infographic_5_rubber_duck.jpg`,
     imageAlt: "Infographic about how sunglasses work",
     tags: ["Adobe Illustrator", "Print Design", "Data Viz", "Editorial"],
-    url: "/projects/infographics",
+    url: `${baseUrl}projects/infographics`,
     cta: "View Gallery"
   }
 ];

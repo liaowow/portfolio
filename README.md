@@ -54,3 +54,32 @@ pnpm preview # Preview production build
 - **Baby Name Blossoms** - React/D3.js data visualization
 - **Infographics Collection** - Editorial design gallery
 - **Bump Health Branding** - Logo and brand identity design
+
+## Deployment Setup
+
+This portfolio is deployed via GitHub Actions to GitHub Pages with a custom domain. Here's what was configured:
+
+### GitHub Actions Workflow
+- **File**: `.github/workflows/deploy.yml`
+- **Triggers**: Pushes to main branch
+- **Process**: Builds with `npm run build` → Deploys `dist/` folder
+- **Custom Domain**: Handled via `CNAME` file in `public/` folder
+
+### Base URL Configuration
+- **Issue**: GitHub Pages deploys to `/portfolio/` subpath, breaking assets and navigation
+- **Solution**: Updated `astro.config.mjs` with `base: '/portfolio'`
+- **Implementation**: All components use `import.meta.env.BASE_URL` for:
+  - Image paths: `${baseUrl}images/...`
+  - Navigation links: `${baseUrl}#work`
+  - Project URLs: `${baseUrl}projects/...`
+
+### Files Modified
+- `astro.config.mjs` - Added base URL configuration
+- `src/components/Work.astro` - Fixed project URLs and images
+- `src/components/Header.astro` - Fixed navigation and avatar
+- All project pages - Fixed image sources and back navigation
+- `public/CNAME` - Moved from root for proper deployment
+
+### Repository Settings
+- **Pages Source**: Changed from "Deploy from branch" to "GitHub Actions"
+- **Custom Domain**: `annieliao.com` (configured via CNAME)
