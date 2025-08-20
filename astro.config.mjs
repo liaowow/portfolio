@@ -7,5 +7,6 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [react(), tailwind()],
   site: 'https://annieliao.com',
-  base: '/portfolio'
+  // No base path needed for custom domain
+  base: '/'
 });

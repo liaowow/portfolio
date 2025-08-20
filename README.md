@@ -55,40 +55,24 @@ pnpm preview # Preview production build
 - **Infographics Collection** - Editorial design gallery
 - **Bump Health Branding** - Logo and brand identity design
 
-## Deployment Setup
+## Deployment
 
-This portfolio is deployed via GitHub Actions to GitHub Pages with a custom domain. Here's what was configured:
+This portfolio is deployed via GitHub Actions to GitHub Pages with custom domain support.
 
-### GitHub Actions Workflow
-- **File**: `.github/workflows/deploy.yml`
-- **Triggers**: Pushes to main branch
-- **Process**: Builds with `npm run build` → Deploys `dist/` folder
-- **Custom Domain**: Handled via `CNAME` file in `public/` folder
+### Configuration
+- **Site**: `https://annieliao.com`
+- **Base Path**: `/` (root domain)
+- **GitHub Actions**: Automated deployment on push to main
+- **Custom Domain**: Configured via `CNAME` file in `public/` folder
 
-### Base URL Configuration
-- **Issue**: GitHub Pages deploys to `/portfolio/` subpath, breaking assets and navigation
-- **Solution**: Updated `astro.config.mjs` with `base: '/portfolio'`
-- **Astro's BASE_URL**: `import.meta.env.BASE_URL` automatically gets value from config (`/portfolio`)
-- **Trailing Slash Fix**: Added logic to ensure BASE_URL always ends with `/`
-- **Implementation**: All components use proper base URL handling:
-  ```javascript
-  const baseUrl = import.meta.env.BASE_URL.endsWith('/') 
-    ? import.meta.env.BASE_URL 
-    : import.meta.env.BASE_URL + '/';
-  ```
-- **Results**:
-  - Image paths: `${baseUrl}images/...` → `/portfolio/images/...` ✅
-  - Navigation links: `${baseUrl}#work` → `/portfolio/#work` ✅  
-  - Project URLs: `${baseUrl}projects/...` → `/portfolio/projects/...` ✅
-  - Prevents broken paths like `/portfolioimages/...` ❌
+### Asset Path Handling
+All components use `import.meta.env.BASE_URL` for flexible asset paths that work with both GitHub Pages subdirectory (`/portfolio/`) and custom domain root (`/`) deployments:
 
-### Files Modified
-- `astro.config.mjs` - Added base URL configuration
-- `src/components/Work.astro` - Fixed project URLs and images
-- `src/components/Header.astro` - Fixed navigation and avatar
-- All project pages - Fixed image sources and back navigation
-- `public/CNAME` - Moved from root for proper deployment
+```javascript
+const baseUrl = import.meta.env.BASE_URL;
+// Usage: src={`${baseUrl}images/...`}
+```
 
-### Repository Settings
-- **Pages Source**: Changed from "Deploy from branch" to "GitHub Actions"
-- **Custom Domain**: `annieliao.com` (configured via CNAME)
+### Live URLs
+- **Primary**: https://annieliao.com
+- **GitHub Pages**: https://liaowow.github.io/portfolio/
