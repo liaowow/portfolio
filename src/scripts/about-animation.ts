@@ -4,64 +4,37 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 export function initAboutAnimation(): void {
   gsap.registerPlugin(ScrollTrigger);
 
-  // Create pinned section for full viewport control
-  const aboutContent = document.getElementById('about-content');
   const sentences = gsap.utils.toArray('.about-sentence');
-  
-  if (!aboutContent || sentences.length === 0) return;
+  if (sentences.length === 0) return;
 
-  // Pin the about section and animate sentences based on scroll
-  ScrollTrigger.create({
-    trigger: '#about',
-    start: 'top top',
-    end: () => `+=${window.innerHeight * sentences.length}`,
-    pin: true,
-    scrub: 1,
-    onUpdate: (self: any) => {
-      const progress = self.progress;
-      const currentSentenceIndex = Math.min(
-        Math.floor(progress * sentences.length),
-        sentences.length - 1
-      );
-      const sentenceProgress = (progress * sentences.length) - currentSentenceIndex;
-
-      sentences.forEach((sentence: any, index: number) => {
-        const keywords = sentence.querySelectorAll('.keyword');
-        
-        if (index < currentSentenceIndex) {
-          // Previous sentences - fully revealed
-          sentence.classList.add('sentence-revealed');
-          keywords.forEach((keyword: any) => {
-            keyword.classList.add('keyword-revealed', 'keyword-highlighted');
-          });
-        } else if (index === currentSentenceIndex) {
-          // Current sentence - progressive reveal
-          if (sentenceProgress > 0.1) {
-            sentence.classList.add('sentence-revealed');
-          }
-          
-          // Keywords reveal based on sentence progress
-          keywords.forEach((keyword: any, keywordIndex: number) => {
-            const keywordThreshold = 0.3 + (keywordIndex / keywords.length) * 0.5;
-            
-            if (sentenceProgress > keywordThreshold) {
-              keyword.classList.add('keyword-revealed');
-              
-              if (sentenceProgress > keywordThreshold + 0.15) {
-                keyword.classList.add('keyword-highlighted');
-              }
-            } else {
-              keyword.classList.remove('keyword-revealed', 'keyword-highlighted');
-            }
-          });
-        } else {
-          // Future sentences - hidden
-          sentence.classList.remove('sentence-revealed');
-          keywords.forEach((keyword: any) => {
-            keyword.classList.remove('keyword-revealed', 'keyword-highlighted');
-          });
-        }
-      });
+  // Create a timeline for sequential sentence and keyword reveals
+  const timeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#about',
+      start: 'top center',
+      toggleActions: 'play none none none'
     }
+  });
+
+  sentences.forEach((sentence: any, index: number) => {
+    const keywords = sentence.querySelectorAll('.keyword');
+    
+    // Animate sentence appearance
+    timeline.to(sentence, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: 'power2.out'
+    }, index * 1.2);
+
+    // Animate keywords within the sentence sequentially
+    keywords.forEach((keyword: any, keywordIndex: number) => {
+      timeline.to(keyword, {
+        opacity: 1,
+        scale: 1.08,
+        duration: 0.6,
+        ease: 'back.out(1.7)'
+      }, index * 1.2 + 0.4 + keywordIndex * 0.2);
+    });
   });
 }
