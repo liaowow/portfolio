@@ -1,4 +1,5 @@
 import { gsap } from 'gsap';
+import { initHeroScrollArrow } from './hero-scroll-arrow';
 
 export function initHeroAnimation(): void {
   const timeline = gsap.timeline();
@@ -91,5 +92,8 @@ export function initHeroAnimation(): void {
       y: 0,
       duration: 0.8,
       ease: 'power3.out'
-    }, '+=0.2');
+    }, '+=0.2')
+    
+    // Add the scroll arrow animation to the main timeline
+    .add(initHeroScrollArrow(), '+=0.3');
 }
