@@ -4,7 +4,6 @@ import Hero from "../components/Hero.astro";
 import Work from "../components/Work.astro";
 import About from "../components/About.astro";
 import Footer from "../components/Footer.astro";
-import SmoothScroll from "../components/SmoothScroll.tsx";
 
 const baseUrl = import.meta.env.BASE_URL;
 ---
@@ -28,7 +27,6 @@ const baseUrl = import.meta.env.BASE_URL;
     />
   </head>
   <body class="font-sans antialiased">
-    <SmoothScroll client:load />
     <Header />
     <main>
       <Hero />
