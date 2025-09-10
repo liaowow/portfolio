@@ -29,12 +29,19 @@ importers:
       gsap:
         specifier: ^3.13.0
         version: 3.13.0
+      matter-js:
+        specifier: ^0.20.0
+        version: 0.20.0
       react:
         specifier: ^19.1.1
         version: 19.1.1
       react-dom:
         specifier: ^19.1.1
         version: 19.1.1(react@19.1.1)
+    devDependencies:
+      '@types/matter-js':
+        specifier: ^0.20.0
+        version: 0.20.0
 
 packages:
 
@@ -624,6 +631,9 @@ packages:
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
 
+  '@types/matter-js@0.20.0':
+    resolution: {integrity: sha512-jOroeU1wEoizJ3rUnhS2HWzqbQrMHEmShTPUf8sbAghuZCAEQT7y3ojXAzrcQOWYkP93KhegDZI4gvMu5odfWw==}
+
   '@types/mdast@4.0.4':
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
 
@@ -1205,6 +1215,9 @@ packages:
 
   markdown-table@3.0.4:
     resolution: {integrity: sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw==}
+
+  matter-js@0.20.0:
+    resolution: {integrity: sha512-iC9fYR7zVT3HppNnsFsp9XOoQdQN2tUyfaKg4CHLH8bN+j6GT4Gw7IH2rP0tflAebrHFw730RR3DkVSZRX8hwA==}
 
   mdast-util-definitions@6.0.0:
     resolution: {integrity: sha512-scTllyX6pnYNZH/AIp/0ePz6s4cZtARxImwoPJ7kS42n+MnVsI4XbnG6d4ibehRIldYMWM2LD7ImQblVhUejVQ==}
@@ -2575,6 +2588,8 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
 
+  '@types/matter-js@0.20.0': {}
+
   '@types/mdast@4.0.4':
     dependencies:
       '@types/unist': 3.0.3
@@ -3268,6 +3283,8 @@ snapshots:
       source-map-js: 1.2.1
 
   markdown-table@3.0.4: {}
+
+  matter-js@0.20.0: {}
 
   mdast-util-definitions@6.0.0:
     dependencies:
