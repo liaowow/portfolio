@@ -49,33 +49,7 @@ Build a visually-driven Fun page using a **3D CSS carousel** to showcase images 
 - [ ] Create carousel rotation controls (touch gestures, navigation)
 - [ ] Update Header.astro navigation (change Connect to Fun)
 
-### **Phase 5: Visual Display Alternatives (Backups)**
-
-**Motion-Based Options:**
-- [ ] **Kaleidoscope** - Geometric patterns that rearrange on interaction
-- [ ] **Timeline River** - Cards flow along curved chronological path
-- [ ] **Parallax Storytelling** - Cards move at different depths on scroll
-
-**Physics & Spatial Options:**
-- [ ] **Matter.js Physics** - Reverse gravity floating cards
-- [ ] **Constellation View** - Cards as stars in space, zoom to explore
-- [ ] **Floating Islands** - Categories as 3D platforms
-- [ ] **Museum Diorama** - Virtual 3D gallery space
-
-**Traditional Options:**
-- [ ] **Pinterest Masonry** - Dynamic grid with external images
-- [ ] **Polaroid Scatter** - Photos scattered, can be rearranged
-- [ ] **Card Deck Shuffle** - Stack that fans out for browsing
-
-### **Phase 7: Polish & Features**
-- [ ] Add dual-perspective card interactions (Annie/Allan views)
-- [ ] Build filtering system with practical info (price, reservations, ratings)
-- [ ] Add Fun section to index.astro with smooth transitions
-- [ ] Mobile optimization and touch gesture support
-- [ ] Performance optimization (lazy loading, image optimization)
-- [ ] Accessibility features (keyboard navigation, screen readers)
-
-### **Phase 6: Enhanced Data Structure**
+### **Phase 5: Data Structure & Sample Content**
 
 ```typescript
 interface FunItem {
@@ -104,42 +78,18 @@ interface MediaItem {
 ```
 
 **Data Organization:**
-- **Categories** contain multiple **FunItems** (experiences)
-- **FunItems** contain multiple **MediaItems** (photos/videos)
-- **1-5 new FunItems per month** with 1-8 media each
-- **Cloudinary URLs** for optimized delivery and responsive images
+- [ ] **Categories** contain multiple **FunItems** (experiences)
+- [ ] **FunItems** contain multiple **MediaItems** (photos/videos)
+- [ ] Create sample data file with 32 photos + 1 video organized into FunItems
+- [ ] **Cloudinary URLs** for optimized delivery and responsive images
 
-### 4. **Components Development**
-- [ ] `FunPage.astro` - Main page component
-- [ ] `PhysicsCanvas.tsx` - React component for matter.js integration  
-- [ ] `MediaCard.tsx` - Shows preview with ratings overlay
-- [ ] `DetailModal.tsx` - Full media view with all info (location, comments, ratings)
-- [ ] `CategoryFilter.tsx` - Category selection/filtering
-- [ ] `RatingStars.tsx` - Visual rating display component
-
-### 5. **Interactive Features**
-- [ ] Physics-based media cards that respond to mouse/touch
-- [ ] Click card to open detailed modal with:
-  - [ ] Full-size image/video
-  - [ ] Location information
-  - [ ] Individual ratings from Annie & Allan
-  - [ ] Personal comments from both
-  - [ ] Shared experiences notes
-- [ ] Category filtering with smooth physics transitions
-- [ ] Optional: sort by rating, date, or location
-
-### 6. **Information Display**
-- [ ] Card previews show: title, location, average rating
-- [ ] Detailed modal shows: all metadata, comments, individual ratings
-- [ ] Visual rating system (stars/hearts)
-- [ ] Location with potential map integration
-- [ ] Comments displayed as conversation-style bubbles
-
-### 7. **Styling & Polish**
-- [ ] Consistent design with existing portfolio
-- [ ] Tailwind CSS for responsive design
-- [ ] Physics animations with informative overlays
-- [ ] Loading states and error handling
+### **Phase 6: Polish & Features**
+- [ ] Add dual-perspective card interactions (Annie/Allan views)
+- [ ] Build filtering system with practical info (price, reservations, ratings)
+- [ ] Add Fun section to index.astro with smooth transitions
+- [ ] Mobile optimization and touch gesture support
+- [ ] Performance optimization (lazy loading, image optimization)
+- [ ] Accessibility features (keyboard navigation, screen readers)
 
 ## 🎨 Design Concepts
 
@@ -156,6 +106,24 @@ interface MediaItem {
 - [ ] Location display with potential mini-map
 
 ## 📝 Brainstorming Notes
+
+### Visual Display Alternatives (Backups)
+
+**Motion-Based Options:**
+- [ ] **Kaleidoscope** - Geometric patterns that rearrange on interaction
+- [ ] **Timeline River** - Cards flow along curved chronological path
+- [ ] **Parallax Storytelling** - Cards move at different depths on scroll
+
+**Physics & Spatial Options:**
+- [ ] **Matter.js Physics** - Reverse gravity floating cards
+- [ ] **Constellation View** - Cards as stars in space, zoom to explore
+- [ ] **Floating Islands** - Categories as 3D platforms
+- [ ] **Museum Diorama** - Virtual 3D gallery space
+
+**Traditional Options:**
+- [ ] **Pinterest Masonry** - Dynamic grid with external images
+- [ ] **Polaroid Scatter** - Photos scattered, can be rearranged
+- [ ] **Card Deck Shuffle** - Stack that fans out for browsing
 
 ### Physics Concepts
 - [ ] Items could "float" in different densities based on rating
@@ -174,15 +142,6 @@ interface MediaItem {
 - [ ] Mobile touch interactions
 - [ ] Video playback in physics environment
 - [ ] Responsive design for different screen sizes
-
-## 🚀 Next Steps
-
-1. Start with matter.js installation and basic physics setup
-2. Create sample data structure with mock content
-3. Build basic physics canvas with floating rectangles
-4. Add media cards with preview functionality
-5. Implement detailed modal system
-6. Polish interactions and styling
 
 ## 💡 Ideas for Later
 
