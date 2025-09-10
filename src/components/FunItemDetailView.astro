@@ -1,0 +1,190 @@
+---
+export interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<!-- FunItem Detail Modal -->
+<div id={id} class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
+  <!-- Close Button -->
+  <button 
+    class="fixed top-4 right-4 text-white hover:bg-white hover:bg-opacity-20 z-60 bg-black bg-opacity-50 rounded-full p-2 transition-all duration-200"
+    data-close-funitem={id}
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+
+  <!-- Back Button -->
+  <button 
+    class="fixed top-4 left-4 text-white hover:bg-white hover:bg-opacity-20 z-60 bg-black bg-opacity-50 rounded-full p-2 transition-all duration-200"
+    data-close-funitem={id}
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+    </svg>
+  </button>
+  
+  <div class="relative max-w-6xl max-h-[95vh] w-full mx-4 overflow-y-auto">
+    <div class="bg-gray-900 bg-opacity-95 backdrop-blur-lg rounded-2xl border border-gray-700">
+      
+      <!-- Header Section -->
+      <div class="p-6 border-b border-gray-700">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="text-4xl" data-funitem-icon={id}>🍕</div>
+          <div>
+            <h2 class="text-2xl md:text-3xl font-light text-white" data-funitem-title={id}>Loading...</h2>
+            <div class="flex items-center gap-2 text-gray-300 mt-1">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              <span data-funitem-location={id}>Loading...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Date and Category -->
+        <div class="flex items-center gap-6 text-sm text-gray-400">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            <span data-funitem-date={id}>Loading...</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+            </svg>
+            <span data-funitem-category={id} class="capitalize">Loading...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Media Carousel Section -->
+      <div class="p-6">
+        <h3 class="text-lg font-medium text-white mb-4">Photos & Videos</h3>
+        <div class="media-carousel-container" data-funitem-media={id}>
+          <div class="flex items-center justify-center h-64 bg-gray-800 rounded-lg">
+            <div class="text-gray-400">Loading media...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ratings & Comments Section -->
+      <div class="p-6 border-t border-gray-700">
+        <h3 class="text-lg font-medium text-white mb-4">Our Thoughts</h3>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Annie's Rating -->
+          <div class="bg-gray-800 bg-opacity-50 rounded-xl p-4">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center text-white font-medium text-sm">
+                A
+              </div>
+              <div>
+                <h4 class="text-white font-medium">Annie</h4>
+                <div class="flex items-center gap-1">
+                  <div class="flex text-yellow-400" data-annie-stars={id}>
+                    <!-- Stars will be populated by JS -->
+                  </div>
+                  <span class="text-sm text-gray-400 ml-1" data-annie-rating={id}>-</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-300 text-sm leading-relaxed" data-annie-comment={id}>Loading comment...</p>
+          </div>
+
+          <!-- Allan's Rating -->
+          <div class="bg-gray-800 bg-opacity-50 rounded-xl p-4">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-teal-600 rounded-full flex items-center justify-center text-white font-medium text-sm">
+                A
+              </div>
+              <div>
+                <h4 class="text-white font-medium">Allan</h4>
+                <div class="flex items-center gap-1">
+                  <div class="flex text-yellow-400" data-allan-stars={id}>
+                    <!-- Stars will be populated by JS -->
+                  </div>
+                  <span class="text-sm text-gray-400 ml-1" data-allan-rating={id}>-</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-300 text-sm leading-relaxed" data-allan-comment={id}>Loading comment...</p>
+          </div>
+        </div>
+
+        <!-- Shared Comment -->
+        <div class="mt-6 bg-gradient-to-r from-gray-800 to-gray-700 bg-opacity-50 rounded-xl p-4" data-shared-comment-container={id} style="display: none;">
+          <h4 class="text-white font-medium mb-2 flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4 8-9 8a9.958 9.958 0 01-5.716-1.837c-.87-.66-.69-1.851-.54-2.463A8.961 8.961 0 015 12c0-4.418 4-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+            Together
+          </h4>
+          <p class="text-gray-300 text-sm leading-relaxed" data-shared-comment={id}></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .media-carousel-container {
+    position: relative;
+  }
+  
+  .media-carousel {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 0.5rem 0;
+  }
+  
+  .media-carousel::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  .media-carousel::-webkit-scrollbar-track {
+    background: rgba(75, 85, 99, 0.3);
+    border-radius: 2px;
+  }
+  
+  .media-carousel::-webkit-scrollbar-thumb {
+    background: rgba(156, 163, 175, 0.5);
+    border-radius: 2px;
+  }
+  
+  .media-carousel::-webkit-scrollbar-thumb:hover {
+    background: rgba(156, 163, 175, 0.7);
+  }
+  
+  .media-item {
+    flex-shrink: 0;
+    width: 200px;
+    height: 150px;
+    background: #374151;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .media-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  .media-item img,
+  .media-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>

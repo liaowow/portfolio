@@ -130,7 +130,35 @@ export function initPhysicsGyroscope(): void {
         ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
         ctx.fillText(body.pieceData.location, 0, 30);
         
+        // Draw details button (bottom-right corner of card)
+        const buttonSize = 30;
+        const buttonX = 40; // Bottom-right of 120px card
+        const buttonY = 40;
+        
+        // Button background (circular)
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+        ctx.beginPath();
+        ctx.arc(buttonX, buttonY, buttonSize/2, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Button border
+        ctx.strokeStyle = 'rgba(0, 0, 0, 0.2)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        
+        // Details icon (info "i")
+        ctx.fillStyle = '#374151';
+        ctx.font = 'bold 16px Arial';
+        ctx.fillText('i', buttonX, buttonY + 5);
+        
         ctx.restore();
+        
+        // Store button position for click detection (in global coordinates)
+        body.detailsButton = {
+          x: pos.x + Math.cos(angle) * buttonX - Math.sin(angle) * buttonY,
+          y: pos.y + Math.sin(angle) * buttonX + Math.cos(angle) * buttonY,
+          radius: buttonSize/2
+        };
       }
     });
   };
@@ -273,13 +301,50 @@ export function initPhysicsGyroscope(): void {
     });
   }
 
-  // Click interaction - gyroscopic spin
+  // Mouse cursor change on hover
+  canvas.addEventListener('mousemove', (event: MouseEvent) => {
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    
+    // Check if hovering over any details button
+    const hoveringButton = physicsBodies.some((body: any) => {
+      if (!body.render.visible || !body.detailsButton) return false;
+      const button = body.detailsButton;
+      const distance = Math.sqrt((x - button.x) ** 2 + (y - button.y) ** 2);
+      return distance <= button.radius;
+    });
+    
+    // Change cursor based on hover state
+    canvas.style.cursor = hoveringButton ? 'pointer' : 'default';
+  });
+
+  // Click interaction - details button vs card spin
   canvas.addEventListener('click', (event: MouseEvent) => {
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
     
-    // Find clicked body
+    // Check for details button clicks first
+    const buttonClickedBody = physicsBodies.find((body: any) => {
+      if (!body.render.visible || !body.detailsButton) return false;
+      const button = body.detailsButton;
+      const distance = Math.sqrt((x - button.x) ** 2 + (y - button.y) ** 2);
+      return distance <= button.radius;
+    });
+    
+    if (buttonClickedBody) {
+      // Details button clicked - open modal
+      const funItemId = buttonClickedBody.pieceData.title.toLowerCase().replace(/\s+/g, '-') + '-' + 
+                       buttonClickedBody.pieceData.location.toLowerCase().replace(/\s+/g, '-');
+      
+      import('../scripts/funitem-detail.ts').then(module => {
+        module.openFunItemDetail(funItemId);
+      });
+      return; // Don't process as card click
+    }
+    
+    // Check for general card clicks (for spinning)
     const clickedBody = physicsBodies.find((body: any) => {
       const pos = body.position;
       const distance = Math.sqrt((x - pos.x) ** 2 + (y - pos.y) ** 2);
@@ -287,8 +352,7 @@ export function initPhysicsGyroscope(): void {
     });
     
     if (clickedBody) {
-      console.log('Opening detail view for:', clickedBody.pieceData.title);
-      // Add gyroscopic spin on click
+      // Card clicked (not button) - add gyroscopic spin
       Body.setAngularVelocity(clickedBody, 0.4);
       const spinDirection = Math.random() > 0.5 ? 1 : -1;
       Body.applyForce(clickedBody, clickedBody.position, { 

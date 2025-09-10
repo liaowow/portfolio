@@ -31,10 +31,10 @@ Build a visually-driven Fun page using a **3D CSS carousel** to showcase images 
 - [x] Interactive physics simulation with gyroscope controls
 
 **Level 2: FunItem Detail View**
-- [ ] Click FunItem piece → Opens dedicated experience view
-- [ ] Media carousel/swiper for all images + videos in that FunItem
-- [ ] Display experience metadata (location, date, ratings, comments)
-- [ ] Navigation back to gyroscope view
+- [x] Click FunItem piece → Opens dedicated experience view
+- [x] Media carousel/swiper for all images + videos in that FunItem
+- [x] Display experience metadata (location, date, ratings, comments)
+- [x] Navigation back to gyroscope view
 
 **Level 3: Full Media Modal**
 - [ ] Click individual media → Full-screen modal
@@ -42,9 +42,9 @@ Build a visually-driven Fun page using a **3D CSS carousel** to showcase images 
 - [ ] Complete metadata display (Annie/Allan ratings, individual comments)
 
 ### **Phase 4: Component Architecture**
-- [x] Build physics gyroscope system in `physicsGyroscope.ts` ✅
-- [ ] Create FunItemDetailView.astro for Level 2 experience view
-- [ ] Build MediaCarousel.tsx for swiping through FunItem media
+- [x] Build physics gyroscope system in `physics-gyroscope.ts` ✅
+- [x] Create FunItemDetailView.astro for Level 2 experience view ✅
+- [x] Build MediaCarousel functionality for swiping through FunItem media ✅
 - [ ] Update existing ImageModal for Level 3 full-screen viewing
 - [x] Create gyroscope controls (device orientation, touch gestures) ✅
 - [x] Update Header.astro navigation (add Fun link) ✅
@@ -78,16 +78,16 @@ interface MediaItem {
 ```
 
 **Data Organization:**
-- [ ] **Categories** contain multiple **FunItems** (experiences)
-- [ ] **FunItems** contain multiple **MediaItems** (photos/videos)
-- [ ] Create sample data file with 32 photos + 1 video organized into FunItems
+- [x] **Categories** contain multiple **FunItems** (experiences) ✅
+- [x] **FunItems** contain multiple **MediaItems** (photos/videos) ✅
+- [x] Create sample data file with 32 photos + 1 video organized into FunItems ✅
 - [ ] **Cloudinary URLs** for optimized delivery and responsive images
 
 ### **Phase 6: Polish & Features**
-- [ ] Add dual-perspective card interactions (Annie/Allan views)
+- [x] Add dual-perspective card interactions (Annie/Allan views) ✅
 - [ ] Build filtering system with practical info (price, reservations, ratings)
 - [ ] Add Fun section to index.astro with smooth transitions
-- [ ] Mobile optimization and touch gesture support
+- [x] Mobile optimization and touch gesture support ✅
 - [ ] Performance optimization (lazy loading, image optimization)
 - [ ] Accessibility features (keyboard navigation, screen readers)
 
@@ -138,10 +138,16 @@ interface MediaItem {
 - [ ] Comment style guidelines
 
 ### Technical Considerations
-- [ ] Performance optimization for many physics bodies
-- [ ] Mobile touch interactions
-- [ ] Video playback in physics environment
-- [ ] Responsive design for different screen sizes
+- [x] Performance optimization for many physics bodies ✅
+- [x] Mobile touch interactions ✅
+- [x] Video playback in physics environment ✅
+- [x] Responsive design for different screen sizes ✅
+
+### Recently Completed UX Improvements
+- [x] **Fixed category filtering bug** - Items properly hide/show with background colors ✅
+- [x] **Dual-click interaction system** - Details buttons vs card spinning ✅
+- [x] **Enhanced button UX** - Larger buttons (30px) with cursor feedback ✅
+- [x] **Canvas click detection** - Precise coordinate mapping for rotating physics bodies ✅
 
 ## 💡 Ideas for Later
 
