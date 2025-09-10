@@ -54,7 +54,8 @@ export function initPhysicsGyroscope(): void {
     { category: 'nature', icon: '🌲', title: 'Hiking Trail', location: 'Central Park', color: 'rgba(34, 197, 94, 0.8)' },
     { category: 'nature', icon: '🌸', title: 'Cherry Blossoms', location: 'Brooklyn Botanic', color: 'rgba(34, 197, 94, 0.8)' },
     { category: 'entertainment', icon: '🎭', title: 'Broadway Show', location: 'Theater District', color: 'rgba(59, 130, 246, 0.8)' },
-    { category: 'entertainment', icon: '🎵', title: 'Concert', location: 'Madison Square', color: 'rgba(59, 130, 246, 0.8)' }
+    { category: 'entertainment', icon: '🎵', title: 'Concert', location: 'Madison Square', color: 'rgba(59, 130, 246, 0.8)' },
+    { category: 'entertainment', icon: '🏇', title: 'Greenwich Polo Match', location: 'Greenwich, Connecticut', color: 'rgba(59, 130, 246, 0.8)' }
   ];
 
   pieceData.forEach((data) => {
@@ -335,8 +336,7 @@ export function initPhysicsGyroscope(): void {
     
     if (buttonClickedBody) {
       // Details button clicked - open modal
-      const funItemId = buttonClickedBody.pieceData.title.toLowerCase().replace(/\s+/g, '-') + '-' + 
-                       buttonClickedBody.pieceData.location.toLowerCase().replace(/\s+/g, '-');
+      const funItemId = buttonClickedBody.pieceData.title.toLowerCase().replace(/\s+/g, '-');
       
       import('../scripts/funitem-detail.ts').then(module => {
         module.openFunItemDetail(funItemId);

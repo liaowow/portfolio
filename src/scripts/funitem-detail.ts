@@ -73,6 +73,26 @@ export const sampleFunItems: FunItem[] = [
       { id: "moma-2", type: "image", src: "/images/placeholder-art.jpg", alt: "Famous Painting" },
       { id: "moma-3", type: "image", src: "/images/placeholder-art.jpg", alt: "Us in the gallery" }
     ]
+  },
+  {
+    id: "greenwich-polo-match",
+    category: "entertainment",
+    title: "Greenwich Polo Match",
+    location: "Greenwich, Connecticut",
+    date: "2025-08-31",
+    annieRating: 5,
+    allanRating: 4,
+    annieComment: "My first polo experience!",
+    allanComment: "A good Labor Day deal, although the match itself doesn't seem as exciting as, say, a football game.",
+    media: [
+      { 
+        id: "polo-1", 
+        type: "image", 
+        src: "https://res.cloudinary.com/ddkxh6joe/image/upload/f_auto,q_auto/Fun2025/08/C9CFBC03-4FD9-45A0-A566-B6109ADC4E0A_1_102_a_yu65ii.jpg", 
+        alt: "Greenwich Polo Match", 
+        caption: "Annie's first polo experience" 
+      }
+    ]
   }
 ];
 
@@ -153,7 +173,7 @@ function populateMediaCarousel(media: MediaItem[]): void {
   const carousel = document.createElement('div');
   carousel.className = 'media-carousel';
   
-  media.forEach(item => {
+  media.forEach((item, index) => {
     const mediaElement = document.createElement('div');
     mediaElement.className = 'media-item';
     
@@ -173,7 +193,7 @@ function populateMediaCarousel(media: MediaItem[]): void {
     
     // Add click handler for full-screen view (Level 3)
     mediaElement.addEventListener('click', () => {
-      openMediaModal(item);
+      openMediaModal(item, media, index);
     });
     
     carousel.appendChild(mediaElement);
@@ -183,9 +203,161 @@ function populateMediaCarousel(media: MediaItem[]): void {
   container.appendChild(carousel);
 }
 
-function openMediaModal(media: MediaItem): void {
-  // TODO: Implement Level 3 - Full Media Modal
-  console.log('Opening media modal for:', media.alt);
+let currentMediaArray: MediaItem[] = [];
+let currentMediaIndex = 0;
+
+function createMediaModal(): void {
+  const modal = document.createElement('div');
+  modal.id = 'media-modal';
+  modal.className = 'fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center z-50 hidden';
+  
+  modal.innerHTML = `
+    <!-- Close Button -->
+    <button class="fixed top-4 right-4 text-white hover:bg-white hover:bg-opacity-20 z-60 bg-black bg-opacity-50 rounded-full p-2 transition-all duration-200" id="media-modal-close">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <!-- Navigation Arrow - Previous -->
+    <button class="fixed left-4 top-1/2 transform -translate-y-1/2 text-white hover:bg-white hover:bg-opacity-20 z-60 bg-black bg-opacity-50 rounded-full p-3 transition-all duration-200" id="media-modal-prev">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    </button>
+
+    <!-- Navigation Arrow - Next -->
+    <button class="fixed right-4 top-1/2 transform -translate-y-1/2 text-white hover:bg-white hover:bg-opacity-20 z-60 bg-black bg-opacity-50 rounded-full p-3 transition-all duration-200" id="media-modal-next">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
+    
+    <div class="relative max-w-7xl max-h-full p-4 w-full">
+      <!-- Media Content -->
+      <div class="flex justify-center items-center h-[90vh]" id="media-modal-content">
+        <!-- Content will be populated dynamically -->
+      </div>
+      
+      <!-- Media Info -->
+      <div class="text-white text-center mt-4">
+        <h3 class="text-lg font-medium" id="media-modal-caption"></h3>
+        <p class="text-sm text-gray-300 mt-1" id="media-modal-meta"></p>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(modal);
+  setupMediaModalEventListeners();
+}
+
+function setupMediaModalEventListeners(): void {
+  const modal = document.getElementById('media-modal');
+  const closeBtn = document.getElementById('media-modal-close');
+  const prevBtn = document.getElementById('media-modal-prev');
+  const nextBtn = document.getElementById('media-modal-next');
+  
+  // Close button
+  closeBtn?.addEventListener('click', closeMediaModal);
+  
+  // Navigation buttons
+  prevBtn?.addEventListener('click', () => navigateMedia(-1));
+  nextBtn?.addEventListener('click', () => navigateMedia(1));
+  
+  // Click outside to close
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeMediaModal();
+    }
+  });
+  
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!modal?.classList.contains('hidden')) {
+      switch (e.key) {
+        case 'Escape':
+          closeMediaModal();
+          break;
+        case 'ArrowLeft':
+          navigateMedia(-1);
+          break;
+        case 'ArrowRight':
+          navigateMedia(1);
+          break;
+      }
+    }
+  });
+}
+
+function populateMediaModal(media: MediaItem, allMedia: MediaItem[], index: number): void {
+  currentMediaArray = allMedia;
+  currentMediaIndex = index;
+  
+  const content = document.getElementById('media-modal-content');
+  const caption = document.getElementById('media-modal-caption');
+  const meta = document.getElementById('media-modal-meta');
+  const prevBtn = document.getElementById('media-modal-prev');
+  const nextBtn = document.getElementById('media-modal-next');
+  
+  if (!content) return;
+  
+  // Clear previous content
+  content.innerHTML = '';
+  
+  // Create media element
+  if (media.type === 'image') {
+    const img = document.createElement('img');
+    img.src = media.src;
+    img.alt = media.alt;
+    img.className = 'max-w-full max-h-full object-contain rounded-lg shadow-2xl';
+    content.appendChild(img);
+  } else {
+    const video = document.createElement('video');
+    video.src = media.src;
+    video.controls = true;
+    video.className = 'max-w-full max-h-full rounded-lg shadow-2xl';
+    content.appendChild(video);
+  }
+  
+  // Update caption and metadata
+  if (caption) caption.textContent = media.alt;
+  if (meta) meta.textContent = `${index + 1} of ${allMedia.length}${media.caption ? ' • ' + media.caption : ''}`;
+  
+  // Show/hide navigation buttons
+  if (prevBtn) prevBtn.style.display = allMedia.length > 1 ? 'block' : 'none';
+  if (nextBtn) nextBtn.style.display = allMedia.length > 1 ? 'block' : 'none';
+}
+
+function navigateMedia(direction: number): void {
+  const newIndex = currentMediaIndex + direction;
+  
+  if (newIndex >= 0 && newIndex < currentMediaArray.length) {
+    currentMediaIndex = newIndex;
+    populateMediaModal(currentMediaArray[currentMediaIndex], currentMediaArray, currentMediaIndex);
+  }
+}
+
+function closeMediaModal(): void {
+  const modal = document.getElementById('media-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+  }
+}
+
+function openMediaModal(media: MediaItem, allMedia: MediaItem[], currentIndex: number): void {
+  // Find or create the media modal
+  let modal = document.getElementById('media-modal');
+  if (!modal) {
+    createMediaModal();
+    modal = document.getElementById('media-modal');
+  }
+  
+  if (modal) {
+    populateMediaModal(media, allMedia, currentIndex);
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
 }
 
 function getIconForCategory(category: string): string {
