@@ -356,8 +356,8 @@ const baseUrl = import.meta.env.BASE_URL;
       import { initFunItemDetail } from '../scripts/funitem-detail.ts';
 
       // Initialize both systems when DOM is loaded
-      document.addEventListener('DOMContentLoaded', () => {
-        initPhysicsGyroscope();
+      document.addEventListener('DOMContentLoaded', async () => {
+        await initPhysicsGyroscope();
         initFunItemDetail();
       });
     </script>

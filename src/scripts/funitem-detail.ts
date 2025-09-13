@@ -1,103 +1,22 @@
-// Sample FunItem data structure matching the plan
-export interface FunItem {
-  id: string;
-  category: "food" | "art" | "nature" | "entertainment";
-  title: string;
-  location: string;
-  date: string;
-  annieRating: number; // 1-5
-  allanRating: number; // 1-5
-  annieComment: string;
-  allanComment: string;
-  sharedComment?: string;
-  media: MediaItem[];
-  thumbnail?: string;
-}
+import type { FunItem, MediaAsset } from '../lib/types/fun-item';
 
-export interface MediaItem {
-  id: string;
-  type: "image" | "video";
-  src: string; // Cloudinary URL
-  alt: string;
-  caption?: string;
-  timestamp?: string;
-}
+// Legacy sample data - now replaced with real Cloudinary API data
 
-// Sample FunItem data (will be replaced with real Cloudinary data)
-export const sampleFunItems: FunItem[] = [
-  {
-    id: "pizza-night-downtown",
-    category: "food",
-    title: "Pizza Night",
-    location: "Downtown",
-    date: "2024-06-15",
-    annieRating: 5,
-    allanRating: 4,
-    annieComment: "The margherita was absolutely perfect! Love how the basil was so fresh and the crust had that perfect char.",
-    allanComment: "Great atmosphere and solid pizza. The pepperoni was a bit greasy for my taste but overall really enjoyed it.",
-    sharedComment: "Perfect date night spot - we'll definitely be coming back here!",
-    media: [
-      { id: "pizza-1", type: "image", src: "/images/placeholder-food.jpg", alt: "Margherita Pizza" },
-      { id: "pizza-2", type: "image", src: "/images/placeholder-food.jpg", alt: "Restaurant Interior" },
-      { id: "pizza-3", type: "image", src: "/images/placeholder-food.jpg", alt: "Us enjoying dinner" }
-    ]
-  },
-  {
-    id: "ramen-adventure-chinatown",
-    category: "food", 
-    title: "Ramen Adventure",
-    location: "Chinatown",
-    date: "2024-07-02",
-    annieRating: 4,
-    allanRating: 5,
-    annieComment: "The broth was incredibly rich and flavorful. Maybe a bit too salty for me but Allan loved it!",
-    allanComment: "This is what I call perfect ramen! The chashu was melt-in-your-mouth tender and the noodles had great texture.",
-    media: [
-      { id: "ramen-1", type: "image", src: "/images/placeholder-food.jpg", alt: "Tonkotsu Ramen Bowl" },
-      { id: "ramen-2", type: "image", src: "/images/placeholder-food.jpg", alt: "Restaurant Exterior" }
-    ]
-  },
-  {
-    id: "museum-visit-moma",
-    category: "art",
-    title: "Museum Visit", 
-    location: "MOMA",
-    date: "2024-06-28",
-    annieRating: 5,
-    allanRating: 3,
-    annieComment: "The contemporary exhibits were absolutely stunning! Spent hours just soaking in all the creativity.",
-    allanComment: "Some interesting pieces but I prefer more traditional art. The Picasso section was cool though.",
-    sharedComment: "Great way to spend a rainy afternoon together, even if we have different art tastes!",
-    media: [
-      { id: "moma-1", type: "image", src: "/images/placeholder-art.jpg", alt: "Museum Exterior" },
-      { id: "moma-2", type: "image", src: "/images/placeholder-art.jpg", alt: "Famous Painting" },
-      { id: "moma-3", type: "image", src: "/images/placeholder-art.jpg", alt: "Us in the gallery" }
-    ]
-  },
-  {
-    id: "greenwich-polo-match",
-    category: "entertainment",
-    title: "Greenwich Polo Match",
-    location: "Greenwich, Connecticut",
-    date: "2025-08-31",
-    annieRating: 5,
-    allanRating: 4,
-    annieComment: "My first polo experience!",
-    allanComment: "A good Labor Day deal, although the match itself doesn't seem as exciting as, say, a football game.",
-    media: [
-      { 
-        id: "polo-1", 
-        type: "image", 
-        src: "https://res.cloudinary.com/ddkxh6joe/image/upload/f_auto,q_auto/Fun2025/08/C9CFBC03-4FD9-45A0-A566-B6109ADC4E0A_1_102_a_yu65ii.jpg", 
-        alt: "Greenwich Polo Match", 
-        caption: "Annie's first polo experience" 
-      }
-    ]
+export async function openFunItemDetail(funItemId: string): Promise<void> {
+  // Fetch funItem from API
+  let funItem: FunItem | null = null;
+  try {
+    const response = await fetch(`/api/fun/${funItemId}`);
+    if (response.ok) {
+      funItem = await response.json();
+    } else {
+      console.error('Failed to fetch Fun item:', response.statusText);
+      return;
+    }
+  } catch (error) {
+    console.error('Error fetching Fun item:', error);
+    return;
   }
-];
-
-export function openFunItemDetail(funItemId: string): void {
-  const funItem = sampleFunItems.find(item => item.id === funItemId);
   if (!funItem) return;
   
   const modal = document.getElementById('funitem-detail-modal');
@@ -113,21 +32,18 @@ export function openFunItemDetail(funItemId: string): void {
   // Populate ratings
   updateStars(`[data-annie-stars="funitem-detail-modal"]`, funItem.annieRating);
   updateElement(`[data-annie-rating="funitem-detail-modal"]`, `${funItem.annieRating}/5`);
-  updateElement(`[data-annie-comment="funitem-detail-modal"]`, funItem.annieComment);
   
   updateStars(`[data-allan-stars="funitem-detail-modal"]`, funItem.allanRating);
   updateElement(`[data-allan-rating="funitem-detail-modal"]`, `${funItem.allanRating}/5`);
-  updateElement(`[data-allan-comment="funitem-detail-modal"]`, funItem.allanComment);
 
-  // Handle shared comment
+  // Hide comment sections for now (as requested - comments will be added later)
+  const annieCommentContainer = document.querySelector(`[data-annie-comment-container="funitem-detail-modal"]`) as HTMLElement;
+  const allanCommentContainer = document.querySelector(`[data-allan-comment-container="funitem-detail-modal"]`) as HTMLElement;
   const sharedContainer = document.querySelector(`[data-shared-comment-container="funitem-detail-modal"]`) as HTMLElement;
-  const sharedComment = document.querySelector(`[data-shared-comment="funitem-detail-modal"]`);
-  if (funItem.sharedComment && sharedContainer && sharedComment) {
-    sharedComment.textContent = funItem.sharedComment;
-    sharedContainer.style.display = 'block';
-  } else if (sharedContainer) {
-    sharedContainer.style.display = 'none';
-  }
+  
+  if (annieCommentContainer) annieCommentContainer.style.display = 'none';
+  if (allanCommentContainer) allanCommentContainer.style.display = 'none';
+  if (sharedContainer) sharedContainer.style.display = 'none';
 
   // Populate media carousel
   populateMediaCarousel(funItem.media);
@@ -166,7 +82,7 @@ function updateStars(selector: string, rating: number): void {
   }
 }
 
-function populateMediaCarousel(media: MediaItem[]): void {
+function populateMediaCarousel(media: MediaAsset[]): void {
   const container = document.querySelector('[data-funitem-media="funitem-detail-modal"]');
   if (!container) return;
 
@@ -203,7 +119,7 @@ function populateMediaCarousel(media: MediaItem[]): void {
   container.appendChild(carousel);
 }
 
-let currentMediaArray: MediaItem[] = [];
+let currentMediaArray: MediaAsset[] = [];
 let currentMediaIndex = 0;
 
 function createMediaModal(): void {
@@ -289,7 +205,7 @@ function setupMediaModalEventListeners(): void {
   });
 }
 
-function populateMediaModal(media: MediaItem, allMedia: MediaItem[], index: number): void {
+function populateMediaModal(media: MediaAsset, allMedia: MediaAsset[], index: number): void {
   currentMediaArray = allMedia;
   currentMediaIndex = index;
   
@@ -345,7 +261,7 @@ function closeMediaModal(): void {
   }
 }
 
-function openMediaModal(media: MediaItem, allMedia: MediaItem[], currentIndex: number): void {
+function openMediaModal(media: MediaAsset, allMedia: MediaAsset[], currentIndex: number): void {
   // Find or create the media modal
   let modal = document.getElementById('media-modal');
   if (!modal) {

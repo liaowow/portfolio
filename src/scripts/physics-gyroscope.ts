@@ -1,6 +1,7 @@
 import { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint, Body, Events } from 'matter-js';
+import type { FunItem } from '../lib/types/fun-item';
 
-export function initPhysicsGyroscope(): void {
+export async function initPhysicsGyroscope(): Promise<void> {
   const container = document.querySelector('.kaleidoscope-container') as HTMLElement;
   const categoryBtns = document.querySelectorAll('.category-btn');
   const shuffleBtn = document.getElementById('shuffleBtn');
@@ -43,20 +44,49 @@ export function initPhysicsGyroscope(): void {
     Bodies.rectangle(renderWidth + 25, renderHeight / 2, 50, renderHeight, { isStatic: true, render: { visible: false } })
   ];
 
+  // Fetch Fun items from API
+  let funItems: FunItem[] = [];
+  try {
+    const response = await fetch('/api/fun');
+    const data = await response.json();
+    funItems = data.items || [];
+  } catch (error) {
+    console.error('Failed to fetch Fun items:', error);
+    // Fallback to empty array
+    funItems = [];
+  }
+
   // Create physics bodies for each piece
   const physicsBodies: any[] = [];
-  const pieceData = [
-    { category: 'food', icon: '🍕', title: 'Pizza Night', location: 'Downtown', color: 'rgba(239, 68, 68, 0.8)' },
-    { category: 'food', icon: '🍜', title: 'Ramen Adventure', location: 'Chinatown', color: 'rgba(239, 68, 68, 0.8)' },
-    { category: 'food', icon: '🥘', title: 'Cooking Class', location: 'Little Italy', color: 'rgba(239, 68, 68, 0.8)' },
-    { category: 'art', icon: '🎨', title: 'Museum Visit', location: 'MOMA', color: 'rgba(168, 85, 247, 0.8)' },
-    { category: 'art', icon: '🖼️', title: 'Gallery Opening', location: 'Chelsea', color: 'rgba(168, 85, 247, 0.8)' },
-    { category: 'nature', icon: '🌲', title: 'Hiking Trail', location: 'Central Park', color: 'rgba(34, 197, 94, 0.8)' },
-    { category: 'nature', icon: '🌸', title: 'Cherry Blossoms', location: 'Brooklyn Botanic', color: 'rgba(34, 197, 94, 0.8)' },
-    { category: 'entertainment', icon: '🎭', title: 'Broadway Show', location: 'Theater District', color: 'rgba(59, 130, 246, 0.8)' },
-    { category: 'entertainment', icon: '🎵', title: 'Concert', location: 'Madison Square', color: 'rgba(59, 130, 246, 0.8)' },
-    { category: 'entertainment', icon: '🏇', title: 'Greenwich Polo Match', location: 'Greenwich, Connecticut', color: 'rgba(59, 130, 246, 0.8)' }
-  ];
+  const getCategoryIcon = (category: string): string => {
+    const icons = {
+      food: '🍕',
+      art: '🎨',
+      nature: '🌲',
+      entertainment: '🎭'
+    };
+    return icons[category as keyof typeof icons] || '📍';
+  };
+
+  const getCategoryColor = (category: string): string => {
+    const colors = {
+      food: 'rgba(239, 68, 68, 0.8)',
+      art: 'rgba(168, 85, 247, 0.8)',
+      nature: 'rgba(34, 197, 94, 0.8)',
+      entertainment: 'rgba(59, 130, 246, 0.8)'
+    };
+    return colors[category as keyof typeof colors] || 'rgba(107, 114, 128, 0.8)';
+  };
+
+  // Transform FunItems into pieceData format
+  const pieceData = funItems.map(item => ({
+    category: item.category,
+    icon: getCategoryIcon(item.category),
+    title: item.title,
+    location: item.location,
+    color: getCategoryColor(item.category),
+    id: item.id
+  }));
 
   pieceData.forEach((data) => {
     const x = Math.random() * (renderWidth - 120) + 60;
