@@ -2,6 +2,8 @@
 import type { APIRoute } from 'astro';
 import { getFunItems, getFunItemsByCategory } from '../../../lib/services/cloudinary';
 
+export const prerender = false;
+
 export const GET: APIRoute = async ({ url }) => {
   try {
     const category = url.searchParams.get('category');

@@ -16,7 +16,7 @@ export const getFunItems = async (): Promise<FunItem[]> => {
   configureCloudinary();
   
   const result = await cloudinary.search
-    .expression('folder:Fun2025')
+    .expression('folder:Fun2025 AND metadata.is_cover:true')
     .with_field('metadata')
     .max_results(50)
     .execute();
@@ -29,7 +29,7 @@ export const getFunItemById = async (id: string): Promise<FunItem | null> => {
   configureCloudinary();
   
   const result = await cloudinary.search
-    .expression(`folder:Home/Fun2025 AND metadata.id:${id}`)
+    .expression(`folder:Fun2025 AND metadata.fun_id:${id}`)
     .with_field('metadata')
     // .sort_by([['created_at', 'asc']])
     .max_results(20)
@@ -47,7 +47,7 @@ export const getFunItemsByCategory = async (category: string): Promise<FunItem[]
   configureCloudinary();
   
   const result = await cloudinary.search
-    .expression(`folder:Home/Fun2025 AND metadata.category:${category} AND metadata.is_cover:true`)
+    .expression(`folder:Fun2025 AND metadata.category:${category}`)
     .with_field('metadata')
     // .sort_by([['created_at', 'desc']])
     .execute();
@@ -75,7 +75,7 @@ const transformToFunItems = (resources: CloudinaryResource[]): FunItem[] => {
   
   resources.forEach(resource => {
     const metadata = resource.metadata;
-    const itemId = metadata?.id;
+    const itemId = metadata?.fun_id; // Fixed: using fun_id instead of id
     
     if (itemId) {
       if (!itemMap.has(itemId)) {
@@ -121,7 +121,7 @@ const transformToFunItem = (resources: CloudinaryResource[]): FunItem => {
   const coverImage = media.find(m => m.isCover);
   
   return {
-    id: metadata.id || '',
+    id: metadata.fun_id || '',
     category: metadata.category as 'food' | 'art' | 'nature' | 'entertainment',
     title: metadata.title || 'Untitled',
     location: metadata.location || '',
@@ -136,10 +136,15 @@ const transformToFunItem = (resources: CloudinaryResource[]): FunItem => {
 const transformToMediaAsset = (resource: CloudinaryResource): MediaAsset => {
   const metadata = resource.metadata;
   
+  // Use optimized URL for images, especially HEIC format conversion
+  const src = resource.resource_type === 'image' 
+    ? getOptimizedUrl(resource.public_id, 'w_800,c_limit')
+    : resource.secure_url;
+  
   return {
     id: resource.public_id,
     type: resource.resource_type === 'video' ? 'video' : 'image',
-    src: resource.secure_url,
+    src: src,
     alt: metadata?.title || resource.public_id,
     caption: '', // Can be added later if needed
     isCover: metadata?.is_cover === 'true',
@@ -149,13 +154,12 @@ const transformToMediaAsset = (resource: CloudinaryResource): MediaAsset => {
 
 // Helper function to get optimized URLs
 export const getOptimizedUrl = (publicId: string, transformation?: string): string => {
-  const baseTransform = 'f_auto,q_auto';
+  const cloudName = 'ddkxh6joe';
+  // Start with just format conversion for HEIC files
+  const baseTransform = 'f_auto';
   const finalTransform = transformation ? `${baseTransform},${transformation}` : baseTransform;
   
-  return cloudinary.url(publicId, {
-    transformation: finalTransform,
-    secure: true
-  });
+  return `https://res.cloudinary.com/${cloudName}/image/upload/${finalTransform}/${publicId}`;
 };
 
 // Helper function to get category icon

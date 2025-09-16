@@ -50,6 +50,7 @@ export interface CloudinaryMetadata {
   annie_rating?: string;
   allan_rating?: string;
   id?: string;
+  fun_id?: string;
   is_cover?: string;
 }
 

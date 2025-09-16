@@ -366,7 +366,7 @@ export async function initPhysicsGyroscope(): Promise<void> {
     
     if (buttonClickedBody) {
       // Details button clicked - open modal
-      const funItemId = buttonClickedBody.pieceData.title.toLowerCase().replace(/\s+/g, '-');
+      const funItemId = buttonClickedBody.pieceData.id;
       
       import('../scripts/funitem-detail.ts').then(module => {
         module.openFunItemDetail(funItemId);

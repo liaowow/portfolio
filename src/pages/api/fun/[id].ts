@@ -2,6 +2,8 @@
 import type { APIRoute } from 'astro';
 import { getFunItemById } from '../../../lib/services/cloudinary';
 
+export const prerender = false;
+
 export const GET: APIRoute = async ({ params }) => {
   try {
     const { id } = params;
