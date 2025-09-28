@@ -128,7 +128,7 @@ const baseUrl = import.meta.env.BASE_URL;
     </main>
 
     <!-- Masonry Media Modal -->
-    <MasonryModal id="masonry-modal" items={[]} />
+    <MasonryModal id="masonry-modal" />
 
     <style is:global>
       /* Netflix Color Palette */
@@ -432,6 +432,158 @@ const baseUrl = import.meta.env.BASE_URL;
       .hero-banner h1,
       .hero-banner .text-gray-300 {
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      }
+
+      /* Swiper Styles for Modal */
+      .masonry-modal .swiper {
+        width: 100%;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        overflow: hidden;
+        list-style: none;
+        padding: 0;
+        z-index: 1;
+      }
+
+      .masonry-modal .swiper-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: flex;
+        transition-property: transform;
+        box-sizing: content-box;
+      }
+
+      .masonry-modal .swiper-slide {
+        flex-shrink: 0;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transition-property: transform;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .masonry-modal .swiper-slide img,
+      .masonry-modal .swiper-slide video {
+        max-width: 100%;
+        max-height: 70vh;
+        object-fit: contain;
+        border-radius: 12px;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .masonry-modal .swiper-slide video {
+        background: #000;
+        width: auto;
+        height: auto;
+      }
+
+      /* Navigation Buttons */
+      .masonry-modal .swiper-button-next,
+      .masonry-modal .swiper-button-prev {
+        position: absolute;
+        top: 50%;
+        width: 48px;
+        height: 48px;
+        margin-top: -24px;
+        z-index: 10;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .masonry-modal .swiper-button-next:hover,
+      .masonry-modal .swiper-button-prev:hover {
+        background: rgba(0, 0, 0, 0.8);
+      }
+
+      .masonry-modal .swiper-button-prev {
+        left: 10px;
+      }
+
+      .masonry-modal .swiper-button-next {
+        right: 10px;
+      }
+
+      .masonry-modal .swiper-button-next:after,
+      .masonry-modal .swiper-button-prev:after {
+        content: '';
+        display: none;
+      }
+
+      .masonry-modal .swiper-button-prev::before {
+        content: '‹';
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .masonry-modal .swiper-button-next::before {
+        content: '›';
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .masonry-modal .swiper-navigation-icon {
+        display: none;
+      }
+
+      /* Pagination */
+      .masonry-modal .swiper-pagination {
+        position: absolute;
+        text-align: center;
+        transition: 0.3s opacity;
+        transform: translate3d(0, 0, 0);
+        z-index: 10;
+        bottom: 10px;
+        left: 0;
+        width: 100%;
+      }
+
+      .masonry-modal .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        display: inline-block;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        opacity: 1;
+        margin: 0 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .masonry-modal .swiper-pagination-bullet-active {
+        background: rgba(255, 255, 255, 0.9);
+        transform: scale(1.2);
+      }
+
+      /* Caption Styles */
+      .masonry-modal .carousel-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        color: white;
+        padding: 2rem 1rem 1rem;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .masonry-modal .swiper-slide:hover .carousel-caption {
+        opacity: 1;
+
       }
     </style>
 

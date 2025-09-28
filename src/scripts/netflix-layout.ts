@@ -276,31 +276,45 @@ async function loadMasonryContent(funItem: FunItem, container: Element): Promise
     }
 
     // Import Swiper dynamically
-    const { Swiper, Navigation, Pagination } = await import('swiper');
-    await import('swiper/css');
-    await import('swiper/css/navigation');
-    await import('swiper/css/pagination');
+    const { Swiper } = await import('swiper');
+    const { Navigation, Pagination } = await import('swiper/modules');
+
+    // Helper function to fix video URLs from Cloudinary
+    function getVideoUrl(media: MediaAsset): string {
+      if (media.type === 'video' && media.src.includes('cloudinary.com')) {
+        // Convert image URL to video URL by changing the resource type
+        return media.src
+          .replace('/image/upload/', '/video/upload/')
+          .replace('f_auto,w_800,c_limit/', 'f_auto,q_auto/')
+          .replace(/\.(jpg|jpeg|png|webp)$/i, '.mp4');
+      }
+      return media.src;
+    }
 
     // Create Swiper HTML
     const swiperHTML = `
       <div class="swiper-wrapper">
-        ${detailedItem.media.map((media: MediaAsset) => `
+        ${detailedItem.media.map((media: MediaAsset) => {
+          const videoUrl = getVideoUrl(media);
+
+          return `
           <div class="swiper-slide">
             ${media.type === 'image' ? `
               <img src="${media.src}" alt="${media.alt || funItem.title}" loading="lazy" />
             ` : `
-              <video controls preload="metadata">
-                <source src="${media.src}" type="video/mp4">
+              <video controls preload="metadata" playsinline>
+                <source src="${videoUrl}" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
             `}
             ${media.caption ? `
-              <div class="swiper-caption">
-                <div class="swiper-caption-text">${media.caption}</div>
+              <div class="carousel-caption">
+                <div class="carousel-caption-text">${media.caption}</div>
               </div>
             ` : ''}
           </div>
-        `).join('')}
+        `;
+        }).join('')}
       </div>
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
@@ -324,8 +338,36 @@ async function loadMasonryContent(funItem: FunItem, container: Element): Promise
       keyboard: {
         enabled: true,
       },
-      spaceBetween: 30,
+      spaceBetween: 0,
       centeredSlides: true,
+      slidesPerView: 1,
+      allowTouchMove: true,
+      on: {
+        slideChange: function() {
+          // Pause all videos when slide changes
+          const videos = container.querySelectorAll('video');
+          videos.forEach(video => {
+            (video as HTMLVideoElement).pause();
+          });
+        }
+      }
+    });
+
+    // Handle video loading and error events
+    const videos = container.querySelectorAll('video');
+    videos.forEach(video => {
+      const videoElement = video as HTMLVideoElement;
+
+      // Add click handler to ensure video can play
+      videoElement.addEventListener('click', () => {
+        if (videoElement.paused) {
+          videoElement.play().catch(() => {
+            // Silently handle play failures
+          });
+        } else {
+          videoElement.pause();
+        }
+      });
     });
 
   } catch (error) {
@@ -334,113 +376,4 @@ async function loadMasonryContent(funItem: FunItem, container: Element): Promise
   }
 }
 
-function initCarousel(container: Element, totalSlides: number): void {
-  let currentSlide = 0;
-  const slidesContainer = container.querySelector('[data-carousel-slides]') as HTMLElement;
-  const modal = container.closest('.masonry-modal');
 
-  if (!slidesContainer || !modal) {
-    console.error('Carousel initialization failed: missing elements');
-    return;
-  }
-
-  console.log('Initializing carousel with', totalSlides, 'slides');
-
-  // Get navigation buttons
-  const prevBtn = modal.querySelector('.carousel-prev') as HTMLButtonElement;
-  const nextBtn = modal.querySelector('.carousel-next') as HTMLButtonElement;
-  const dotsContainer = modal.querySelector('.carousel-dots') as HTMLElement;
-
-  // Create dots
-  if (dotsContainer && totalSlides > 1) {
-    dotsContainer.innerHTML = '';
-    for (let i = 0; i < totalSlides; i++) {
-      const dot = document.createElement('button');
-      dot.className = `carousel-dot ${i === 0 ? 'active' : ''}`;
-      dot.addEventListener('click', () => goToSlide(i));
-      dotsContainer.appendChild(dot);
-    }
-  }
-
-  function updateSlide(): void {
-    console.log('Updating slide to:', currentSlide);
-    if (slidesContainer) {
-      const translateX = currentSlide * 100;
-      slidesContainer.style.transform = `translateX(-${translateX}%)`;
-      console.log('Applied transform:', `translateX(-${translateX}%)`);
-    }
-
-    // Update dots
-    const dots = dotsContainer?.querySelectorAll('.carousel-dot');
-    if (dots) {
-      dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentSlide);
-      });
-    }
-
-    // Update button states
-    if (prevBtn) prevBtn.disabled = currentSlide === 0;
-    if (nextBtn) nextBtn.disabled = currentSlide === totalSlides - 1;
-  }
-
-  function goToSlide(slideIndex: number): void {
-    const newSlide = Math.max(0, Math.min(slideIndex, totalSlides - 1));
-    console.log('Going to slide:', newSlide);
-    currentSlide = newSlide;
-    updateSlide();
-  }
-
-  function nextSlide(): void {
-    console.log('Next slide clicked, current:', currentSlide, 'total:', totalSlides);
-    if (currentSlide < totalSlides - 1) {
-      currentSlide++;
-      updateSlide();
-    }
-  }
-
-  function prevSlide(): void {
-    console.log('Prev slide clicked, current:', currentSlide);
-    if (currentSlide > 0) {
-      currentSlide--;
-      updateSlide();
-    }
-  }
-
-  // Add event listeners using event delegation on modal
-  modal.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
-
-    if (target.closest('.carousel-prev')) {
-      e.stopPropagation();
-      prevSlide();
-    } else if (target.closest('.carousel-next')) {
-      e.stopPropagation();
-      nextSlide();
-    }
-  });
-
-  // Keyboard navigation
-  const keyHandler = (e: KeyboardEvent) => {
-    if (!modal.classList.contains('hidden')) {
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        prevSlide();
-      }
-      if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        nextSlide();
-      }
-    }
-  };
-
-  document.addEventListener('keydown', keyHandler);
-  (modal as any)._carouselKeyHandler = keyHandler;
-
-  // Initialize
-  updateSlide();
-}
-
-// Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  // No additional initialization needed for standard scrolling
-});
