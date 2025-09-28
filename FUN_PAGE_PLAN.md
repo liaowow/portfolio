@@ -1,10 +1,10 @@
 # Fun Page Implementation Plan
 
-A creative 3D carousel gallery showcasing fun activities shared by Annie and Allan.
+A Netflix-style multimedia gallery showcasing fun activities shared by Annie and Allan.
 
 ## 🎯 Project Overview
 
-Build a visually-driven Fun page using a **3D CSS carousel** to showcase images and videos of activities shared by Annie and Allan. The carousel will have 4 faces for the 4 categories, with smooth rotation and depth effects.
+Build a visually-driven Fun page using a **Netflix-style layout** to showcase images and videos of activities shared by Annie and Allan. The page features a hero banner with the latest adventure, followed by horizontal scrolling category rows with poster-style cards and Swiper.js carousel modals for detailed media viewing.
 
 **Categories**: food, art, nature, entertainment
 
