@@ -1,6 +1,6 @@
 ---
 import Header from "../components/Header.astro";
-import FunItemDetailView from "../components/FunItemDetailView.astro";
+import MasonryModal from "../components/MasonryModal.astro";
 export const prerender = true;
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -15,350 +15,432 @@ const baseUrl = import.meta.env.BASE_URL;
     <title>Fun Adventures</title>
     <meta
       name="description"
-      content="Explore the fun adventures and shared experiences of Annie and Allan through a fun gyroscopic experience."
+      content="Explore the fun adventures and shared experiences of Annie and Allan through a Netflix-style interface."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body class="font-sans antialiased bg-gray-900">
+  <body class="font-sans antialiased bg-netflix-black">
     <Header />
-    
-    <main class="pt-20">
-      <!-- Kaleidoscope Container -->
-      <section class="py-16 px-6 bg-gray-900">
-        <div class="max-w-7xl mx-auto">
-          <!-- Category Controls -->
-          <div class="category-controls">
-            <button class="category-btn active" data-category="all">All</button>
-            <button class="category-btn" data-category="food">Food</button>
-            <button class="category-btn" data-category="art">Art</button>
-            <button class="category-btn" data-category="nature">Nature</button>
-            <button class="category-btn" data-category="entertainment">Entertainment</button>
+
+    <main class="pt-16">
+      <!-- Hero Banner Section -->
+      <section class="hero-banner relative h-screen max-h-[800px] min-h-[500px] overflow-hidden">
+        <!-- Hero Background Image -->
+        <div
+          class="hero-background absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22 fill=%22%23141414%22><rect width=%22100%22 height=%22100%22 fill=%22%23141414%22/></svg>');"
+        ></div>
+
+        <!-- Hero Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-netflix-black to-transparent"></div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 h-full flex items-center">
+          <div class="max-w-7xl mx-auto px-6 w-full">
+            <div class="max-w-2xl">
+              <h1 class="text-4xl md:text-6xl font-bold text-white mb-4" data-hero-title>
+                Loading Latest Adventure...
+              </h1>
+              <div class="flex items-center gap-4 text-gray-300 mb-6">
+                <div class="flex items-center gap-2">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  <span data-hero-location>Loading...</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  <span data-hero-date>Loading...</span>
+                </div>
+              </div>
+
+              <!-- Call to Action -->
+              <button
+                class="see-more-btn bg-white text-black px-8 py-3 rounded-md font-semibold text-lg hover:bg-gray-200 transition-colors duration-200 flex items-center gap-2"
+                data-see-more-btn
+              >
+                View Gallery
+              </button>
+            </div>
           </div>
+        </div>
+      </section>
 
-          <!-- Kaleidoscope Grid -->
-          <div class="kaleidoscope-container" id="kaleidoscope">
-            <!-- Food Items -->
-            <div class="kaleidoscope-piece food-piece" data-category="food">
-              <div class="piece-content">
-                <div class="piece-icon">🍕</div>
-                <h3>Pizza Night</h3>
-                <p>Downtown</p>
-              </div>
-            </div>
-            <div class="kaleidoscope-piece food-piece" data-category="food">
-              <div class="piece-content">
-                <div class="piece-icon">🍜</div>
-                <h3>Ramen Adventure</h3>
-                <p>Chinatown</p>
-              </div>
-            </div>
-            <div class="kaleidoscope-piece food-piece" data-category="food">
-              <div class="piece-content">
-                <div class="piece-icon">🥘</div>
-                <h3>Cooking Class</h3>
-                <p>Little Italy</p>
-              </div>
-            </div>
+      <!-- Category Rows Section -->
+      <section class="category-rows bg-netflix-black py-12">
+        <div class="max-w-7xl mx-auto px-6 space-y-12">
 
-            <!-- Art Items -->
-            <div class="kaleidoscope-piece art-piece" data-category="art">
-              <div class="piece-content">
-                <div class="piece-icon">🎨</div>
-                <h3>Museum Visit</h3>
-                <p>MOMA</p>
-              </div>
-            </div>
-            <div class="kaleidoscope-piece art-piece" data-category="art">
-              <div class="piece-content">
-                <div class="piece-icon">🖼️</div>
-                <h3>Gallery Opening</h3>
-                <p>Chelsea</p>
-              </div>
-            </div>
-
-            <!-- Nature Items -->
-            <div class="kaleidoscope-piece nature-piece" data-category="nature">
-              <div class="piece-content">
-                <div class="piece-icon">🌲</div>
-                <h3>Hiking Trail</h3>
-                <p>Central Park</p>
-              </div>
-            </div>
-            <div class="kaleidoscope-piece nature-piece" data-category="nature">
-              <div class="piece-content">
-                <div class="piece-icon">🌸</div>
-                <h3>Cherry Blossoms</h3>
-                <p>Brooklyn Botanic</p>
-              </div>
-            </div>
-
-            <!-- Entertainment Items -->
-            <div class="kaleidoscope-piece entertainment-piece" data-category="entertainment">
-              <div class="piece-content">
-                <div class="piece-icon">🎭</div>
-                <h3>Broadway Show</h3>
-                <p>Theater District</p>
-              </div>
-            </div>
-            <div class="kaleidoscope-piece entertainment-piece" data-category="entertainment">
-              <div class="piece-content">
-                <div class="piece-icon">🎵</div>
-                <h3>Concert</h3>
-                <p>Madison Square</p>
+          <!-- Food Category -->
+          <div class="category-row" data-category-row="food">
+            <h2 class="text-2xl font-semibold text-white mb-6">Food Adventures</h2>
+            <div class="category-grid overflow-x-auto">
+              <!-- Food items will be populated by JavaScript -->
+              <div class="flex items-center justify-center h-48 text-gray-400">
+                <p>Loading food adventures...</p>
               </div>
             </div>
           </div>
 
-          <!-- Interaction Controls -->
-          <div class="kaleidoscope-controls">
-            <button class="control-btn" id="shuffleBtn">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-              </svg>
-              Shuffle
-            </button>
-            <button class="control-btn" id="resetBtn">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-              </svg>
-              Reset
-            </button>
+          <!-- Art Category -->
+          <div class="category-row" data-category-row="art">
+            <h2 class="text-2xl font-semibold text-white mb-6">Art & Culture</h2>
+            <div class="category-grid overflow-x-auto">
+              <!-- Art items will be populated by JavaScript -->
+              <div class="flex items-center justify-center h-48 text-gray-400">
+                <p>Loading art experiences...</p>
+              </div>
+            </div>
           </div>
+
+          <!-- Nature Category -->
+          <div class="category-row" data-category-row="nature">
+            <h2 class="text-2xl font-semibold text-white mb-6">Nature Escapes</h2>
+            <div class="category-grid overflow-x-auto">
+              <!-- Nature items will be populated by JavaScript -->
+              <div class="flex items-center justify-center h-48 text-gray-400">
+                <p>Loading nature adventures...</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entertainment Category -->
+          <div class="category-row" data-category-row="entertainment">
+            <h2 class="text-2xl font-semibold text-white mb-6">Entertainment</h2>
+            <div class="category-grid overflow-x-auto">
+              <!-- Entertainment items will be populated by JavaScript -->
+              <div class="flex items-center justify-center h-48 text-gray-400">
+                <p>Loading entertainment experiences...</p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
     </main>
 
-    <!-- FunItem Detail Modal -->
-    <FunItemDetailView id="funitem-detail-modal" />
+    <!-- Masonry Media Modal -->
+    <MasonryModal id="masonry-modal" items={[]} />
 
-    <style>
-      .category-controls {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin-bottom: 3rem;
+    <style is:global>
+      /* Netflix Color Palette */
+      :root {
+        --netflix-black: #141414;
+        --netflix-red: #e50914;
+        --netflix-dark-gray: #2f2f2f;
+        --netflix-light-gray: #f3f3f3;
       }
 
-      .category-btn {
-        padding: 0.75rem 1.5rem;
-        border: 2px solid rgba(255, 255, 255, 0.2);
-        border-radius: 30px;
-        background: rgba(17, 24, 39, 0.6);
-        color: #d1d5db;
+      /* Global Netflix Styles */
+      .bg-netflix-black {
+        background-color: var(--netflix-black);
+      }
+
+      /* Hero Banner Styles */
+      .hero-banner {
+        position: relative;
+      }
+
+      .hero-background {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: background-image 0.5s ease;
+      }
+
+      /* Category Grid Styles */
+      .category-grid {
+        display: flex;
+        gap: 1rem;
+        padding: 0.5rem 0;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        overflow-y: visible; /* Allow vertical scroll to bubble up */
+        width: 100%; /* Use full viewport width */
+        scrollbar-width: none; /* Hide scrollbar in Firefox */
+        scroll-behavior: smooth;
+      }
+
+      /* Hide scrollbar in webkit browsers */
+      .category-grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Movie Poster Card Styles */
+      .poster-card {
+        flex: 0 0 280px; /* Fixed flex-basis for consistent sizing */
+        width: 280px !important; /* Force width */
+        min-width: 280px;
+        max-width: 280px;
         cursor: pointer;
         transition: all 0.3s ease;
-        font-size: 0.95rem;
-        font-weight: 500;
-        backdrop-filter: blur(10px);
-      }
-
-      .category-btn.active,
-      .category-btn:hover {
-        background: rgba(255, 255, 255, 0.15);
-        color: white;
-        border-color: rgba(255, 255, 255, 0.4);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-      }
-
-      .kaleidoscope-container {
-        position: relative;
-        width: 100%;
-        height: 600px;
-        background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-        border-radius: 20px;
-        padding: 2rem;
+        border-radius: 8px;
         overflow: hidden;
+        position: relative;
       }
 
-      .kaleidoscope-piece {
-        position: absolute;
-        width: 120px;
-        height: 120px;
-        background: rgba(17, 24, 39, 0.8);
-        border-radius: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        backdrop-filter: blur(10px);
-        transform-origin: center;
-      }
-
-      .kaleidoscope-piece:hover {
-        transform: scale(1.1) rotate(5deg);
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.3);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      .poster-card:hover {
+        transform: scale(1.05);
         z-index: 10;
       }
 
-      .piece-content {
-        padding: 1rem;
-        text-align: center;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+      .poster-image {
+        position: relative;
+        width: 100%;
+        height: 420px; /* Fixed height for portrait mode */
+        background: #333;
+        border-radius: 8px;
+        overflow: hidden;
       }
 
-      .piece-icon {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
+      .poster-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Crop horizontal images as needed */
+        object-position: center;
         display: block;
       }
 
-      .kaleidoscope-piece h3 {
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: #f3f4f6;
-        margin: 0 0 0.25rem 0;
-        line-height: 1.2;
-      }
-
-      .kaleidoscope-piece p {
-        font-size: 0.7rem;
-        color: #d1d5db;
-        margin: 0;
-        line-height: 1.2;
-      }
-
-      /* Category-specific colors */
-      .food-piece {
-        background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(17, 24, 39, 0.8));
-        border-color: rgba(239, 68, 68, 0.3);
-      }
-
-      .art-piece {
-        background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(17, 24, 39, 0.8));
-        border-color: rgba(168, 85, 247, 0.3);
-      }
-
-      .nature-piece {
-        background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(17, 24, 39, 0.8));
-        border-color: rgba(34, 197, 94, 0.3);
-      }
-
-      .entertainment-piece {
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(17, 24, 39, 0.8));
-        border-color: rgba(59, 130, 246, 0.3);
-      }
-
-      /* Initial kaleidoscope positions */
-      .kaleidoscope-piece:nth-child(1) { top: 50px; left: 100px; transform: rotate(12deg); }
-      .kaleidoscope-piece:nth-child(2) { top: 80px; left: 300px; transform: rotate(-8deg); }
-      .kaleidoscope-piece:nth-child(3) { top: 150px; left: 500px; transform: rotate(25deg); }
-      .kaleidoscope-piece:nth-child(4) { top: 200px; left: 150px; transform: rotate(-15deg); }
-      .kaleidoscope-piece:nth-child(5) { top: 250px; left: 400px; transform: rotate(18deg); }
-      .kaleidoscope-piece:nth-child(6) { top: 320px; left: 80px; transform: rotate(-22deg); }
-      .kaleidoscope-piece:nth-child(7) { top: 350px; left: 320px; transform: rotate(8deg); }
-      .kaleidoscope-piece:nth-child(8) { top: 400px; left: 200px; transform: rotate(-12deg); }
-      .kaleidoscope-piece:nth-child(9) { top: 450px; left: 450px; transform: rotate(30deg); }
-
-      .kaleidoscope-controls {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin-top: 2rem;
-      }
-
-      .control-btn {
+      .poster-placeholder {
+        width: 100%;
+        height: 100%;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        padding: 0.75rem 1.5rem;
-        border: 2px solid rgba(255, 255, 255, 0.2);
-        border-radius: 30px;
-        background: rgba(17, 24, 39, 0.6);
-        color: #d1d5db;
+        justify-content: center;
+        background: linear-gradient(135deg, #333 0%, #222 100%);
+        color: #666;
+      }
+
+      .placeholder-icon {
+        font-size: 3rem;
+        opacity: 0.6;
+      }
+
+      /* Poster Overlay */
+      .poster-card .poster-overlay,
+      .poster-card .poster-overlay *,
+      .poster-card .poster-overlay h3,
+      .poster-card .poster-overlay p,
+      .poster-card .poster-overlay span,
+      .poster-card .poster-overlay div {
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      }
+
+      .poster-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.95));
+        color: white;
+        padding: 1.5rem 1rem 1rem;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+      }
+
+      .poster-card:hover .poster-overlay {
+        transform: translateY(0);
+      }
+
+      .poster-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 0 0.5rem 0;
+        line-height: 1.2;
+        color: white;
+      }
+
+      .poster-location {
+        font-size: 0.875rem;
+        color: white;
+        margin: 0 0 0.75rem 0;
+      }
+
+      .poster-rating {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-size: 0.875rem;
+        color: white;
+        margin-bottom: 1rem;
+      }
+
+      .poster-rating span {
+        color: white;
+      }
+
+      .rating-star {
+        color: #fbbf24;
+      }
+
+      /* See More Button in Poster */
+      .poster-see-more {
+        background: white;
+        color: black !important;
+        text-shadow: none !important;
+        border: none;
+        padding: 0.75rem 1.25rem;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        font-weight: 700;
         cursor: pointer;
         transition: all 0.3s ease;
-        font-size: 0.9rem;
-        font-weight: 500;
-        backdrop-filter: blur(10px);
+        width: 100%;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        position: relative;
+        overflow: hidden;
       }
 
-      .control-btn:hover {
-        background: rgba(255, 255, 255, 0.15);
-        color: white;
-        border-color: rgba(255, 255, 255, 0.4);
+      .poster-see-more:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
       }
 
-      /* Hidden state for filtering */
-      .kaleidoscope-piece.hidden {
-        opacity: 0;
-        transform: scale(0) rotate(180deg);
-        pointer-events: none;
+      .poster-see-more:active {
+        transform: translateY(-1px);
       }
 
       /* Responsive Design */
+      @media (max-width: 1024px) {
+        .poster-card {
+          width: 240px; /* Fixed width for tablets */
+        }
+
+        .poster-image {
+          height: 360px;
+        }
+      }
+
       @media (max-width: 768px) {
-        .kaleidoscope-container {
-          height: 400px;
-          padding: 1rem;
+        .hero-banner {
+          min-h: 400px;
+          max-h: 500px;
         }
 
-        .kaleidoscope-piece {
-          width: 80px;
-          height: 80px;
+        .poster-card {
+          width: 200px; /* Fixed width for mobile */
         }
 
-        .piece-content {
-          padding: 0.5rem;
+        .poster-image {
+          height: 300px;
         }
 
-        .piece-icon {
-          font-size: 1.5rem;
+        .category-grid {
+          gap: 0.75rem;
+        }
+
+        .poster-overlay {
+          padding: 1rem 0.75rem 0.75rem;
+        }
+
+        .poster-title {
+          font-size: 0.875rem;
+        }
+
+        .poster-location {
+          font-size: 0.75rem;
+        }
+
+        .poster-see-more {
+          padding: 0.625rem 1rem;
+          font-size: 0.8rem;
+          font-weight: 700;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero-banner {
+          min-h: 300px;
+          max-h: 400px;
+        }
+
+        .poster-card {
+          width: 160px; /* Fixed width for small screens */
+        }
+
+        .poster-image {
+          height: 240px;
+        }
+
+        .poster-overlay {
+          padding: 0.75rem 0.5rem 0.5rem;
+        }
+
+        .poster-title {
+          font-size: 0.8rem;
           margin-bottom: 0.25rem;
         }
 
-        .kaleidoscope-piece h3 {
+        .poster-location {
           font-size: 0.7rem;
-          margin-bottom: 0.1rem;
+          margin-bottom: 0.5rem;
         }
 
-        .kaleidoscope-piece p {
-          font-size: 0.6rem;
+        .poster-rating {
+          font-size: 0.75rem;
+          margin-bottom: 0.75rem;
         }
 
-        /* Adjusted mobile positions */
-        .kaleidoscope-piece:nth-child(1) { top: 30px; left: 50px; }
-        .kaleidoscope-piece:nth-child(2) { top: 50px; left: 180px; }
-        .kaleidoscope-piece:nth-child(3) { top: 80px; left: 280px; }
-        .kaleidoscope-piece:nth-child(4) { top: 120px; left: 80px; }
-        .kaleidoscope-piece:nth-child(5) { top: 150px; left: 220px; }
-        .kaleidoscope-piece:nth-child(6) { top: 180px; left: 40px; }
-        .kaleidoscope-piece:nth-child(7) { top: 220px; left: 160px; }
-        .kaleidoscope-piece:nth-child(8) { top: 250px; left: 100px; }
-        .kaleidoscope-piece:nth-child(9) { top: 280px; left: 250px; }
-
-        .category-controls {
-          gap: 0.5rem;
-          margin-bottom: 2rem;
+        .poster-see-more {
+          padding: 0.5rem 0.8rem;
+          font-size: 0.75rem;
+          font-weight: 700;
         }
+      }
 
-        .category-btn {
-          padding: 0.5rem 1rem;
-          font-size: 0.8rem;
+      /* Loading States */
+      .loading-skeleton {
+        background: linear-gradient(90deg, #333 25%, #444 50%, #333 75%);
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -200% 0;
         }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+
+      /* Smooth scrolling for category grids */
+      .category-grid {
+        scroll-behavior: smooth;
+      }
+
+      /* Focus states for accessibility */
+      .poster-card:focus {
+        outline: 2px solid white;
+        outline-offset: 2px;
+      }
+
+      .see-more-btn:focus {
+        outline: 2px solid white;
+        outline-offset: 2px;
+      }
+
+      /* Text shadow for better readability on hero */
+      .hero-banner h1,
+      .hero-banner .text-gray-300 {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
       }
     </style>
 
     <script>
-      import { initPhysicsGyroscope } from '../scripts/physics-gyroscope.ts';
-      import { initFunItemDetail } from '../scripts/funitem-detail.ts';
+      import { initNetflixLayout } from '../scripts/netflix-layout.ts';
 
-      // Initialize both systems when DOM is loaded
+      // Initialize Netflix layout when DOM is loaded
       document.addEventListener('DOMContentLoaded', async () => {
-        await initPhysicsGyroscope();
-        initFunItemDetail();
+        await initNetflixLayout();
       });
     </script>
   </body>

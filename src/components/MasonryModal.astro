@@ -1,0 +1,250 @@
+---
+export interface Props {
+  id: string;
+  items: Array<{
+    type: 'image' | 'video';
+    src: string;
+    alt?: string;
+    caption?: string;
+  }>;
+}
+
+const { id, items } = Astro.props;
+---
+
+<!-- Masonry Media Modal -->
+<div id={id} class="masonry-modal fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center z-50 hidden">
+  <!-- Close Button -->
+  <button
+    class="masonry-close fixed top-6 right-6 text-white hover:bg-white hover:bg-opacity-20 z-60 bg-black bg-opacity-50 rounded-full p-3 transition-all duration-200"
+    data-close-masonry={id}
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+
+  <!-- Header -->
+  <div class="fixed top-6 left-6 z-60">
+    <h2 class="text-white text-2xl font-light mb-2" data-masonry-title={id}>Loading...</h2>
+    <p class="text-gray-300 text-sm" data-masonry-subtitle={id}>All memories from this experience</p>
+  </div>
+
+  <!-- Swiper Container -->
+  <div class="swiper-container w-full h-full flex items-center justify-center pt-24 pb-8">
+    <div class="swiper-wrapper-outer relative w-full max-w-6xl mx-auto h-3/4">
+      <!-- Swiper -->
+      <div class="swiper h-full" data-masonry-content={id}>
+        <div class="swiper-wrapper">
+          {items && items.length > 0 ? (
+            items.map((item, idx) => (
+              <div class="swiper-slide carousel-slide">
+                {item.type === 'image' ? (
+                  <img src={item.src} alt={item.alt || ''} />
+                ) : (
+                  <video src={item.src} controls />
+                )}
+                {item.caption && (
+                  <div class="carousel-caption">{item.caption}</div>
+                )}
+              </div>
+            ))
+          ) : (
+            <div class="flex items-center justify-center h-96 text-white">
+              <div class="text-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+                <p>Loading memories...</p>
+              </div>
+            </div>
+          )}
+        </div>
+        <!-- Swiper pagination and navigation -->
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+     </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+<style>
+  .masonry-modal {
+    backdrop-filter: blur(8px);
+  }
+  /* Carousel Layout */
+  .carousel-container {
+    position: relative;
+  }
+
+  .carousel-wrapper {
+    position: relative;
+    min-height: 60vh;
+  }
+
+  .carousel-content {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    margin: 0 5rem;
+    width: calc(100% - 10rem);
+    height: 70vh;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    width: 100%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .carousel-slide img,
+  .carousel-slide video {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+
+  .carousel-slide video {
+    background: #000;
+  }
+
+  /* Carousel Controls */
+  .carousel-btn {
+    width: 48px;
+    height: 48px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+  }
+
+  .carousel-btn:hover {
+    opacity: 1;
+  }
+
+  .carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  /* Carousel Dots */
+  .carousel-dots {
+    display: flex;
+    gap: 8px;
+  }
+
+  .carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .carousel-dot.active {
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Caption Overlay */
+  .carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 2rem 1rem 1rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .carousel-slide:hover .carousel-caption {
+    opacity: 1;
+  }
+
+  /* Loading placeholder */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .carousel-content {
+      margin: 0 3rem;
+      width: calc(100% - 6rem);
+      height: 50vh;
+    }
+
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+    }
+
+    .carousel-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .fixed.top-6.left-6 {
+      top: 1.5rem;
+      left: 1.5rem;
+    }
+
+    .fixed.top-6.right-6 {
+      top: 1.5rem;
+      right: 1.5rem;
+    }
+
+    .carousel-slide img,
+    .carousel-slide video {
+      max-height: 50vh;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .carousel-content {
+      margin: 0 2rem;
+      width: calc(100% - 4rem);
+      height: 40vh;
+    }
+
+    .carousel-wrapper {
+      min-height: 50vh;
+    }
+
+    .carousel-slide img,
+    .carousel-slide video {
+      max-height: 40vh;
+    }
+
+    .carousel-caption {
+      padding: 1rem 0.5rem 0.5rem;
+      font-size: 0.875rem;
+    }
+  }
+</style>
