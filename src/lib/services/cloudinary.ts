@@ -4,10 +4,25 @@ import type { FunItem, MediaAsset, CloudinaryResource } from '../types/fun-item'
 
 // Configuration function
 export const configureCloudinary = () => {
+  const cloud_name = process.env.CLOUDINARY_CLOUD_NAME || import.meta.env.CLOUDINARY_CLOUD_NAME;
+  const api_key = process.env.CLOUDINARY_API_KEY || import.meta.env.CLOUDINARY_API_KEY;
+  const api_secret = process.env.CLOUDINARY_API_SECRET || import.meta.env.CLOUDINARY_API_SECRET;
+
+  // Debug logging for build issues
+  console.log('Cloudinary config:', {
+    cloud_name: cloud_name ? '***' : 'MISSING',
+    api_key: api_key ? '***' : 'MISSING',
+    api_secret: api_secret ? '***' : 'MISSING'
+  });
+
+  if (!cloud_name || !api_key || !api_secret) {
+    throw new Error(`Missing Cloudinary credentials: cloud_name=${!!cloud_name}, api_key=${!!api_key}, api_secret=${!!api_secret}`);
+  }
+
   cloudinary.config({
-    cloud_name: import.meta.env.CLOUDINARY_CLOUD_NAME || process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: import.meta.env.CLOUDINARY_API_KEY || process.env.CLOUDINARY_API_KEY,
-    api_secret: import.meta.env.CLOUDINARY_API_SECRET || process.env.CLOUDINARY_API_SECRET,
+    cloud_name,
+    api_key,
+    api_secret,
   });
 };
 
