@@ -1,0 +1,599 @@
+---
+import Header from "../components/Header.astro";
+import MasonryModal from "../components/MasonryModal.astro";
+export const prerender = true;
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href={`${baseUrl}favicon.png`} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Fun Adventures</title>
+    <meta
+      name="description"
+      content="Explore the fun adventures and shared experiences of Annie and Allan through a Netflix-style interface."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-sans antialiased bg-netflix-black">
+    <Header />
+
+    <main class="pt-16">
+      <!-- Hero Banner Section -->
+      <section class="hero-banner relative h-screen max-h-[800px] min-h-[500px] overflow-hidden">
+        <!-- Hero Background Image -->
+        <div
+          class="hero-background absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22 fill=%22%23141414%22><rect width=%22100%22 height=%22100%22 fill=%22%23141414%22/></svg>');"
+        ></div>
+
+        <!-- Hero Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-gray-900 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-netflix-black to-transparent"></div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 h-full flex items-center">
+          <div class="max-w-7xl mx-auto px-6 w-full">
+            <div class="max-w-2xl">
+              <h1 class="text-4xl md:text-6xl font-bold text-white mb-4" data-hero-title>
+                Loading Latest Adventure...
+              </h1>
+              <div class="flex items-center gap-4 text-gray-300 mb-6">
+                <div class="flex items-center gap-2">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  <span data-hero-location>Loading...</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  <span data-hero-date>Loading...</span>
+                </div>
+              </div>
+
+              <!-- Call to Action -->
+              <button
+                class="see-more-btn bg-white text-black px-8 py-3 rounded-md font-semibold text-lg hover:bg-gray-200 transition-colors duration-200 flex items-center gap-2"
+                data-see-more-btn
+              >
+                View Gallery
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category Rows Section -->
+      <section class="category-rows bg-netflix-black py-12">
+        <div class="max-w-7xl mx-auto px-6 space-y-12">
+
+          <!-- Food Category -->
+          <div class="category-row" data-category-row="food">
+            <h2 class="text-2xl font-semibold text-white mb-6">Food Adventures</h2>
+            <div class="category-grid overflow-x-auto">
+              <!-- Food items will be populated by JavaScript -->
+              <div class="flex items-center justify-center h-48 text-gray-400">
+                <p>Loading food adventures...</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Art Category -->
+          <div class="category-row" data-category-row="art">
+            <h2 class="text-2xl font-semibold text-white mb-6">Art & Culture</h2>
+            <div class="category-grid overflow-x-auto">
+              <!-- Art items will be populated by JavaScript -->
+              <div class="flex items-center justify-center h-48 text-gray-400">
+                <p>Loading art experiences...</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nature Category -->
+          <div class="category-row" data-category-row="nature">
+            <h2 class="text-2xl font-semibold text-white mb-6">Nature Escapes</h2>
+            <div class="category-grid overflow-x-auto">
+              <!-- Nature items will be populated by JavaScript -->
+              <div class="flex items-center justify-center h-48 text-gray-400">
+                <p>Loading nature adventures...</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entertainment Category -->
+          <div class="category-row" data-category-row="entertainment">
+            <h2 class="text-2xl font-semibold text-white mb-6">Entertainment</h2>
+            <div class="category-grid overflow-x-auto">
+              <!-- Entertainment items will be populated by JavaScript -->
+              <div class="flex items-center justify-center h-48 text-gray-400">
+                <p>Loading entertainment experiences...</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- Masonry Media Modal -->
+    <MasonryModal id="masonry-modal" />
+
+    <style is:global>
+      /* Netflix Color Palette */
+      :root {
+        --netflix-black: #141414;
+        --netflix-red: #e50914;
+        --netflix-dark-gray: #2f2f2f;
+        --netflix-light-gray: #f3f3f3;
+      }
+
+      /* Global Netflix Styles */
+      .bg-netflix-black {
+        background-color: var(--netflix-black);
+      }
+
+      /* Hero Banner Styles */
+      .hero-banner {
+        position: relative;
+      }
+
+      .hero-background {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: background-image 0.5s ease;
+      }
+
+      /* Category Grid Styles */
+      .category-grid {
+        display: flex;
+        gap: 1rem;
+        padding: 0.5rem 0;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        overflow-y: visible; /* Allow vertical scroll to bubble up */
+        width: 100%; /* Use full viewport width */
+        scrollbar-width: none; /* Hide scrollbar in Firefox */
+        scroll-behavior: smooth;
+      }
+
+      /* Hide scrollbar in webkit browsers */
+      .category-grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Movie Poster Card Styles */
+      .poster-card {
+        flex: 0 0 280px; /* Fixed flex-basis for consistent sizing */
+        width: 280px !important; /* Force width */
+        min-width: 280px;
+        max-width: 280px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .poster-card:hover {
+        transform: scale(1.05);
+        z-index: 10;
+      }
+
+      .poster-image {
+        position: relative;
+        width: 100%;
+        height: 420px; /* Fixed height for portrait mode */
+        background: #333;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .poster-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Crop horizontal images as needed */
+        object-position: center;
+        display: block;
+      }
+
+      .poster-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #333 0%, #222 100%);
+        color: #666;
+      }
+
+      .placeholder-icon {
+        font-size: 3rem;
+        opacity: 0.6;
+      }
+
+      /* Poster Overlay */
+      .poster-card .poster-overlay,
+      .poster-card .poster-overlay *,
+      .poster-card .poster-overlay h3,
+      .poster-card .poster-overlay p,
+      .poster-card .poster-overlay span,
+      .poster-card .poster-overlay div {
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      }
+
+      .poster-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.95));
+        color: white;
+        padding: 1.5rem 1rem 1rem;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+      }
+
+      .poster-card:hover .poster-overlay {
+        transform: translateY(0);
+      }
+
+      .poster-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 0 0.5rem 0;
+        line-height: 1.2;
+        color: white;
+      }
+
+      .poster-location {
+        font-size: 0.875rem;
+        color: white;
+        margin: 0 0 0.75rem 0;
+      }
+
+      .poster-rating {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-size: 0.875rem;
+        color: white;
+        margin-bottom: 1rem;
+      }
+
+      .poster-rating span {
+        color: white;
+      }
+
+      .rating-star {
+        color: #fbbf24;
+      }
+
+      /* See More Button in Poster */
+      .poster-see-more {
+        background: white;
+        color: black !important;
+        text-shadow: none !important;
+        border: none;
+        padding: 0.75rem 1.25rem;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .poster-see-more:hover {
+        transform: translateY(-2px);
+      }
+
+      .poster-see-more:active {
+        transform: translateY(-1px);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .poster-card {
+          width: 240px; /* Fixed width for tablets */
+        }
+
+        .poster-image {
+          height: 360px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-banner {
+          min-h: 400px;
+          max-h: 500px;
+        }
+
+        .poster-card {
+          width: 200px; /* Fixed width for mobile */
+        }
+
+        .poster-image {
+          height: 300px;
+        }
+
+        .category-grid {
+          gap: 0.75rem;
+        }
+
+        .poster-overlay {
+          padding: 1rem 0.75rem 0.75rem;
+        }
+
+        .poster-title {
+          font-size: 0.875rem;
+        }
+
+        .poster-location {
+          font-size: 0.75rem;
+        }
+
+        .poster-see-more {
+          padding: 0.625rem 1rem;
+          font-size: 0.8rem;
+          font-weight: 700;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero-banner {
+          min-h: 300px;
+          max-h: 400px;
+        }
+
+        .poster-card {
+          width: 160px; /* Fixed width for small screens */
+        }
+
+        .poster-image {
+          height: 240px;
+        }
+
+        .poster-overlay {
+          padding: 0.75rem 0.5rem 0.5rem;
+        }
+
+        .poster-title {
+          font-size: 0.8rem;
+          margin-bottom: 0.25rem;
+        }
+
+        .poster-location {
+          font-size: 0.7rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .poster-rating {
+          font-size: 0.75rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .poster-see-more {
+          padding: 0.5rem 0.8rem;
+          font-size: 0.75rem;
+          font-weight: 700;
+        }
+      }
+
+      /* Loading States */
+      .loading-skeleton {
+        background: linear-gradient(90deg, #333 25%, #444 50%, #333 75%);
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -200% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+
+      /* Smooth scrolling for category grids */
+      .category-grid {
+        scroll-behavior: smooth;
+      }
+
+      /* Focus states for accessibility */
+      .poster-card:focus {
+        outline: 2px solid white;
+        outline-offset: 2px;
+      }
+
+      .see-more-btn:focus {
+        outline: 2px solid white;
+        outline-offset: 2px;
+      }
+
+      /* Text shadow for better readability on hero */
+      .hero-banner h1,
+      .hero-banner .text-gray-300 {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      }
+
+      /* Swiper Styles for Modal */
+      .masonry-modal .swiper {
+        width: 100%;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        overflow: hidden;
+        list-style: none;
+        padding: 0;
+        z-index: 1;
+      }
+
+      .masonry-modal .swiper-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: flex;
+        transition-property: transform;
+        box-sizing: content-box;
+      }
+
+      .masonry-modal .swiper-slide {
+        flex-shrink: 0;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transition-property: transform;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .masonry-modal .swiper-slide img,
+      .masonry-modal .swiper-slide video {
+        max-width: 100%;
+        max-height: 70vh;
+        object-fit: contain;
+        border-radius: 12px;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .masonry-modal .swiper-slide video {
+        background: #000;
+        width: auto;
+        height: auto;
+      }
+
+      /* Navigation Buttons */
+      .masonry-modal .swiper-button-next,
+      .masonry-modal .swiper-button-prev {
+        position: absolute;
+        top: 50%;
+        width: 48px;
+        height: 48px;
+        margin-top: -24px;
+        z-index: 10;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .masonry-modal .swiper-button-next:hover,
+      .masonry-modal .swiper-button-prev:hover {
+        background: rgba(0, 0, 0, 0.8);
+      }
+
+      .masonry-modal .swiper-button-prev {
+        left: 10px;
+      }
+
+      .masonry-modal .swiper-button-next {
+        right: 10px;
+      }
+
+      .masonry-modal .swiper-button-next:after,
+      .masonry-modal .swiper-button-prev:after {
+        content: '';
+        display: none;
+      }
+
+      .masonry-modal .swiper-button-prev::before {
+        content: '‹';
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .masonry-modal .swiper-button-next::before {
+        content: '›';
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .masonry-modal .swiper-navigation-icon {
+        display: none;
+      }
+
+      /* Pagination */
+      .masonry-modal .swiper-pagination {
+        position: absolute;
+        text-align: center;
+        transition: 0.3s opacity;
+        transform: translate3d(0, 0, 0);
+        z-index: 10;
+        bottom: 10px;
+        left: 0;
+        width: 100%;
+      }
+
+      .masonry-modal .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        display: inline-block;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        opacity: 1;
+        margin: 0 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .masonry-modal .swiper-pagination-bullet-active {
+        background: rgba(255, 255, 255, 0.9);
+        transform: scale(1.2);
+      }
+
+      /* Caption Styles */
+      .masonry-modal .carousel-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        color: white;
+        padding: 2rem 1rem 1rem;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .masonry-modal .swiper-slide:hover .carousel-caption {
+        opacity: 1;
+
+      }
+    </style>
+
+    <script>
+      import { initNetflixLayout } from '../scripts/netflix-layout.ts';
+
+      // Initialize Netflix layout when DOM is loaded
+      document.addEventListener('DOMContentLoaded', async () => {
+        await initNetflixLayout();
+      });
+    </script>
+  </body>
+</html>

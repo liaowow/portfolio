@@ -1,0 +1,53 @@
+---
+export interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<!-- Masonry Media Modal -->
+<div id={id} class="masonry-modal fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center z-50 hidden">
+  <!-- Close Button -->
+  <button
+    class="masonry-close fixed top-6 right-6 text-white hover:bg-white hover:bg-opacity-20 z-60 bg-black bg-opacity-50 rounded-full p-3 transition-all duration-200"
+    data-close-masonry={id}
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+
+  <!-- Header -->
+  <div class="fixed top-6 left-6 z-60">
+    <h2 class="text-white text-2xl font-light mb-2" data-masonry-title={id}>Loading...</h2>
+    <p class="text-gray-300 text-sm" data-masonry-subtitle={id}>All memories from this experience</p>
+  </div>
+
+  <!-- Swiper Container -->
+  <div class="swiper-container w-full h-full flex items-center justify-center pt-24 pb-8">
+    <div class="swiper-wrapper-outer relative w-full max-w-6xl mx-auto h-3/4">
+      <!-- Swiper -->
+      <div class="swiper h-full" data-masonry-content={id}>
+        <!-- Loading state -->
+        <div class="flex items-center justify-center h-96 text-white">
+          <div class="text-center">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+            <p>Loading memories...</p>
+          </div>
+        </div>
+      </div>
+     </div>
+  </div>
+</div>
+
+<style>
+  .masonry-modal {
+    backdrop-filter: blur(8px);
+  }
+
+
+
+
+
+</style>
