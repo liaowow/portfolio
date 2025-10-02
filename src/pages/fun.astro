@@ -1,7 +1,10 @@
 ---
 import Header from "../components/Header.astro";
 import MasonryModal from "../components/MasonryModal.astro";
-export const prerender = true;
+import { getAllFunItemsWithMedia } from "../lib/services/cloudinary";
+
+// Fetch data at build time
+const funItemsData = await getAllFunItemsWithMedia();
 
 const baseUrl = import.meta.env.BASE_URL;
 ---
@@ -587,12 +590,18 @@ const baseUrl = import.meta.env.BASE_URL;
       }
     </style>
 
+    <!-- Embed data as global variable -->
+    <script define:vars={{ funItemsData }} is:inline>
+      window.funItemsData = funItemsData;
+    </script>
+
+    <!-- Main script with imports -->
     <script>
       import { initNetflixLayout } from '../scripts/netflix-layout.ts';
 
-      // Initialize Netflix layout when DOM is loaded
+      // Initialize Netflix layout when DOM is loaded with build-time data
       document.addEventListener('DOMContentLoaded', async () => {
-        await initNetflixLayout();
+        await initNetflixLayout((window as any).funItemsData);
       });
     </script>
   </body>

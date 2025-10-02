@@ -14,13 +14,26 @@ export const configureCloudinary = () => {
 // Get all Fun items (cover images only for physics grid)
 export const getFunItems = async (): Promise<FunItem[]> => {
   configureCloudinary();
-  
+
   const result = await cloudinary.search
     .expression('folder:Fun2025 AND metadata.is_cover:true')
     .with_field('metadata')
     .max_results(50)
     .execute();
-  
+
+  return transformToFunItems(result.resources || []);
+};
+
+// Get all Fun items with all media (for static site)
+export const getAllFunItemsWithMedia = async (): Promise<FunItem[]> => {
+  configureCloudinary();
+
+  const result = await cloudinary.search
+    .expression('folder:Fun2025')
+    .with_field('metadata')
+    .max_results(200)
+    .execute();
+
   return transformToFunItems(result.resources || []);
 };
 

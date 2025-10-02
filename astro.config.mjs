@@ -8,5 +8,7 @@ export default defineConfig({
   integrations: [react(), tailwind()],
   site: 'https://annieliao.com',
   // No base path needed for custom domain
-  base: '/'
+  base: '/',
+  // Force static output for GitHub Pages deployment
+  output: 'static'
 });

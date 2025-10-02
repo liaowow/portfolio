@@ -1,24 +1,29 @@
 import type { FunItem, MediaAsset } from '../lib/types/fun-item';
 
-export async function initNetflixLayout(): Promise<void> {
-  // Fetch Fun items from API
-  let funItems: FunItem[] = [];
-  try {
-    const response = await fetch('/api/fun');
-    const data = await response.json();
-    funItems = data.items || [];
-  } catch (error) {
-    console.error('Failed to fetch Fun items:', error);
-    funItems = [];
+export async function initNetflixLayout(funItems?: FunItem[]): Promise<void> {
+  // Use passed data or fall back to API fetch for backward compatibility
+  let itemsToUse: FunItem[] = [];
+
+  if (!funItems) {
+    try {
+      const response = await fetch('/api/fun');
+      const data = await response.json();
+      itemsToUse = data.items || [];
+    } catch (error) {
+      console.error('Failed to fetch Fun items:', error);
+      itemsToUse = [];
+    }
+  } else {
+    itemsToUse = funItems;
   }
 
-  if (funItems.length === 0) {
+  if (itemsToUse.length === 0) {
     console.warn('No Fun items found');
     return;
   }
 
   // Sort items by date (newest first) to get hero item
-  const sortedItems = [...funItems].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const sortedItems = [...itemsToUse].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   const heroItem = sortedItems[0];
   const otherItems = sortedItems.slice(1);
 
@@ -266,9 +271,8 @@ async function loadMasonryContent(funItem: FunItem, container: Element): Promise
   `;
 
   try {
-    // Fetch detailed item data with all media
-    const response = await fetch(`/api/fun/${funItem.id}`);
-    const detailedItem = await response.json();
+    // Use the funItem data directly (no API call needed for static site)
+    const detailedItem = funItem;
 
     if (!detailedItem || !detailedItem.media || detailedItem.media.length === 0) {
       container.innerHTML = '<p class="text-white text-center">No media found for this experience.</p>';
