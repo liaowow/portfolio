@@ -21,22 +21,22 @@ const baseUrl = import.meta.env.BASE_URL;
     <!-- Main Content -->
     <main class="pt-20">
       <!-- Hero Section -->
-      <section class="py-32 px-6 bg-white">
+      <section class="py-24 md:py-32 px-6 bg-gradient-to-b from-white to-gray-50">
         <div class="max-w-4xl mx-auto">
           <!-- Thumbnail and Title Row -->
-          <div class="flex flex-col md:flex-row md:items-start gap-8 mb-8">
+          <div class="flex flex-col md:flex-row md:items-start gap-10 mb-12">
             <!-- Thumbnail -->
             <div class="flex-shrink-0">
-              <img 
+              <img
                 src={`${baseUrl}images/baby_name_blossoms_color.png`}
                 alt="Baby name blossoms data visualization"
-                class="w-32 h-32 object-cover rounded-2xl shadow-lg"
+                class="w-40 h-40 object-cover rounded-3xl shadow-xl ring-1 ring-gray-200"
               />
             </div>
-            
+
             <!-- Title and Description -->
             <div class="flex-1 min-w-0">
-              <h1 class="text-4xl md:text-6xl font-light text-gray-900 mb-6">
+              <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight leading-tight">
                 Baby Name Blossoms
               </h1>
               <p class="text-xl md:text-2xl font-light text-gray-700 leading-relaxed mb-8">
@@ -44,30 +44,27 @@ const baseUrl = import.meta.env.BASE_URL;
               </p>
 
               <!-- Visual Tags -->
-              <div class="flex flex-wrap gap-3 items-center mb-8">
-            <span class="text-sm text-gray-600">React</span>
-            <span class="text-gray-400">•</span>
-            <span class="text-sm text-gray-600">D3.js</span>
-            <span class="text-gray-400">•</span>
-            <span class="text-sm text-gray-600">Data Viz</span>
-            <span class="text-gray-400">•</span>
-            <span class="text-sm text-gray-600">Personal</span>
+              <div class="flex flex-wrap gap-2.5 mb-10">
+                <span class="px-4 py-2 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full">React</span>
+                <span class="px-4 py-2 bg-purple-100 text-purple-800 text-sm font-semibold rounded-full">D3.js</span>
+                <span class="px-4 py-2 bg-green-100 text-green-800 text-sm font-semibold rounded-full">Data Viz</span>
+                <span class="px-4 py-2 bg-pink-100 text-pink-800 text-sm font-semibold rounded-full">Personal</span>
               </div>
 
               <!-- Quick Links -->
               <div class="flex flex-wrap gap-4">
-            <a href="https://baby-name-blossoms.netlify.app/" target="_blank" 
-               class="inline-block px-4 py-2 bg-gray-100 text-gray-900 hover:bg-gray-200 rounded-md font-medium transition-colors duration-200">
-              Live Demo
-            </a>
-            <a href="https://github.com/liaowow/baby-names" target="_blank" 
-               class="inline-block px-4 py-2 bg-gray-100 text-gray-900 hover:bg-gray-200 rounded-md font-medium transition-colors duration-200">
-              GitHub
-            </a>
-            <a href="https://dev.to/liaowow/when-art-meets-data-flowers-as-visual-metaphor-1ekl" target="_blank" 
-               class="inline-block px-4 py-2 bg-gray-100 text-gray-900 hover:bg-gray-200 rounded-md font-medium transition-colors duration-200">
-              Blog Post
-            </a>
+                <a href="https://baby-name-blossoms.netlify.app/" target="_blank"
+                   class="inline-block px-6 py-3 bg-gray-900 text-white hover:bg-gray-700 rounded-xl font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg">
+                  Live Demo
+                </a>
+                <a href="https://github.com/liaowow/baby-names" target="_blank"
+                   class="inline-block px-6 py-3 bg-gray-100 text-gray-900 hover:bg-gray-200 rounded-xl font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg">
+                  GitHub
+                </a>
+                <a href="https://dev.to/liaowow/when-art-meets-data-flowers-as-visual-metaphor-1ekl" target="_blank"
+                   class="inline-block px-6 py-3 bg-gray-100 text-gray-900 hover:bg-gray-200 rounded-xl font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg">
+                  Blog Post
+                </a>
               </div>
             </div>
           </div>
@@ -93,7 +90,7 @@ const baseUrl = import.meta.env.BASE_URL;
 
           <!-- The Journey -->
           <div class="max-w-4xl mx-auto mb-16">
-            <h2 class="text-2xl md:text-3xl font-light text-gray-900 mb-8">A week of discovery</h2>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-8">A week of discovery</h2>
             <div class="text-xl text-gray-600 max-w-none">
               <p class="mb-4">
                 That simple question launched my first real D3.js adventure.
@@ -109,7 +106,7 @@ const baseUrl = import.meta.env.BASE_URL;
 
           <!-- The Magic Moment -->
           <div class="mb-16">
-            <div class="bg-white rounded-2xl p-8 border border-gray-200">
+            <div class="bg-white rounded-3xl p-10 md:p-12 border-2 border-gray-200 shadow-lg">
               <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div>
                   <h3 class="text-xl font-medium text-gray-900 mb-4">Before: Just structure</h3>
@@ -139,8 +136,8 @@ const baseUrl = import.meta.env.BASE_URL;
           <!-- Tech Stack & Behind the Scenes -->
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
             <!-- The Tech Stack -->
-            <div class="bg-white rounded-2xl p-8 border border-gray-200">
-              <h2 class="text-2xl font-light text-gray-900 mb-8">Built with</h2>
+            <div class="bg-white rounded-3xl p-10 border-2 border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
+              <h2 class="text-2xl font-bold text-gray-900 mb-8">Built with</h2>
               <div class="grid grid-cols-2 gap-8">
                 <div class="text-center">
                   <div class="text-3xl mb-3">⚛️</div>
@@ -166,8 +163,8 @@ const baseUrl = import.meta.env.BASE_URL;
             </div>
 
             <!-- Behind the Scenes -->
-            <div class="bg-white rounded-2xl p-8 border border-gray-200">
-              <h2 class="text-2xl font-light text-gray-900 mb-6">What I learned (the hard way)</h2>
+            <div class="bg-white rounded-3xl p-10 border-2 border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
+              <h2 class="text-2xl font-bold text-gray-900 mb-6">What I learned (the hard way)</h2>
               <div class="space-y-4">
                 <div class="flex items-start space-x-4">
                   <span class="text-2xl">😅</span>
@@ -203,14 +200,14 @@ const baseUrl = import.meta.env.BASE_URL;
 
           <!-- Try It Yourself -->
           <div class="text-center">
-            <h2 class="text-2xl font-light text-gray-900 mb-4">Ready to see the flowers?</h2>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Ready to see the flowers?</h2>
             <div class="flex flex-wrap justify-center gap-4">
-              <a href="https://baby-name-blossoms.netlify.app/" target="_blank" 
-                 class="inline-block px-6 py-3 bg-gray-100 text-gray-900 hover:bg-gray-200 rounded-md font-medium transition-colors duration-200">
+              <a href="https://baby-name-blossoms.netlify.app/" target="_blank"
+                 class="inline-block px-6 py-3 bg-gray-900 text-white hover:bg-gray-700 rounded-xl font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg">
                 View Site
               </a>
-              <a href="https://github.com/liaowow/baby-names" target="_blank" 
-                 class="inline-block px-6 py-3 bg-gray-100 text-gray-900 hover:bg-gray-200 rounded-md font-medium transition-colors duration-200">
+              <a href="https://github.com/liaowow/baby-names" target="_blank"
+                 class="inline-block px-6 py-3 bg-gray-100 text-gray-900 hover:bg-gray-200 rounded-xl font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg">
                 View Code
               </a>
             </div>
@@ -225,8 +222,11 @@ const baseUrl = import.meta.env.BASE_URL;
         <div class="max-w-4xl mx-auto text-center">
           <a
             href={`${baseUrl}#work`}
-            class="inline-block px-4 py-2 bg-gray-900 text-white hover:bg-gray-700 rounded-md font-medium transition-colors duration-200"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white hover:bg-gray-700 rounded-xl font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg"
           >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
             Back to All Projects
           </a>
           <p class="text-gray-600 mt-2">
