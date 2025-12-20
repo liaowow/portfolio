@@ -1,5 +1,6 @@
 ---
 import Header from "../../components/Header.astro";
+import BackNavigation from "../../components/BackNavigation.astro";
 import ImageModal from "../../components/ImageModal.astro";
 import ClickableImage from "../../components/ClickableImage.astro";
 export const prerender = true;
@@ -201,7 +202,7 @@ const baseUrl = import.meta.env.BASE_URL;
                         the right lens colors for different activities.
                       </p>
                       <div
-                        class="flex items-center text-sm text-orange-700 bg-white px-3 py-2 rounded-full inline-flex"
+                        class="items-center text-sm text-orange-700 bg-white px-3 py-2 rounded-full inline-flex"
                       >
                         Educational • Health & Science
                       </div>
@@ -279,7 +280,7 @@ const baseUrl = import.meta.env.BASE_URL;
                         warning signs and taking preventive action.
                       </p>
                       <div
-                        class="flex items-center text-sm text-red-700 bg-white px-3 py-2 rounded-full inline-flex"
+                        class="items-center text-sm text-red-700 bg-white px-3 py-2 rounded-full inline-flex"
                       >
                         Public Health • Medical Information
                       </div>
@@ -555,22 +556,7 @@ const baseUrl = import.meta.env.BASE_URL;
       </section>
 
       <!-- Back Navigation -->
-      <section class="py-12 px-6 bg-gray-50 border-t border-gray-200">
-        <div class="max-w-4xl mx-auto text-center">
-          <a
-            href={`${baseUrl}#work`}
-            class="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white hover:bg-gray-700 rounded-xl font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-            </svg>
-            Back to All Projects
-          </a>
-          <p class="text-gray-600 mt-2">
-            Explore more case studies and technical projects
-          </p>
-        </div>
-      </section>
+      <BackNavigation />
     </main>
 
     <ImageModal id="infographicModal" />
