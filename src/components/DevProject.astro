@@ -1,0 +1,490 @@
+---
+import Header from "./Header.astro";
+import BackNavigation from "./BackNavigation.astro";
+import ImageModal from "./ImageModal.astro";
+import ClickableImage from "./ClickableImage.astro";
+
+interface Props {
+  project: {
+    // Meta
+    title: string;
+    description: string;
+    thumbnail: string;
+    thumbnailAlt: string;
+    techBadges: { label: string; color: string }[];
+
+    // The Challenge
+    challengeTitle?: string;
+    challengeDescription: string;
+    problems: {
+      icon: string;
+      title: string;
+      description: string;
+    }[];
+
+    // The Solution
+    solutionTitle?: string;
+    solutionDescription: string;
+    solutions: {
+      icon: string;
+      title: string;
+      description: string;
+    }[];
+
+    // Optional: Before/After section
+    beforeAfter?: {
+      before: {
+        image: string;
+        alt: string;
+        description: string;
+        bullets: string[];
+      };
+      after: {
+        image: string;
+        alt: string;
+        description: string;
+        bullets: string[];
+      };
+    };
+
+    // My Role
+    myRoleDescription: string;
+    roles: {
+      icon: string;
+      title: string;
+      responsibilities: string[];
+    }[];
+
+    // How It Works / Architecture
+    architectureTitle: string; // "How It Works" or "The Architecture"
+    architectureDescription: string;
+    architectureDiagram?: string; // Optional SVG or image
+    techStack: {
+      icon: string;
+      items: { tech: string; description: string }[];
+    };
+    tradeoffs: {
+      icon: string;
+      title: string;
+      items: string[];
+    };
+
+    // Impact
+    impactDescription: string;
+    metrics: {
+      icon: string;
+      value: string;
+      label: string;
+    }[];
+    testimonial?: {
+      quote: string;
+      author: string;
+      role: string;
+    };
+
+    // Looking Back
+    reflections: {
+      icon: string;
+      title: string;
+      description: string;
+    }[];
+  };
+}
+
+const { project } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+
+// SVG icon library
+const icons = {
+  // Problem icons
+  'chart-down': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>',
+  'minus': '<rect x="5" y="11" width="14" height="2" rx="1"></rect>',
+  'warning': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>',
+  'users': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>',
+  'clock': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>',
+  'x': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>',
+  'document': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>',
+  'dollar': '<path xmlns="http://www.w3.org/2000/svg" d="M18 8.5V8.35417C18 6.50171 16.4983 5 14.6458 5H9.5C7.567 5 6 6.567 6 8.5C6 10.433 7.567 12 9.5 12H14.5C16.433 12 18 13.567 18 15.5C18 17.433 16.433 19 14.5 19H9.42708C7.53436 19 6 17.4656 6 15.5729V15.5M12 3V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>',
+
+  // Solution icons
+  'document-check': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>',
+  'lightning': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>',
+  'chart': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>',
+  'check-circle': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>',
+  'sparkles': '<path xmlns="http://www.w3.org/2000/svg" d="M9 3.5V2M5.06066 5.06066L4 4M5.06066 13L4 14.0607M13 5.06066L14.0607 4M3.5 9H2M8.5 8.5L12.6111 21.2778L15.5 18.3889L19.1111 22L22 19.1111L18.3889 15.5L21.2778 12.6111L8.5 8.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>',
+
+  // Role icons
+  'code': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>',
+  'team': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>',
+
+  // Tech icons
+  'database': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path>',
+  'warning-triangle': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>',
+
+  // Impact icons
+  'chart-up': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>',
+  'quote': '<path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"></path>',
+
+  // Reflection icons
+  'lightbulb': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>',
+  'share': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>',
+  'trending-up': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>',
+  'lock': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>',
+  'monitor': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>',
+};
+
+function getIcon(iconName: string, className: string = "") {
+  return icons[iconName as keyof typeof icons] || icons['document'];
+}
+
+// Badge color mapping - Tailwind doesn't support dynamic class names
+function getBadgeClasses(color: string): string {
+  const colorMap: Record<string, string> = {
+    'blue': 'bg-blue-100 text-blue-800',
+    'green': 'bg-green-100 text-green-800',
+    'indigo': 'bg-indigo-100 text-indigo-800',
+    'orange': 'bg-orange-100 text-orange-800',
+    'purple': 'bg-purple-100 text-purple-800',
+    'pink': 'bg-pink-100 text-pink-800',
+    'cyan': 'bg-cyan-100 text-cyan-800',
+    'red': 'bg-red-100 text-red-800',
+    'yellow': 'bg-yellow-100 text-yellow-800',
+    'teal': 'bg-teal-100 text-teal-800',
+  };
+  return colorMap[color] || 'bg-gray-100 text-gray-800';
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href={`${baseUrl}favicon.png`} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{project.title} - Annie Liao</title>
+  </head>
+  <body class="bg-gray-50">
+    <Header />
+
+    <main class="pt-20">
+      <!-- Hero Section -->
+      <section class="py-24 md:py-32 px-6 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-5xl mx-auto">
+          <div class="flex flex-col md:flex-row md:items-start gap-10 mb-12">
+            <!-- Thumbnail -->
+            <div class="flex-shrink-0">
+              <img
+                src={`${baseUrl}${project.thumbnail}`}
+                alt={project.thumbnailAlt}
+                class="w-40 h-40 object-cover rounded-3xl shadow-xl ring-1 ring-gray-200"
+              />
+            </div>
+
+            <!-- Title and Description -->
+            <div class="flex-1 min-w-0">
+              <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight leading-tight">
+                {project.title}
+              </h1>
+              <p class="text-xl md:text-2xl text-gray-700 leading-relaxed mb-10 max-w-3xl">
+                {project.description}
+              </p>
+
+              <!-- Tech Badges -->
+              <div class="flex flex-wrap gap-2.5">
+                {project.techBadges.map((badge) => (
+                  <span class={`px-4 py-2 text-sm font-semibold rounded-full ${getBadgeClasses(badge.color)}`}>
+                    {badge.label}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Details -->
+      <section class="py-20 px-6 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+
+          <!-- The Challenge -->
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              {project.challengeTitle || "The Challenge"}
+            </h2>
+            <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              {project.challengeDescription}
+            </p>
+          </div>
+
+          <div class="mb-24">
+            <div class="bg-gradient-to-br from-red-50 to-orange-50 rounded-3xl p-10 md:p-12 border-2 border-red-200/60 shadow-lg">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {project.problems.map((problem) => (
+                  <div class="text-center">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <Fragment set:html={getIcon(problem.icon)} />
+                      </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">{problem.title}</h3>
+                    <p class="text-gray-600 text-sm">{problem.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- The Solution -->
+          <div class="mb-24">
+            <div class="text-center mb-16">
+              <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                {project.solutionTitle || "The Solution"}
+              </h2>
+              <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                {project.solutionDescription}
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-10 md:p-12 border-2 border-green-200/60 shadow-lg">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {project.solutions.map((solution) => (
+                  <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <Fragment set:html={getIcon(solution.icon)} />
+                      </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">{solution.title}</h3>
+                    <p class="text-gray-600 text-sm">{solution.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- Optional: Before/After -->
+          {project.beforeAfter && (
+            <div class="mb-24">
+              <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                  Before vs. After
+                </h2>
+                <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                  {project.beforeAfter.before.description}
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Before -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                  <div class="text-center mb-4">
+                    <span class="bg-red-100 text-red-800 text-sm font-medium px-3 py-1.5 rounded-full">
+                      Before
+                    </span>
+                  </div>
+                  <ClickableImage
+                    src={`${baseUrl}${project.beforeAfter.before.image}`}
+                    alt={project.beforeAfter.before.alt}
+                    modalId="projectModal"
+                  />
+                  <h3 class="font-bold text-gray-900 mb-2 mt-4">{project.beforeAfter.before.description}</h3>
+                  <ul class="text-sm text-gray-600 space-y-1">
+                    {project.beforeAfter.before.bullets.map((bullet) => (
+                      <li>• {bullet}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <!-- After -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                  <div class="text-center mb-4">
+                    <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1.5 rounded-full">
+                      After
+                    </span>
+                  </div>
+                  <ClickableImage
+                    src={`${baseUrl}${project.beforeAfter.after.image}`}
+                    alt={project.beforeAfter.after.alt}
+                    modalId="projectModal"
+                  />
+                  <h3 class="font-bold text-gray-900 mb-2 mt-4">{project.beforeAfter.after.description}</h3>
+                  <ul class="text-sm text-gray-600 space-y-1">
+                    {project.beforeAfter.after.bullets.map((bullet) => (
+                      <li>• {bullet}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <!-- My Role -->
+          <div class="mb-24">
+            <div class="text-center mb-16">
+              <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                My Role
+              </h2>
+              <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                {project.myRoleDescription}
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {project.roles.map((role) => (
+                <div class="bg-white p-10 rounded-3xl border-2 border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
+                  <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <Fragment set:html={getIcon(role.icon)} />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-4">{role.title}</h3>
+                  <ul class="space-y-3 text-gray-600">
+                    {role.responsibilities.map((resp) => (
+                      <li class="flex items-start space-x-3">
+                        <div class="w-1.5 h-1.5 bg-gray-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <span>{resp}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- How It Works / Architecture -->
+          <div class="mb-24">
+            <div class="text-center mb-16">
+              <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                {project.architectureTitle}
+              </h2>
+              <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                {project.architectureDescription}
+              </p>
+            </div>
+
+            <!-- Optional Architecture Diagram -->
+            {project.architectureDiagram && (
+              <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-10 md:p-12 rounded-3xl border-2 border-blue-200/60 shadow-lg mb-12">
+                <div set:html={project.architectureDiagram} />
+              </div>
+            )}
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <!-- Tech Stack -->
+              <div class="bg-white p-10 rounded-3xl border-2 border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
+                <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mb-6">
+                  <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <Fragment set:html={getIcon(project.techStack.icon)} />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Tech Stack</h3>
+                <ul class="space-y-3 text-gray-700">
+                  {project.techStack.items.map((item) => (
+                    <li class="flex items-start space-x-3">
+                      <div class="w-1.5 h-1.5 bg-gray-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <span><strong>{item.tech}</strong> – {item.description}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- Trade-offs -->
+              <div class="bg-white p-10 rounded-3xl border-2 border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
+                <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mb-6">
+                  <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <Fragment set:html={getIcon(project.tradeoffs.icon)} />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">{project.tradeoffs.title}</h3>
+                <ul class="space-y-3 text-gray-700">
+                  {project.tradeoffs.items.map((item) => (
+                    <li class="flex items-start space-x-3">
+                      <div class="w-1.5 h-1.5 bg-gray-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Impact -->
+          <div class="mb-24">
+            <div class="text-center mb-16">
+              <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                The Impact
+              </h2>
+              <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                {project.impactDescription}
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+              {project.metrics.map((metric) => (
+                <div class="bg-white p-8 rounded-3xl border-2 border-gray-200 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 text-center">
+                  <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <Fragment set:html={getIcon(metric.icon)} />
+                    </svg>
+                  </div>
+                  <div class="text-3xl font-bold text-gray-900 mb-2">{metric.value}</div>
+                  <div class="text-gray-600 text-sm">{metric.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <!-- Optional Testimonial -->
+            {project.testimonial && (
+              <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-10 md:p-12 border-2 border-green-200/60 shadow-lg">
+                <div class="flex items-start space-x-6">
+                  <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                      <Fragment set:html={getIcon('quote')} />
+                    </svg>
+                  </div>
+                  <div>
+                    <blockquote class="text-xl text-gray-900 font-medium mb-3">
+                      "{project.testimonial.quote}"
+                    </blockquote>
+                    <div class="text-gray-700 font-medium">— {project.testimonial.author}, {project.testimonial.role}</div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <!-- Looking Back -->
+          <div class="mb-16">
+            <div class="text-center mb-16">
+              <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Looking Back
+              </h2>
+              <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Reflections on the development process and improvements for future projects.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {project.reflections.map((reflection) => (
+                <div class="bg-white p-10 rounded-3xl border-2 border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
+                  <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <Fragment set:html={getIcon(reflection.icon)} />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-4">{reflection.title}</h3>
+                  <p class="text-gray-600">{reflection.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <BackNavigation />
+    </main>
+
+    <ImageModal id="projectModal" />
+  </body>
+</html>
