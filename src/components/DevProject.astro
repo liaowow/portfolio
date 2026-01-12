@@ -33,6 +33,7 @@ interface Props {
 
     // Optional: Before/After section
     beforeAfter?: {
+      description: string;
       before: {
         image: string;
         alt: string;
@@ -137,21 +138,10 @@ function getIcon(iconName: string, className: string = "") {
   return icons[iconName as keyof typeof icons] || icons['document'];
 }
 
-// Badge color mapping - Tailwind doesn't support dynamic class names
+// Badge color mapping - Standardized to neutral for clean, consistent look
 function getBadgeClasses(color: string): string {
-  const colorMap: Record<string, string> = {
-    'blue': 'bg-blue-100 text-blue-800',
-    'green': 'bg-green-100 text-green-800',
-    'indigo': 'bg-indigo-100 text-indigo-800',
-    'orange': 'bg-orange-100 text-orange-800',
-    'purple': 'bg-purple-100 text-purple-800',
-    'pink': 'bg-pink-100 text-pink-800',
-    'cyan': 'bg-cyan-100 text-cyan-800',
-    'red': 'bg-red-100 text-red-800',
-    'yellow': 'bg-yellow-100 text-yellow-800',
-    'teal': 'bg-teal-100 text-teal-800',
-  };
-  return colorMap[color] || 'bg-gray-100 text-gray-800';
+  // All badges use uniform neutral colors to match Work.astro style
+  return 'bg-neutral-100 text-neutral-700';
 }
 ---
 
@@ -163,7 +153,7 @@ function getBadgeClasses(color: string): string {
     <meta name="generator" content={Astro.generator} />
     <title>{project.title} - Annie Liao</title>
   </head>
-  <body class="bg-gray-50">
+  <body class="bg-neutral-50">
     <Header />
 
     <main class="pt-20">
@@ -182,10 +172,10 @@ function getBadgeClasses(color: string): string {
 
             <!-- Title and Description -->
             <div class="flex-1 min-w-0">
-              <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight leading-tight">
+              <h1 class="text-5xl md:text-7xl font-bold text-neutral-900 mb-6 tracking-tight leading-tight">
                 {project.title}
               </h1>
-              <p class="text-xl md:text-2xl text-gray-700 leading-relaxed mb-10 max-w-3xl">
+              <p class="text-xl md:text-2xl text-neutral-700 leading-relaxed mb-10 max-w-3xl">
                 {project.description}
               </p>
 
@@ -203,30 +193,30 @@ function getBadgeClasses(color: string): string {
       </section>
 
       <!-- Subnavigation -->
-      <nav id="subnav" class="sticky top-20 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+      <nav id="subnav" class="sticky top-20 z-40 bg-white/95 backdrop-blur-sm border-b border-neutral-200 shadow-sm">
         <div class="max-w-6xl mx-auto px-6">
           <div class="flex gap-2 overflow-x-auto hide-scrollbar">
-            <a href="#challenge" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 transition-colors">
+            <a href="#challenge" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-neutral-600 hover:text-neutral-900 border-b-2 border-transparent hover:border-gray-900 transition-colors">
               The Challenge
             </a>
-            <a href="#solution" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 transition-colors">
+            <a href="#solution" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-neutral-600 hover:text-neutral-900 border-b-2 border-transparent hover:border-gray-900 transition-colors">
               The Solution
             </a>
             {project.beforeAfter && (
-              <a href="#before-after" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 transition-colors">
+              <a href="#before-after" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-neutral-600 hover:text-neutral-900 border-b-2 border-transparent hover:border-gray-900 transition-colors">
                 Before vs. After
               </a>
             )}
-            <a href="#role" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 transition-colors">
+            <a href="#role" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-neutral-600 hover:text-neutral-900 border-b-2 border-transparent hover:border-gray-900 transition-colors">
               My Role
             </a>
-            <a href="#architecture" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 transition-colors">
+            <a href="#architecture" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-neutral-600 hover:text-neutral-900 border-b-2 border-transparent hover:border-gray-900 transition-colors">
               {project.architectureTitle}
             </a>
-            <a href="#impact" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 transition-colors">
+            <a href="#impact" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-neutral-600 hover:text-neutral-900 border-b-2 border-transparent hover:border-gray-900 transition-colors">
               The Impact
             </a>
-            <a href="#reflections" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 transition-colors">
+            <a href="#reflections" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-neutral-600 hover:text-neutral-900 border-b-2 border-transparent hover:border-gray-900 transition-colors">
               Looking Back
             </a>
           </div>
@@ -234,31 +224,31 @@ function getBadgeClasses(color: string): string {
       </nav>
 
       <!-- Project Details -->
-      <section class="py-20 px-6 bg-gray-50">
+      <section class="py-20 px-6 bg-neutral-50">
         <div class="max-w-6xl mx-auto">
 
           <!-- The Challenge -->
           <div id="challenge" class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-neutral-900 mb-6">
               {project.challengeTitle || "The Challenge"}
             </h2>
-            <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p class="text-xl md:text-2xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
               {project.challengeDescription}
             </p>
           </div>
 
           <div class="mb-24">
-            <div class="bg-gradient-to-br from-red-50 to-orange-50 rounded-3xl p-10 md:p-12 border-2 border-red-200/60 shadow-lg">
+            <div class="bg-gradient-to-br from-coral-50 to-coral-100 rounded-3xl p-10 md:p-12 border-2 border-coral-200/60 shadow-lg">
               <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {project.problems.map((problem) => (
                   <div class="text-center">
-                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-16 h-16 bg-coral-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg class="w-8 h-8 text-coral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <Fragment set:html={getIcon(problem.icon)} />
                       </svg>
                     </div>
-                    <h3 class="font-bold text-gray-900 mb-2">{problem.title}</h3>
-                    <p class="text-gray-600 text-sm">{problem.description}</p>
+                    <h3 class="font-bold text-neutral-900 mb-2">{problem.title}</h3>
+                    <p class="text-neutral-600 text-sm">{problem.description}</p>
                   </div>
                 ))}
               </div>
@@ -268,25 +258,25 @@ function getBadgeClasses(color: string): string {
           <!-- The Solution -->
           <div id="solution" class="mb-24">
             <div class="text-center mb-16">
-              <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h2 class="text-4xl md:text-5xl font-bold text-neutral-900 mb-6">
                 {project.solutionTitle || "The Solution"}
               </h2>
-              <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p class="text-xl md:text-2xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
                 {project.solutionDescription}
               </p>
             </div>
 
-            <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-10 md:p-12 border-2 border-green-200/60 shadow-lg">
+            <div class="bg-gradient-to-br from-mint-50 to-mint-100 rounded-3xl p-10 md:p-12 border-2 border-mint-200/60 shadow-lg">
               <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {project.solutions.map((solution) => (
                   <div class="text-center">
-                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-16 h-16 bg-mint-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg class="w-8 h-8 text-mint-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <Fragment set:html={getIcon(solution.icon)} />
                       </svg>
                     </div>
-                    <h3 class="font-bold text-gray-900 mb-2">{solution.title}</h3>
-                    <p class="text-gray-600 text-sm">{solution.description}</p>
+                    <h3 class="font-bold text-neutral-900 mb-2">{solution.title}</h3>
+                    <p class="text-neutral-600 text-sm">{solution.description}</p>
                   </div>
                 ))}
               </div>
@@ -297,19 +287,19 @@ function getBadgeClasses(color: string): string {
           {project.beforeAfter && (
             <div id="before-after" class="mb-24">
               <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-neutral-900 mb-6">
                   Before vs. After
                 </h2>
-                <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                  {project.beforeAfter.before.description}
+                <p class="text-xl md:text-2xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
+                  {project.beforeAfter.description}
                 </p>
               </div>
 
               <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- Before -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                <div class="bg-white p-6 rounded-2xl border border-neutral-200 shadow-sm">
                   <div class="text-center mb-4">
-                    <span class="bg-red-100 text-red-800 text-sm font-medium px-3 py-1.5 rounded-full">
+                    <span class="bg-coral-100 text-coral-800 text-sm font-medium px-3 py-1.5 rounded-full">
                       Before
                     </span>
                   </div>
@@ -318,8 +308,8 @@ function getBadgeClasses(color: string): string {
                     alt={project.beforeAfter.before.alt}
                     modalId="projectModal"
                   />
-                  <h3 class="font-bold text-gray-900 mb-2 mt-4">{project.beforeAfter.before.description}</h3>
-                  <ul class="text-sm text-gray-600 space-y-1">
+                  <h3 class="font-bold text-neutral-900 mb-2 mt-4">{project.beforeAfter.before.description}</h3>
+                  <ul class="text-sm text-neutral-600 space-y-1">
                     {project.beforeAfter.before.bullets.map((bullet) => (
                       <li>• {bullet}</li>
                     ))}
@@ -327,9 +317,9 @@ function getBadgeClasses(color: string): string {
                 </div>
 
                 <!-- After -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                <div class="bg-white p-6 rounded-2xl border border-neutral-200 shadow-sm">
                   <div class="text-center mb-4">
-                    <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1.5 rounded-full">
+                    <span class="bg-mint-100 text-mint-800 text-sm font-medium px-3 py-1.5 rounded-full">
                       After
                     </span>
                   </div>
@@ -338,8 +328,8 @@ function getBadgeClasses(color: string): string {
                     alt={project.beforeAfter.after.alt}
                     modalId="projectModal"
                   />
-                  <h3 class="font-bold text-gray-900 mb-2 mt-4">{project.beforeAfter.after.description}</h3>
-                  <ul class="text-sm text-gray-600 space-y-1">
+                  <h3 class="font-bold text-neutral-900 mb-2 mt-4">{project.beforeAfter.after.description}</h3>
+                  <ul class="text-sm text-neutral-600 space-y-1">
                     {project.beforeAfter.after.bullets.map((bullet) => (
                       <li>• {bullet}</li>
                     ))}
@@ -352,27 +342,27 @@ function getBadgeClasses(color: string): string {
           <!-- My Role -->
           <div id="role" class="mb-24">
             <div class="text-center mb-16">
-              <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h2 class="text-4xl md:text-5xl font-bold text-neutral-900 mb-6">
                 My Role
               </h2>
-              <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p class="text-xl md:text-2xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
                 {project.myRoleDescription}
               </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
               {project.roles.map((role) => (
-                <div class="bg-white p-10 rounded-3xl border-2 border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
-                  <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mb-6">
-                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-white p-10 rounded-3xl border-2 border-neutral-200 shadow-lg hover:shadow-xl transition-shadow">
+                  <div class="w-12 h-12 bg-neutral-100 rounded-xl flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <Fragment set:html={getIcon(role.icon)} />
                     </svg>
                   </div>
-                  <h3 class="text-xl font-bold text-gray-900 mb-4">{role.title}</h3>
-                  <ul class="space-y-3 text-gray-600">
+                  <h3 class="text-xl font-bold text-neutral-900 mb-4">{role.title}</h3>
+                  <ul class="space-y-3 text-neutral-600">
                     {role.responsibilities.map((resp) => (
                       <li class="flex items-start space-x-3">
-                        <div class="w-1.5 h-1.5 bg-gray-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div class="w-1.5 h-1.5 bg-neutral-500 rounded-full mt-2 flex-shrink-0"></div>
                         <span>{resp}</span>
                       </li>
                     ))}
@@ -385,34 +375,34 @@ function getBadgeClasses(color: string): string {
           <!-- How It Works / Architecture -->
           <div id="architecture" class="mb-24">
             <div class="text-center mb-16">
-              <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h2 class="text-4xl md:text-5xl font-bold text-neutral-900 mb-6">
                 {project.architectureTitle}
               </h2>
-              <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p class="text-xl md:text-2xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
                 {project.architectureDescription}
               </p>
             </div>
 
             <!-- Optional Architecture Diagram -->
             {project.architectureDiagram && (
-              <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-10 md:p-12 rounded-3xl border-2 border-blue-200/60 shadow-lg mb-12">
+              <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-10 md:p-12 rounded-3xl border-2 border-purple-200/60 shadow-lg mb-12">
                 <div set:html={project.architectureDiagram} />
               </div>
             )}
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <!-- Tech Stack -->
-              <div class="bg-white p-10 rounded-3xl border-2 border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
-                <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mb-6">
-                  <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="bg-white p-10 rounded-3xl border-2 border-neutral-200 shadow-lg hover:shadow-xl transition-shadow">
+                <div class="w-12 h-12 bg-neutral-100 rounded-xl flex items-center justify-center mb-6">
+                  <svg class="w-6 h-6 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <Fragment set:html={getIcon(project.techStack.icon)} />
                   </svg>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Tech Stack</h3>
-                <ul class="space-y-3 text-gray-700">
+                <h3 class="text-xl font-bold text-neutral-900 mb-4">Tech Stack</h3>
+                <ul class="space-y-3 text-neutral-700">
                   {project.techStack.items.map((item) => (
                     <li class="flex items-start space-x-3">
-                      <div class="w-1.5 h-1.5 bg-gray-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <div class="w-1.5 h-1.5 bg-neutral-500 rounded-full mt-2 flex-shrink-0"></div>
                       <span><strong>{item.tech}</strong> – {item.description}</span>
                     </li>
                   ))}
@@ -420,17 +410,17 @@ function getBadgeClasses(color: string): string {
               </div>
 
               <!-- Trade-offs -->
-              <div class="bg-white p-10 rounded-3xl border-2 border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
-                <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mb-6">
-                  <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="bg-white p-10 rounded-3xl border-2 border-neutral-200 shadow-lg hover:shadow-xl transition-shadow">
+                <div class="w-12 h-12 bg-neutral-100 rounded-xl flex items-center justify-center mb-6">
+                  <svg class="w-6 h-6 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <Fragment set:html={getIcon(project.tradeoffs.icon)} />
                   </svg>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">{project.tradeoffs.title}</h3>
-                <ul class="space-y-3 text-gray-700">
+                <h3 class="text-xl font-bold text-neutral-900 mb-4">{project.tradeoffs.title}</h3>
+                <ul class="space-y-3 text-neutral-700">
                   {project.tradeoffs.items.map((item) => (
                     <li class="flex items-start space-x-3">
-                      <div class="w-1.5 h-1.5 bg-gray-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <div class="w-1.5 h-1.5 bg-neutral-500 rounded-full mt-2 flex-shrink-0"></div>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -442,42 +432,42 @@ function getBadgeClasses(color: string): string {
           <!-- Impact -->
           <div id="impact" class="mb-24">
             <div class="text-center mb-16">
-              <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h2 class="text-4xl md:text-5xl font-bold text-neutral-900 mb-6">
                 The Impact
               </h2>
-              <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p class="text-xl md:text-2xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
                 {project.impactDescription}
               </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
               {project.metrics.map((metric) => (
-                <div class="bg-white p-8 rounded-3xl border-2 border-gray-200 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 text-center">
-                  <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-white p-8 rounded-3xl border-2 border-neutral-200 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 text-center">
+                  <div class="w-16 h-16 bg-mint-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-mint-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <Fragment set:html={getIcon(metric.icon)} />
                     </svg>
                   </div>
-                  <div class="text-3xl font-bold text-gray-900 mb-2">{metric.value}</div>
-                  <div class="text-gray-600 text-sm">{metric.label}</div>
+                  <div class="text-3xl font-bold text-neutral-900 mb-2">{metric.value}</div>
+                  <div class="text-neutral-600 text-sm">{metric.label}</div>
                 </div>
               ))}
             </div>
 
             <!-- Optional Testimonial -->
             {project.testimonial && (
-              <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-10 md:p-12 border-2 border-green-200/60 shadow-lg">
+              <div class="bg-gradient-to-br from-mint-50 to-mint-100 rounded-3xl p-10 md:p-12 border-2 border-mint-200/60 shadow-lg">
                 <div class="flex items-start space-x-6">
-                  <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                  <div class="w-16 h-16 bg-mint-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg class="w-8 h-8 text-mint-600" fill="currentColor" viewBox="0 0 24 24">
                       <Fragment set:html={getIcon('quote')} />
                     </svg>
                   </div>
                   <div>
-                    <blockquote class="text-xl text-gray-900 font-medium mb-3">
+                    <blockquote class="text-xl text-neutral-900 font-medium mb-3">
                       "{project.testimonial.quote}"
                     </blockquote>
-                    <div class="text-gray-700 font-medium">— {project.testimonial.author}, {project.testimonial.role}</div>
+                    <div class="text-neutral-700 font-medium">— {project.testimonial.author}, {project.testimonial.role}</div>
                   </div>
                 </div>
               </div>
@@ -487,24 +477,24 @@ function getBadgeClasses(color: string): string {
           <!-- Looking Back -->
           <div id="reflections" class="mb-16">
             <div class="text-center mb-16">
-              <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h2 class="text-4xl md:text-5xl font-bold text-neutral-900 mb-6">
                 Looking Back
               </h2>
-              <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p class="text-xl md:text-2xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
                 Reflections on the development process and improvements for future projects.
               </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
               {project.reflections.map((reflection) => (
-                <div class="bg-white p-10 rounded-3xl border-2 border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
-                  <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mb-6">
-                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-white p-10 rounded-3xl border-2 border-neutral-200 shadow-lg hover:shadow-xl transition-shadow">
+                  <div class="w-12 h-12 bg-neutral-100 rounded-xl flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <Fragment set:html={getIcon(reflection.icon)} />
                     </svg>
                   </div>
-                  <h3 class="text-xl font-bold text-gray-900 mb-4">{reflection.title}</h3>
-                  <p class="text-gray-600">{reflection.description}</p>
+                  <h3 class="text-xl font-bold text-neutral-900 mb-4">{reflection.title}</h3>
+                  <p class="text-neutral-600">{reflection.description}</p>
                 </div>
               ))}
             </div>
@@ -533,8 +523,8 @@ function getBadgeClasses(color: string): string {
       }
 
       .subnav-link.active {
-        color: #111827;
-        border-bottom: 2px solid #111827;
+        color: var(--neutral-900);
+        border-bottom: 2px solid var(--neutral-900);
       }
     </style>
 

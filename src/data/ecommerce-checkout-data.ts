@@ -64,6 +64,8 @@ export const ecommerceCheckoutProject = {
 
   // Before/After
   beforeAfter: {
+    description:
+      "A complete overhaul of the checkout experience, shifting from a disjointed multi-step popup to a fluid single-page design.",
     before: {
       image: "images/bump_checkout_before.png",
       alt: "Original three-step popup checkout interface",

@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Playful Coral - for challenges/problems */
+    --coral-50: #FFF5F1;
+    --coral-100: #FFE4D9;
+    --coral-200: #FECAB3;
+    --coral-600: #F07654;
+    --coral-700: #D95A39;
+    --coral-800: #B84A2F;
+
+    /* Fresh Mint - for solutions/success */
+    --mint-50: #F0FBF8;
+    --mint-100: #D4F3EA;
+    --mint-200: #B8EBD8;
+    --mint-600: #4DBAAA;
+    --mint-700: #3A9B8E;
+    --mint-800: #2D7A70;
+
+    /* Playful Purple - for impact/highlights */
+    --purple-50: #F6F4FF;
+    --purple-100: #E8E3FF;
+    --purple-200: #D5CCFF;
+    --purple-600: #8B7BD8;
+    --purple-700: #6F5DC4;
+    --purple-800: #5A4BA0;
+
+    /* Sunny Yellow - for energy/attention */
+    --yellow-50: #FFFBEB;
+    --yellow-100: #FFF3C4;
+    --yellow-600: #F5C142;
+    --yellow-700: #D9A635;
+
+    /* Warm Neutrals - for backgrounds and text */
+    --neutral-50: #FAFAF9;
+    --neutral-100: #F5F4F2;
+    --neutral-200: #E8E6E3;
+    --neutral-300: #D4D1CD;
+    --neutral-400: #B0ABA5;
+    --neutral-600: #6B6662;
+    --neutral-700: #4A4643;
+    --neutral-800: #363330;
+    --neutral-900: #2B2826;
+  }
+}

@@ -79,41 +79,41 @@ export const couponSwapProject = {
   architectureDescription: "A serverless architecture that orchestrates coupon swaps with precision timing and zero manual intervention.",
   architectureDiagram: `<svg viewBox="0 0 1200 600" class="w-full h-auto">
     <!-- Background sections -->
-    <rect x="50" y="50" width="300" height="500" fill="#fef7e0" rx="10"></rect>
-    <rect x="400" y="50" width="400" height="500" fill="#e0f2fe" rx="10"></rect>
-    <rect x="850" y="50" width="300" height="500" fill="#fdf2f8" rx="10"></rect>
+    <rect x="50" y="50" width="300" height="500" fill="#F6F4FF" rx="10"></rect>
+    <rect x="400" y="50" width="400" height="500" fill="#F6F4FF" rx="10"></rect>
+    <rect x="850" y="50" width="300" height="500" fill="#F6F4FF" rx="10"></rect>
 
     <!-- Section labels -->
-    <text x="200" y="40" text-anchor="middle" class="text-lg font-semibold" fill="#7c2d12">BACKEND</text>
-    <text x="600" y="40" text-anchor="middle" class="text-lg font-semibold" fill="#0c4a6e">EVENTBRIDGE</text>
-    <text x="1000" y="40" text-anchor="middle" class="text-lg font-semibold" fill="#831843">LAMBDA</text>
+    <text x="200" y="40" text-anchor="middle" class="text-lg font-semibold" fill="#6F5DC4">BACKEND</text>
+    <text x="600" y="40" text-anchor="middle" class="text-lg font-semibold" fill="#6F5DC4">EVENTBRIDGE</text>
+    <text x="1000" y="40" text-anchor="middle" class="text-lg font-semibold" fill="#6F5DC4">LAMBDA</text>
 
     <!-- Backend Call -->
-    <rect x="80" y="280" width="240" height="80" fill="white" stroke="#6b7280" stroke-width="2" rx="8"></rect>
+    <rect x="80" y="280" width="240" height="80" fill="white" stroke="#6b7280" stroke-width="1" rx="8"></rect>
     <text x="200" y="310" text-anchor="middle" class="text-md font-medium" fill="#374151">Backend Call</text>
     <text x="200" y="330" text-anchor="middle" class="text-sm" fill="#6b7280">(applyCouponSwapInEventBridge)</text>
 
     <!-- Event Bus -->
-    <rect x="430" y="280" width="140" height="60" fill="white" stroke="#6b7280" stroke-width="2" rx="8"></rect>
+    <rect x="430" y="280" width="140" height="60" fill="white" stroke="#6b7280" stroke-width="1" rx="8"></rect>
     <text x="500" y="305" text-anchor="middle" class="text-md font-medium" fill="#374151">Event Bus</text>
 
     <!-- EB Rules -->
-    <rect x="430" y="150" width="160" height="60" fill="white" stroke="#6b7280" stroke-width="2" rx="8"></rect>
+    <rect x="430" y="150" width="160" height="60" fill="white" stroke="#6b7280" stroke-width="1" rx="8"></rect>
     <text x="510" y="175" text-anchor="middle" class="text-md font-medium" fill="#374151">EB Rule: Scheduled</text>
 
-    <rect x="430" y="380" width="160" height="60" fill="white" stroke="#6b7280" stroke-width="2" rx="8"></rect>
+    <rect x="430" y="380" width="160" height="60" fill="white" stroke="#6b7280" stroke-width="1" rx="8"></rect>
     <text x="510" y="405" text-anchor="middle" class="text-md font-medium" fill="#374151">EB Rule: Live</text>
 
     <!-- EB Scheduler -->
-    <rect x="880" y="150" width="180" height="60" fill="white" stroke="#6b7280" stroke-width="2" rx="8"></rect>
+    <rect x="880" y="150" width="180" height="60" fill="white" stroke="#6b7280" stroke-width="1" rx="8"></rect>
     <text x="970" y="175" text-anchor="middle" class="text-md font-medium" fill="#374151">EB Scheduler</text>
 
     <!-- Lambda Functions -->
-    <rect x="880" y="280" width="240" height="80" fill="white" stroke="#6b7280" stroke-width="2" rx="8"></rect>
+    <rect x="880" y="280" width="240" height="80" fill="white" stroke="#6b7280" stroke-width="1" rx="8"></rect>
     <text x="1000" y="305" text-anchor="middle" class="text-md font-medium" fill="#374151">applyCouponSwapLambda</text>
 
     <!-- Backend Endpoints -->
-    <rect x="80" y="450" width="240" height="60" fill="white" stroke="#6b7280" stroke-width="2" rx="8"></rect>
+    <rect x="80" y="450" width="240" height="60" fill="white" stroke="#6b7280" stroke-width="1" rx="8"></rect>
     <text x="200" y="485" text-anchor="middle" class="text-md font-medium" fill="#374151">Backend Endpoints</text>
 
     <!-- Arrows -->
