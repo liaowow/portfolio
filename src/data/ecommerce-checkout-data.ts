@@ -24,7 +24,7 @@ export const ecommerceCheckoutProject = {
         "Customers abandoned checkout after the first step, creating a conversion funnel bottleneck",
     },
     {
-      icon: "minus",
+      icon: "chart-flat",
       title: "Stagnating Conversion",
       description:
         "Conversion rates plateaued despite marketing efforts and traffic growth",
