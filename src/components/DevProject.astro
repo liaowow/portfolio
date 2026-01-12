@@ -202,12 +202,43 @@ function getBadgeClasses(color: string): string {
         </div>
       </section>
 
+      <!-- Subnavigation -->
+      <nav id="subnav" class="sticky top-20 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="flex overflow-x-auto hide-scrollbar">
+            <a href="#challenge" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-600 hover:text-gray-900 hover:border-b-2 hover:border-gray-900 transition-colors">
+              The Challenge
+            </a>
+            <a href="#solution" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-600 hover:text-gray-900 hover:border-b-2 hover:border-gray-900 transition-colors">
+              The Solution
+            </a>
+            {project.beforeAfter && (
+              <a href="#before-after" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-600 hover:text-gray-900 hover:border-b-2 hover:border-gray-900 transition-colors">
+                Before vs. After
+              </a>
+            )}
+            <a href="#role" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-600 hover:text-gray-900 hover:border-b-2 hover:border-gray-900 transition-colors">
+              My Role
+            </a>
+            <a href="#architecture" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-600 hover:text-gray-900 hover:border-b-2 hover:border-gray-900 transition-colors">
+              {project.architectureTitle}
+            </a>
+            <a href="#impact" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-600 hover:text-gray-900 hover:border-b-2 hover:border-gray-900 transition-colors">
+              The Impact
+            </a>
+            <a href="#reflections" class="subnav-link whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-600 hover:text-gray-900 hover:border-b-2 hover:border-gray-900 transition-colors">
+              Looking Back
+            </a>
+          </div>
+        </div>
+      </nav>
+
       <!-- Project Details -->
       <section class="py-20 px-6 bg-gray-50">
         <div class="max-w-6xl mx-auto">
 
           <!-- The Challenge -->
-          <div class="text-center mb-16">
+          <div id="challenge" class="text-center mb-16">
             <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               {project.challengeTitle || "The Challenge"}
             </h2>
@@ -235,7 +266,7 @@ function getBadgeClasses(color: string): string {
           </div>
 
           <!-- The Solution -->
-          <div class="mb-24">
+          <div id="solution" class="mb-24">
             <div class="text-center mb-16">
               <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 {project.solutionTitle || "The Solution"}
@@ -264,7 +295,7 @@ function getBadgeClasses(color: string): string {
 
           <!-- Optional: Before/After -->
           {project.beforeAfter && (
-            <div class="mb-24">
+            <div id="before-after" class="mb-24">
               <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                   Before vs. After
@@ -319,7 +350,7 @@ function getBadgeClasses(color: string): string {
           )}
 
           <!-- My Role -->
-          <div class="mb-24">
+          <div id="role" class="mb-24">
             <div class="text-center mb-16">
               <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 My Role
@@ -352,7 +383,7 @@ function getBadgeClasses(color: string): string {
           </div>
 
           <!-- How It Works / Architecture -->
-          <div class="mb-24">
+          <div id="architecture" class="mb-24">
             <div class="text-center mb-16">
               <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 {project.architectureTitle}
@@ -409,7 +440,7 @@ function getBadgeClasses(color: string): string {
           </div>
 
           <!-- Impact -->
-          <div class="mb-24">
+          <div id="impact" class="mb-24">
             <div class="text-center mb-16">
               <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 The Impact
@@ -454,7 +485,7 @@ function getBadgeClasses(color: string): string {
           </div>
 
           <!-- Looking Back -->
-          <div class="mb-16">
+          <div id="reflections" class="mb-16">
             <div class="text-center mb-16">
               <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 Looking Back
@@ -486,5 +517,77 @@ function getBadgeClasses(color: string): string {
     </main>
 
     <ImageModal id="projectModal" />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      .subnav-link.active {
+        color: #111827;
+        border-bottom: 2px solid #111827;
+      }
+    </style>
+
+    <script>
+      // Smooth scroll with offset for sticky header and subnav
+      document.querySelectorAll('.subnav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = e.currentTarget as HTMLAnchorElement;
+          const targetId = target.getAttribute('href')?.substring(1);
+          const targetSection = targetId ? document.getElementById(targetId) : null;
+
+          if (targetSection) {
+            const headerOffset = 160; // Height of header (80px) + subnav (80px)
+            const elementPosition = targetSection.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Highlight active section in navigation
+      const sections = document.querySelectorAll('[id^="challenge"], [id^="solution"], [id^="before-after"], [id^="role"], [id^="architecture"], [id^="impact"], [id^="reflections"]');
+      const navLinks = document.querySelectorAll('.subnav-link');
+
+      function updateActiveLink() {
+        let current = '';
+        const scrollPosition = window.pageYOffset + 200;
+
+        sections.forEach(section => {
+          const htmlSection = section as HTMLElement;
+          const sectionTop = htmlSection.offsetTop;
+          const sectionHeight = htmlSection.clientHeight;
+
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            current = section.getAttribute('id') || '';
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateActiveLink);
+      window.addEventListener('load', updateActiveLink);
+    </script>
   </body>
 </html>
