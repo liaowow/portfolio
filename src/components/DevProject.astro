@@ -440,9 +440,9 @@ function getBadgeClasses(): string {
               </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div class="flex flex-wrap justify-center gap-6 mb-12">
               {project.metrics.map((metric) => (
-                <div class="bg-white p-8 rounded-3xl border-2 border-neutral-200 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 text-center">
+                <div class="bg-white p-8 rounded-3xl border-2 border-neutral-200 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 text-center flex-1 min-w-[200px] max-w-[250px]">
                   <div class="w-16 h-16 bg-mint-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <svg class="w-8 h-8 text-mint-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <Fragment set:html={getIcon(metric.icon)} />
